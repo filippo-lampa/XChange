@@ -1,0 +1,26 @@
+
+
+.horizontal {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+    display: inline-block;
+    padding-left: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-grow: 1;
+ }
+
+ .modal{
+  overflow-y: hidden;
+ }
+
+ #closeButton{
+  margin-top: -10px;
+ }
+
+ .modal-content, .modal-footer{
+  width: 100%;
+  background: linear-gradient(to right, #00bfa5  0%, #00bfa5  33%, white 30%, white 100%);
+}
+

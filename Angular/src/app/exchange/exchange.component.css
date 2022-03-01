@@ -1,0 +1,17 @@
+.s4{
+  overflow-y: auto;
+}
+
+[type="checkbox"]:checked+span:not(.lever):before {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+#recapBox{
+  color: grey;
+  font-family: 'Roboto', sans-serif;}
+
+#productFieldRecap{
+  position: relative;
+  margin-left: -80px;
+}

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/PAWMProject', (err)=>{
+mongoose.connect(process.env.connection, (err)=>{
     if(!err){
         console.log('DB Successfully connected');
     }

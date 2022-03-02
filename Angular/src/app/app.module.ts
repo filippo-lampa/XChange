@@ -12,6 +12,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { NewsletterService } from './shared/newsletter.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,15 @@ import { ExchangeComponent } from './exchange/exchange.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
-  providers: [],
+  providers: [NewsletterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

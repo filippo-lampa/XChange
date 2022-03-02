@@ -8,3 +8,34 @@
 	main {
 	flex: 1 0 auto;
 	}
+
+  .page-footer{
+   margin-left: -260px;
+   margin-right: -250px;
+  }
+
+  .l6{
+    margin-left: -150px;
+    margin-right: -50px;
+  }
+
+  .l4{
+    margin-left:  -500px;
+    margin-right: -50px;
+  }
+
+  .footer-copyright{
+    margin-left: -400px;
+  }
+
+  .right{
+    margin-right: -350px;
+  }
+
+  #leftColumn{
+    margin-left: 200px;
+  }
+
+  #rightColumn{
+    margin-right: -350px;
+  }

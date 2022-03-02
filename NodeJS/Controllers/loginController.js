@@ -37,7 +37,9 @@ router.post('/', (req, res) => {
             expiresIn: 3600,
             userId: fetchedUser._id
         });
-    })
+    }).catch(err =>  {
+        console.log("Generic Error");
+   });
 }) 
 
 module.exports = router;

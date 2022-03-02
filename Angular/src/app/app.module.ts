@@ -12,6 +12,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ExchangeComponent } from './exchange/exchange.component';
     ProductListComponent,
     ProductComponent,
     ProfilesearchComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

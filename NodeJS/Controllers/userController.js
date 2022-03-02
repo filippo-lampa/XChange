@@ -4,7 +4,7 @@ const express = require('express');
 const { route } = require('express/lib/application');
 const res = require('express/lib/response');
 const { isValidObjectId } = require('mongoose');
-
+const bcrypt = require('bcrypt');
 var router = express.Router();
 var {User,User} = require('../Models/user');
 
@@ -32,21 +32,24 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
-    var user = new User({
-        username: req.body.username,
-        name : req.body.name,
-        surname : req.body.surname,
-        address : req.body.address,
-        phone : req.body.phone,
-        email : req.body.email,
-        password : req.body.password
-    });
-    user.save((err,doc)=>{
-        if(!err)
-            res.send(doc);
-        else
-            console.log('Error in user save: ' + JSON.stringify(err, undefined, 2));
-    });
+    //password hashing
+    bcrypt.hash(req.body.password, 10).then(hash => {
+        var user = new User({
+            username: req.body.username,
+            name : req.body.name,
+            surname : req.body.surname,
+            address : req.body.address,
+            phone : req.body.phone,
+            email : req.body.email,
+            password : hash
+        });
+        user.save((err,doc)=>{
+            if(!err)
+                res.send(doc);
+            else
+                console.log('Error in user save: ' + JSON.stringify(err, undefined, 2));
+        });
+    })
 });
 
 

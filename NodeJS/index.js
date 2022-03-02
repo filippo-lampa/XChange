@@ -8,6 +8,7 @@ var productController = require('./Controllers/productController');
 var categoryController = require('./Controllers/categoryController');
 var pushNotificationsController = require('./Controllers/pushNotificationsController');
 
+var loginController = require('./Controllers/loginController');
 var app = express();
 
 app.use(bodyParser.json());
@@ -18,5 +19,6 @@ app.use('/user',userController);
 app.use('/products',productController);
 app.use('/categories',categoryController);
 app.use('/api',pushNotificationsController);
+app.use('/login',loginController);
 
 

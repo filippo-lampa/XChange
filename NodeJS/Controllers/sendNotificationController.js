@@ -19,10 +19,9 @@ webpush.setVapidDetails(
 
 var app = express();
 
-router.post('/notificationcenter/:userId', (req,res)=>{
+router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
 
-    NotificationSub.findOne(({userId: req.params.userId}), (err,docs)=>{
-        console.log('prova');
+    NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{
         if(!err){
 
             const notificationPayload = {
@@ -43,8 +42,9 @@ router.post('/notificationcenter/:userId', (req,res)=>{
             };
         
             var notification = new Notification({
-                receiver: req.params.userId,  
-                body: notificationPayload.body,
+                sender: req.params.senderId,
+                receiver: req.params.receiverId,  
+                body: notificationPayload.notification.body,
             });
             
             
@@ -53,8 +53,8 @@ router.post('/notificationcenter/:userId', (req,res)=>{
                 console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
             });
             
-            Promise.resolve(webpush.sendNotification(
-                docs, JSON.stringify(notificationPayload)))
+            Promise.all(docs.map(subDevice => webpush.sendNotification(
+                subDevice, JSON.stringify(notificationPayload))))
                 .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);
@@ -62,11 +62,20 @@ router.post('/notificationcenter/:userId', (req,res)=>{
                 });
         }
 
-        else console.log('Error in retrieving product with the given id: ' + req.params.id);
-
+        else console.log('Error in finding user with the given id: ' + req.params.receiverId);
     });
 
     
 });
+
+router.get('/notificationcenter/:userId',(req,res)=>{
+    Notification.find(({receiver: req.params.userId}), (err,docs)=>{
+        if(!err)
+           res.send(docs);
+        else
+            console.log('Error in retrieving notification for user with the given id: ' + req.params.userId);
+    })
+})
+    
 
 module.exports = router;

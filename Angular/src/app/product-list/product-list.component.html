@@ -2,7 +2,7 @@
   <body>
 
     <div class="container">
-      <div *ngIf="!userId && !category">
+      <div *ngIf="!sellerId && !category">
         <div class= "horizontal" *ngFor="let product of productList">
           <div class="card ">
             <div class="card-image waves-effect waves-block waves-light">
@@ -20,9 +20,9 @@
         </div>
       </div>
 
-    <div *ngIf="userId">
+    <div *ngIf="sellerId">
         <div class= "horizontal" *ngFor="let product of productList">
-          <div *ngIf=" product.sellerId == userId">
+          <div *ngIf=" product.sellerId == sellerId">
             <div class="card " >
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="https://www.dogtownmedia.com/wp-content/uploads/material-design-android-app-developer.jpg">
@@ -71,7 +71,7 @@
         <app-exchange [selectedProductName]="selectedProduct.name"></app-exchange>
       </div>
       <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn" id="closeButton" (click)="sendExchangeNotification(userId)">Let's exchange!</a>
+        <a class="modal-close waves-effect waves-green btn" id="closeButton" (click)="sendExchangeNotification(sellerId)">Let's exchange!</a>
       </div>
     </div>
 

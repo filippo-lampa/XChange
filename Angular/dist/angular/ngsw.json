@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1646301506017,
+  "timestamp": 1646327259960,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.e498fceb788e6821.js",
+        "/main.js",
         "/manifest.webmanifest",
-        "/polyfills.0709fc0404cae6ef.js",
-        "/runtime.41a6a7e3a3d332fd.js",
-        "/styles.ef46db3751d8e999.css"
+        "/polyfills.js",
+        "/runtime.js",
+        "/styles.css",
+        "/vendor.js"
       ],
       "patterns": []
     },
@@ -56,12 +57,13 @@
     "/assets/kindpng_4569194.png": "00337b963f1cde3fd66ae4ea2aba2b83208ba527",
     "/assets/wallpapersden.com_a-simple-gradient_1920x1080.jpg": "4c60a9f4192902ffbde2ac788270ca250380c387",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "0374c4c0e21d7c7c21d36113d4712c4238c2b4d6",
-    "/main.e498fceb788e6821.js": "7c574f0ca661071be6b72f1b7960ab11185b35d5",
+    "/index.html": "dbd4cf449f82d4b0ec588509b77ec8f4c4c4afb0",
+    "/main.js": "00d260e12d7cf62189515439a28eb0a30bcc9a66",
     "/manifest.webmanifest": "e4658a1d42134b1d7dd5ae119c78cd0eac2c5869",
-    "/polyfills.0709fc0404cae6ef.js": "3179768936facbeb484441eff9575b9bb337e422",
-    "/runtime.41a6a7e3a3d332fd.js": "a6ef6865e30c937239218c240c582f1021ee3fc2",
-    "/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "/polyfills.js": "66fe36492863602535d7a5ef1dd5285df97c173c",
+    "/runtime.js": "a734380db821562d3bda7de784f4490ec3fd69b1",
+    "/styles.css": "d7ae6c08f29f5828d13d71f02fd9640144145da0",
+    "/vendor.js": "9e48a4df692282e19345ccd5ae6806284cf3b3b7"
   },
   "navigationUrls": [
     {

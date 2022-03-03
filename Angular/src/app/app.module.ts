@@ -12,11 +12,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
 import { ExchangeComponent } from './exchange/exchange.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule, SwPush } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NewsletterService } from './shared/newsletter.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RegisterComponent } from './register/register.component';
     ProfilesearchComponent,
     ExchangeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

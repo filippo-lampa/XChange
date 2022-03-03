@@ -13,12 +13,15 @@ export class NewsletterService {
 
     }
 
-    addPushSubscriber(sub:PushSubscription) {
-        return this.http.post(this.baseURL + '/notifications', sub);
+    addPushSubscriber(sub: PushSubscription, userId: String) {
+        return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 
-    send(receiverUserId: String) {
-        return this.http.post(this.baseURL + '/notificationcenter/' + `${receiverUserId}`, null);
+    send(senderUserId: String, receiverUserId: String) {
+        return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, null).subscribe(val =>console.log("notification sent"));
     }
 
+    getUserNotifications(userId: String){
+        return this.http.get(this.baseURL + '/notificationcenter/' + `${userId}`);
+    }
 }

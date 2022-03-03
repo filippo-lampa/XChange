@@ -4,6 +4,7 @@ import { ProductService } from '../shared/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { SwPush } from '@angular/service-worker';
 import { NewsletterService } from '../shared/newsletter.service';
+import { Globals } from '../shared/globals';
 
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
@@ -17,7 +18,7 @@ import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 export class ProductListComponent implements OnInit {
 
   @Input()
-  userId: String = "";
+  sellerId: String = "";
   @Input()
   category: String = "";
   productList: Product[] = [];
@@ -45,6 +46,7 @@ export class ProductListComponent implements OnInit {
   }
 
   sendExchangeNotification(receiverUserId: String){
-    this.newsletterService.send(receiverUserId);
+    console.log(Globals.loggedUserDetails._id);
+    this.newsletterService.send(Globals.loggedUserDetails._id!, receiverUserId);
   }
 }

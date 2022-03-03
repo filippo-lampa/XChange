@@ -4,10 +4,40 @@
     // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-
-
-
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch localhost",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}",
+            "pathMappings": [
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                },
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                },
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                },
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                },
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                },
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/Angular/src"
+                }
+            ]
+        },
         {
             "type": "pwa-chrome",
             "request": "launch",

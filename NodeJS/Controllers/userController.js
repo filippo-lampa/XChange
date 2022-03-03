@@ -10,6 +10,7 @@ var router = express.Router();
 
 var {User,User} = require('../Models/user');
 
+//think it needs a token
 router.get('/', (req,res) =>{
     User.find((err,docs)=>{
         if(!err)
@@ -34,7 +35,6 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
-    //password hashing
     bcrypt.hash(req.body.password, 10).then(hash => {
         var user = new User({
             username: req.body.username,
@@ -55,6 +55,7 @@ router.post('/', (req,res)=>{
 });
 
 
+// Think it needs a token
 router.put('/:id', (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
@@ -77,6 +78,7 @@ router.put('/:id', (req,res)=>{
     }
 });
 
+// Think it needs a token
 router.delete('/:id', (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');

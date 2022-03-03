@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
           .then( sub => this.newsletterService.addPushSubscriber(sub, Globals.loggedUserDetails._id!).subscribe())
           .catch(err => console.error("Could not subscribe to notifications", err));
         });
-        this.tokenStorageService.saveToken(data.token);
         this.isLoggedIn = true;
+        this.tokenStorageService.saveToken(data.token, data.expiresIn);
+        this.tokenStorageService.saveUser(data.userId);
         this.router.navigate(['/']);
       },
       err => {

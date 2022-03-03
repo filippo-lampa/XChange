@@ -7,7 +7,6 @@ require('dotenv').config;
 var router = express.Router();
 
 router.post('/', (req, res) => {
-
     let fetchedUser;
 
     User.findOne({email: req.body.email}).then(user => {
@@ -25,7 +24,6 @@ router.post('/', (req, res) => {
             return res.status(401)
         }         
 
-        //Creo token JWT
         const token = jwt.sign(
             { email: fetchedUser.email, userId: fetchedUser._id },
             process.env.ACCESS_TOKEN_SECRET,
@@ -38,7 +36,7 @@ router.post('/', (req, res) => {
             userId: fetchedUser._id
         });
     }).catch(err =>  {
-        console.log("Generic Error");
+        console.log("Generic Error " + err);
    });
 }) 
 

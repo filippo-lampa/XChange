@@ -71,7 +71,7 @@
         <app-exchange [selectedProductName]="selectedProduct.name"></app-exchange>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn" id="closeButton">Let's exchange!</a>
+        <a class="modal-close waves-effect waves-green btn" id="closeButton" (click)="sendExchangeNotification(userId)">Let's exchange!</a>
       </div>
     </div>
 

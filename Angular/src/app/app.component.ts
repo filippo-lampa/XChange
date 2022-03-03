@@ -14,7 +14,6 @@ export class AppComponent {
   constructor( private swPush: SwPush, private newsletterService: NewsletterService){}
 
   subscribeToNotifications() {
-
     this.swPush.requestSubscription({
         serverPublicKey: this.VAPID_PUBLIC_KEY
     })

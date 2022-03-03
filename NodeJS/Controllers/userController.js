@@ -5,7 +5,9 @@ const { route } = require('express/lib/application');
 const res = require('express/lib/response');
 const { isValidObjectId } = require('mongoose');
 const bcrypt = require('bcrypt');
+
 var router = express.Router();
+
 var {User,User} = require('../Models/user');
 
 router.get('/', (req,res) =>{

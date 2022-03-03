@@ -20,8 +20,9 @@ router.get('/:productId', (req,res)=>{
         console.log('No record with given id');
     else
         Product.findById(req.params.id, (err,docs)=>{
-            if(!err)
+            if(!err){
                 res.send(docs);
+            }
             else
                 console.log('Error in retrieving product with the given id: ' + req.params.id);
         })

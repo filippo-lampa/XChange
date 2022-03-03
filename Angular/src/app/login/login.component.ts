@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
     }
     this.authService.postAuth(authData).subscribe(
       data => {
-        this.tokenStorageService.saveToken(data.token);
         this.isLoggedIn = true;
+        this.tokenStorageService.saveToken(data.token, data.expiresIn);
+        this.tokenStorageService.saveUser(data.userId);
         this.router.navigate(['/']);
       },
       err => {

@@ -1,0 +1,17 @@
+<div>
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #username="ngModel" />
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+            #password="ngModel" />
+        <button class="btn">
+            Login
+        </button>
+    </form>
+
+    <button *ngIf="isLoggedIn" class="btn" (click)="onLogout()">
+        Logout
+    </button>
+
+</div>

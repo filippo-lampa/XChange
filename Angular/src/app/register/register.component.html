@@ -1,0 +1,21 @@
+<div>
+    <form name="form" (ngSubmit)="onRegister()" #f="ngForm" novalidate>
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" />
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #username="ngModel" />
+        <label>Surname</label>
+        <input type="text" class="form-control" name="surname" [(ngModel)]="form.surname" #username="ngModel" />
+        <label>Address</label>
+        <input type="text" class="form-control" name="address" [(ngModel)]="form.address" #username="ngModel" />
+        <label>Phone</label>
+        <input type="number" class="form-control" name="phone" [(ngModel)]="form.phone" #username="ngModel" />
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="form.email" #username="ngModel" />
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #username="ngModel" />
+        <button class="btn">
+            Register
+        </button>
+    </form>
+</div>

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
+import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
@@ -30,8 +32,17 @@ const routes: Routes = [
     path: 'search',
     component: ProfilesearchComponent
   },
-  { path: 'categories/:name',
+  {
+    path: 'categories/:name',
     component: ProductListComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

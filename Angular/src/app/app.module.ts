@@ -18,6 +18,7 @@ import { NewsletterService } from './shared/newsletter.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     ExchangeComponent,
     LoginComponent,
     RegisterComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

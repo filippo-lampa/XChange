@@ -1,7 +1,8 @@
 
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-
+import { Observable } from 'rxjs';
+import { Notification } from "./notification.model";
 
 
 @Injectable()
@@ -21,7 +22,8 @@ export class NewsletterService {
         return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, null).subscribe(val =>console.log("notification sent"));
     }
 
-    getUserNotifications(userId: String){
-        return this.http.get(this.baseURL + '/notificationcenter/' + `${userId}`);
+    getUserNotifications(userId: string){
+      return this.http.get(this.baseURL + '/notificationcenter/' + `${userId}`);
+
     }
 }

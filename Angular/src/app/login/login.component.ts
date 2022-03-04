@@ -7,7 +7,6 @@ import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
 import { NewsletterService } from '../shared/newsletter.service';
 import { SwPush } from '@angular/service-worker';
-import { Globals } from '../shared/globals';
 
 @Component({
   selector: 'app-login',
@@ -42,11 +41,10 @@ export class LoginComponent implements OnInit {
     this.authService.postAuth(authData).subscribe(
       data => {
         this.userService.getUser(data.userId).subscribe(user =>{
-          Globals.setLoggedUser(user as User);
           this.swPush.requestSubscription({
             serverPublicKey: this.VAPID_PUBLIC_KEY
           })
-          .then( sub => this.newsletterService.addPushSubscriber(sub, Globals.loggedUserDetails._id!).subscribe())
+          .then( sub => this.newsletterService.addPushSubscriber(sub, this.tokenStorageService.getUserId()!).subscribe())
           .catch(err => console.error("Could not subscribe to notifications", err));
         });
         this.isLoggedIn = true;

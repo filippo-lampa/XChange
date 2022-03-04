@@ -4,9 +4,9 @@ import { TokenStorageService } from '../shared/token-storage.service';
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 import { Notification } from '../shared/notification.model';
 import { NewsletterService } from '../shared/newsletter.service';
-import { Globals } from '../shared/globals';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   userNotificationList: Notification[] = [];
   isLoggedIn = false;
 
-  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NewsletterService, private userService: UserService) { }
+  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NewsletterService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
@@ -32,8 +32,12 @@ export class NavbarComponent implements OnInit {
     var instances = M.Dropdown.init(elems);
   }
 
-  getUserNotifications(){
-    this.notificationService.getUserNotifications(Globals.loggedUserDetails._id!).subscribe(data => this.userNotificationList = data as Notification[]);
+  getToMessagePage(){
+    this.router.navigate(['/messages/' + this.tokenStorageService.getUserId()]);
+  }
+
+  getUserNotifications(){  //get nel backend funziona e qua restituisce array vuoto??????
+    this.notificationService.getUserNotifications(this.tokenStorageService.getUserId()!).subscribe(data =>{console.log(data); this.userNotificationList = data as Notification[]});
     this.userNotificationList.forEach(notification => {
       this.userService.getUser(notification.senderId).subscribe(data => notification.senderDetails = data as User);
     });

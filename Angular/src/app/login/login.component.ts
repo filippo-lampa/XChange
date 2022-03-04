@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../shared/token-storage.service';
-import { AuthService } from '../shared/auth.service';
-import { AuthData } from '../shared/authData.model';
+import { TokenStorageService } from '../shared/services/token-storage.service';
+import { AuthService } from '../shared/services/auth.service';
+import { AuthData } from '../shared/models/authData.model';
 import { Router } from '@angular/router';
-import { User } from '../shared/user.model';
-import { UserService } from '../shared/user.service';
-import { NewsletterService } from '../shared/newsletter.service';
+import { User } from '../shared/models/user.model';
+import { UserService } from '../shared/services/user.service';
+import { NotificationService } from '../shared/services/notification.service';
 import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService, NewsletterService]
+  providers: [UserService, NotificationService]
 })
 export class LoginComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn = false;
 
-  constructor(private tokenStorageService: TokenStorageService, private authService: AuthService, private router: Router, private userService: UserService, private swPush: SwPush, private newsletterService: NewsletterService ) { }
+  constructor(private tokenStorageService: TokenStorageService, private authService: AuthService, private router: Router, private userService: UserService, private swPush: SwPush, private notificationService: NotificationService ) { }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.swPush.requestSubscription({
             serverPublicKey: this.VAPID_PUBLIC_KEY
           })
-          .then( sub => this.newsletterService.addPushSubscriber(sub, this.tokenStorageService.getUserId()!).subscribe())
+          .then( sub => this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()!).subscribe())
           .catch(err => console.error("Could not subscribe to notifications", err));
         });
         this.isLoggedIn = true;

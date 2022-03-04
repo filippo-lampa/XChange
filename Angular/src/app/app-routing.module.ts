@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './login/login.component';
+import { MessagesComponent } from './chat/messages/messages.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'messages/:userId',
-    component: ChatComponent
+    component: MessagesComponent
   }
 ];
 

@@ -1,0 +1,52 @@
+
+<div class="container">
+  <div class="row">
+    <h4>Chats</h4><hr class="grey" />
+    <div class="col s12 m9 l9">
+
+      <div class="row">
+        <div *ngFor="let message of messages">
+          <div class="row valign-wrapper">
+        <div class="row left-align" *ngIf="message.user != senderUsername">
+          <div class="col s12 m8 l6 left">
+                <div class="col s2" style="margin-top:-22px; margin-right:-10px;">
+                  <img src="https://m.media-amazon.com/images/I/41yvYikgPBL._AC_SX466_.jpg" height="100" width="" alt="100" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="chat-field teal lighten-2">
+                  <span class="chat-message white-text">
+                    {{message.text}}
+                  </span>
+                  <div class="example"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="row right-align" *ngIf="message.user == senderUsername">
+          <div class="col s12 m8 l6 right">
+              <div class="row valign-wrapper">
+                <div class="chat-field2 red lighten-2">
+                  <span class="chat-message white-text">
+                    {{message.text}}
+                  </span>
+                  <div class="example2"></div>
+                </div>
+                <div class="col s2" style="margin-top:-22px; margin-right:-10px;">
+                  <img src="https://m.media-amazon.com/images/I/41yvYikgPBL._AC_SX466_.jpg" height="100" width="" alt="100" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+              </div>
+    </div>
+</div>
+
+
+      </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="input-field col s9">
+        <app-new-message></app-new-message>
+      </div>
+    </div>
+  </div>
+</div>

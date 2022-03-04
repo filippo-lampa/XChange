@@ -3,22 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { ServiceWorkerModule} from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
 import { ExchangeComponent } from './exchange/exchange.component';
-import { ServiceWorkerModule, SwPush } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { NewsletterService } from './shared/newsletter.service';
+import { NotificationService} from '../app/shared/services/notification.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { ChatComponent } from './chat/chat.component';
+import { NewMessageComponent } from './chat/new-message/new-message.component';
+import { MessagesComponent } from './chat/messages/messages.component';
+import { MessageService } from '../app/shared/services/message.service';
+import { PusherService } from '../app/shared/services/pusher.service';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,14 @@ import { ChatComponent } from './chat/chat.component';
     UserComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent,
     ProductListComponent,
     ProductComponent,
     ProfilesearchComponent,
     ExchangeComponent,
     LoginComponent,
     RegisterComponent,
-    NotificationsComponent,
-    ChatComponent
+    NewMessageComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,7 @@ import { ChatComponent } from './chat/chat.component';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [NewsletterService],
+  providers: [NotificationService, MessageService, PusherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

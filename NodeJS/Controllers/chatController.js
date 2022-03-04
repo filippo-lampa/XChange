@@ -9,18 +9,18 @@ const Pusher = require("pusher");
 const pusher = new Pusher({
   appId: "1356420",
   key: "0f35454c8019950992a7",
-  secret: "678d4c3cbd40f2538a9e",
-  cluster: "eu",
-  useTLS: true
+  secret: "678d4c3cbd40f2538a9e"
 });
 
-
-router.post('/messages',(req,res)=>{
-    pusher.trigger("chat", "message", {
-        username: req.body.username,
-        message: req.body.message
-      });
-    res.json([]);
+var messages = [];
+router.get('/',(req,res)=>{
+  res.send('all good');
 })
+router.post('/pusher/auth', (req, res) => {
+  const socketId = req.body.socket_id;
+  const channel = req.body.channel_name;
+  const auth = pusher.authenticate(socketId, channel);
+  res.send(auth);
+});
 
 module.exports = router;

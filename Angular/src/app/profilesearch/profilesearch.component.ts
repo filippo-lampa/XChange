@@ -1,10 +1,10 @@
 import { Component, OnInit , Output, EventEmitter} from '@angular/core';
-import { ProductService } from '../shared/product.service';
-import { User } from '../shared/user.model';
-import { UserService } from '../shared/user.service';
-import { Product } from '../shared/product.model';
-import { CategoryService } from '../shared/category.service';
-import { Category } from '../shared/category.model';
+import { ProductService } from '../shared/services/product.service';
+import { User } from '../shared/models/user.model';
+import { UserService } from '../shared/services/user.service';
+import { Product } from '../shared/models/product.model';
+import { CategoryService } from '../shared/services/category.service';
+import { Category } from '../shared/models/category.model';
 
 @Component({
   selector: 'app-profilesearch',

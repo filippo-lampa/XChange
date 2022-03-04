@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { TokenStorageService } from '../shared/token-storage.service';
+import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
-import { Notification } from '../shared/notification.model';
-import { NewsletterService } from '../shared/newsletter.service';
-import { User } from '../shared/user.model';
-import { UserService } from '../shared/user.service';
+import { Notification } from '../shared/models/notification.model';
+import { NotificationService } from '../shared/services/notification.service';
+import { User } from '../shared/models/user.model';
+import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   userNotificationList: Notification[] = [];
   isLoggedIn = false;
 
-  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NewsletterService, private userService: UserService, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {

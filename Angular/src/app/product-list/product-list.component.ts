@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, ElementRef, AfterViewInit } from '@angular/core';
-import { Product } from '../shared/product.model';
-import { ProductService } from '../shared/product.service';
+import { Product } from '../shared/models/product.model';
+import { ProductService } from '../shared/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { SwPush } from '@angular/service-worker';
-import { NewsletterService } from '../shared/newsletter.service';
-import { TokenStorageService } from '../shared/token-storage.service';
+import { NotificationService } from '../shared/services/notification.service';
+import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 
@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   productList: Product[] = [];
   selectedProduct: Product = new Product;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush, private newsletterService: NewsletterService, private tokenStorageService: TokenStorageService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush, private notificationService: NotificationService, private tokenStorageService: TokenStorageService) {
     if(this.route.params){
       this.route.params.subscribe(params=> this.category = params['name']);
     }
@@ -45,6 +45,6 @@ export class ProductListComponent implements OnInit {
   }
 
   sendExchangeNotification(receiverUserId: String){
-    this.newsletterService.send(this.tokenStorageService.getUserId()!, receiverUserId);
+    this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId);
   }
 }

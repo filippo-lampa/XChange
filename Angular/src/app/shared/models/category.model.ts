@@ -1,4 +1,4 @@
 export class Category {
-  name!: String;
-  imageUrl!: String;
+  name!: string;
+  imageUrl!: string;
 }

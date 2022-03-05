@@ -15,15 +15,15 @@ import { Category } from '../shared/models/category.model';
 export class ProfilesearchComponent implements OnInit {
 
   operationSelector: Number = 0;
-  userName: String = "";
+  userName: string = "";
   userList: User[] = [];
   searchedUserList!: User[];
   productList: Product[] = [];
   searchedProductList!: Product[];
-  productName: String = "";
+  productName: string = "";
   categoryList: Category[] = [];
 
-  searchedString: String = "";
+  searchedString: string = "";
 
   constructor(private userService: UserService, private productService: ProductService, private categoryService: CategoryService) {
    }

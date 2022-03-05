@@ -16,7 +16,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  postProduct(prod: Product, userId: String){
+  postProduct(prod: Product, userId: string){
     return this.http.post(this.baseURL + `/${userId}`, prod);
   }
 
@@ -28,11 +28,11 @@ export class ProductService {
     return this.http.get(this.baseURL + `/${productId}`);
   }
 
-  putProduct(prod: Product, userId: String){
+  putProduct(prod: Product, userId: string){
     return this.http.put(this.baseURL + `/${userId}` + `/${prod._id}`, prod);
   }
 
-  deleteProduct(productId: string, userId: String){
+  deleteProduct(productId: string, userId: string){
     return this.http.delete(this.baseURL + `/${userId}` + `/${productId}`);
   }
 }

@@ -1,6 +1,7 @@
 
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import { Notification } from "../models/notification.model";
 
 @Injectable()
 export class NotificationService {
@@ -11,16 +12,19 @@ export class NotificationService {
 
     }
 
-    addPushSubscriber(sub: PushSubscription, userId: String) {
+    addPushSubscriber(sub: PushSubscription, userId: string) { console.log("asking for")
         return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 
-    send(senderUserId: String, receiverUserId: String) {
+    send(senderUserId: string, receiverUserId: string) {
         return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, null).subscribe(val =>console.log("notification sent"));
     }
 
     getUserNotifications(userId: string){
       return this.http.get(this.baseURL + '/notificationcenter/' + `${userId}`);
+    }
 
+    setNotificationRead(notification: Notification){
+      return this.http.put(this.baseURL + '/notificationcenter/', notification);
     }
 }

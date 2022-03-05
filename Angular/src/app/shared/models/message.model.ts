@@ -1,5 +1,5 @@
 export class Message {
-  senderUsername!: String;
-  recipientUsername!: String;
-  body!: String;
+  senderUsername!: string;
+  recipientUsername!: string;
+  body!: string;
 }

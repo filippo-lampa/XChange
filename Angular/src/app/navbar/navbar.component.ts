@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  unreadNotifications: Notification[] = [];
   userNotificationList: Notification[] = [];
   isLoggedIn = false;
 
@@ -30,17 +31,30 @@ export class NavbarComponent implements OnInit {
   ngAfterViewInit(){
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
+
   }
 
   getToMessagePage(){
     this.router.navigate(['/messages/' + this.tokenStorageService.getUserId()]);
   }
 
-  getUserNotifications(){  //get nel backend funziona e qua restituisce array vuoto??????
-    this.notificationService.getUserNotifications(this.tokenStorageService.getUserId()!).subscribe(data =>{console.log(data); this.userNotificationList = data as Notification[]});
-    this.userNotificationList.forEach(notification => {
-      this.userService.getUser(notification.senderId).subscribe(data => notification.senderDetails = data as User);
-    });
+  getUserNotifications(){
+    if(this.isLoggedIn){
+      this.notificationService.getUserNotifications(this.tokenStorageService.getUserId()!).subscribe(data => {
+          this.userNotificationList = data as Notification[];
+          this.userNotificationList.forEach(notification => {console.log(notification.sender + "nav")
+              this.userService.getUser(notification.sender).subscribe(data =>notification.senderDetails = data as User);   //non trova senderDetails dato che non la formatta come notification dal file json ma come object
+              if(!notification.read)
+                this.unreadNotifications.push(notification);
+            });
+      });
+    }
   }
 
+  setNotificationRead(notification: Notification){
+    if(this.isLoggedIn){
+      notification.read = true;
+      this.notificationService.setNotificationRead(notification).subscribe(data=>console.log("notification read"));
+    }
+  }
 }

@@ -1,11 +1,12 @@
 import { User } from "./user.model";
 
 export class Notification {
-  senderId!: String;
-  receiverId!: String;
-  body!: String;
+  _id!: string;
+  body!: string;
   date!: Date;
   read!: boolean;
-  senderDetails!: User;
-  receiverDetails!: User;
+  receiver!: string;
+  sender!: string;
+  senderDetails: User = new User();
+  receiverDetails: User = new User();
 }

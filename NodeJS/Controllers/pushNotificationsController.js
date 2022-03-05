@@ -7,7 +7,7 @@ var router = express.Router();
 var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 
 
-router.post('/notifications/:userId', (req,res)=>{
+router.post('/notifications/:userId', (req,res)=>{ 
     var subsciptor = new NotificationSub({ 
         userId: req.params.userId,
         endpoint: req.body.endpoint,

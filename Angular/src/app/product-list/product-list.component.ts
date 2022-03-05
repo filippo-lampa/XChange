@@ -17,9 +17,9 @@ import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 export class ProductListComponent implements OnInit {
 
   @Input()
-  sellerId: String = "";
+  sellerId: string = "";
   @Input()
-  category: String = "";
+  category: string = "";
   productList: Product[] = [];
   selectedProduct: Product = new Product;
 
@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
     this.selectedProduct = selectedProduct;
   }
 
-  sendExchangeNotification(receiverUserId: String){
+  sendExchangeNotification(receiverUserId: string){
     this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId);
   }
 }

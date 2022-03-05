@@ -1,4 +1,12 @@
 
 .badge{
-    margin-left: -100px;
+  margin-top: -20px;
+}
+
+.dropdown-trigger{
+  margin-right: 0;
+}
+
+#dropdown1{
+  width: 250px !important;
 }

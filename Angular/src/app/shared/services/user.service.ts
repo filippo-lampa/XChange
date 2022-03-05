@@ -21,7 +21,7 @@ export class UserService {
     return this.http.get(this.baseURL);
   }
 
-  getUser(userId: String){
+  getUser(userId: string){
     return this.http.get(this.baseURL + `/${userId}`);
   }
 
@@ -29,7 +29,7 @@ export class UserService {
     return this.http.put(this.baseURL + `/${user._id}`, user);
   }
 
-  deleteUser(userId: String){
+  deleteUser(userId: string){
     return this.http.delete(this.baseURL + `/${userId}`);
   }
 }

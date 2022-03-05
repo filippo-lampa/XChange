@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn = false;
 
+  userId: string = "";
+
   constructor(private tokenStorageService: TokenStorageService, private authService: AuthService, private router: Router, private userService: UserService, private swPush: SwPush, private notificationService: NotificationService ) { }
 
   ngOnInit(): void {
@@ -40,13 +42,12 @@ export class LoginComponent implements OnInit {
     }
     this.authService.postAuth(authData).subscribe(
       data => {
-        this.userService.getUser(data.userId).subscribe(user =>{
-          this.swPush.requestSubscription({
-            serverPublicKey: this.VAPID_PUBLIC_KEY
-          })
-          .then( sub => this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()!).subscribe())
+
+        this.userId = data.userId;
+        this.swPush.requestSubscription({serverPublicKey: this.VAPID_PUBLIC_KEY})
+          .then( sub => {console.log(sub);this.notificationService.addPushSubscriber(sub, this.userId).subscribe(data=>console.log("ok"))})
           .catch(err => console.error("Could not subscribe to notifications", err));
-        });
+
         this.isLoggedIn = true;
         this.tokenStorageService.saveToken(data.token, data.expiresIn);
         this.tokenStorageService.saveUser(data.userId);

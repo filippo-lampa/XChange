@@ -1,11 +1,11 @@
 export class Product {
-  name!: String;
-  _id!: String;
-  category!: String;
-  description!: String;
+  name!: string;
+  _id!: string;
+  category!: string;
+  description!: string;
   views!: Number;
   uploadDate!: Date;
   interestedUsers!: Number;
-  imageUrl!: String;
-  sellerId!: String;
+  imageUrl!: string;
+  sellerId!: string;
 }

@@ -28,7 +28,7 @@ export class TokenStorageService {
   }
 
   public getUserId() {
-    return window.sessionStorage.getItem(USER_KEY);
+    return JSON.parse(window.sessionStorage.getItem(USER_KEY)!);
   }
 
   public logout() {

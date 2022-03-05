@@ -14,18 +14,20 @@ export class MessagesComponent implements OnInit {
   messages: Array<Message>;
   senderUsername!: string;
   senderUser!: User;
-  constructor(
-    private messageService: MessageService,
-    private userService: UserService,
-    private tokenService: TokenStorageService
-  ) {
+  isLoggedIn: boolean = false;
+
+  constructor(private messageService: MessageService, private userService: UserService, private tokenService: TokenStorageService) {
+         //aggiunte automaticamente virgolette alla stringa di ritorno di tokenservice.getuserid che sminchiano tutti gli url, capire perchè (forse per il segno ! al postoo di ?)
+    if (this.tokenService.getToken()) {
+        this.isLoggedIn = true;
+        this.userService.getUser(this.tokenService.getUserId()!).subscribe(data=>{this.senderUser = data as User; this.senderUsername = this.senderUser.username});
+    }
     this.messages = [];
-    this.userService.getUser(this.tokenService.getUserId()!).subscribe(data=>{this.senderUser = data as User; this.senderUsername = this.senderUser.username});
   }
 
   ngOnInit() {
-    this.messageService.messagesStream
-      .subscribe(this.newMessageEventHandler.bind(this));
+    if(this.isLoggedIn)
+      this.messageService.messagesStream.subscribe(this.newMessageEventHandler.bind(this));
   }
 
   private newMessageEventHandler(event: Message): void {

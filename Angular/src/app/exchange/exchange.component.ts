@@ -9,7 +9,7 @@ import { Product } from '../shared/models/product.model';
 export class ExchangeComponent implements OnInit {
 
   @Input()
-  selectedProductName: String = "";
+  selectedProductName: string = "";
   selectedProduct!: Product;
 
   constructor() { }

@@ -10,14 +10,14 @@ import { User } from '../shared/models/user.model';
 })
 export class UserComponent implements OnInit {
 
-  userId!: String;
+  userId!: string;
   selectedUser!: User;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
     this.route.params.subscribe(params =>this.userId = params['id']);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log(this.userId + "us")
      this.userService.getUser(this.userId).subscribe((data)=>{
       this.selectedUser = data as User;
      });

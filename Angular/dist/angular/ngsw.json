@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1646346137108,
+  "timestamp": 1646485824220,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -17,6 +17,7 @@
         "/manifest.webmanifest",
         "/polyfills.js",
         "/runtime.js",
+        "/scripts.js",
         "/styles.css",
         "/vendor.js"
       ],
@@ -57,13 +58,14 @@
     "/assets/kindpng_4569194.png": "00337b963f1cde3fd66ae4ea2aba2b83208ba527",
     "/assets/wallpapersden.com_a-simple-gradient_1920x1080.jpg": "4c60a9f4192902ffbde2ac788270ca250380c387",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "dbd4cf449f82d4b0ec588509b77ec8f4c4c4afb0",
-    "/main.js": "1e9f4cff9f9ec19a23c9611be1b6860dcc83ee32",
+    "/index.html": "55f833edd5c46ced55bf5049722f0682ed833519",
+    "/main.js": "cf569fed7c345979595db20f7e03d045214aec9c",
     "/manifest.webmanifest": "e4658a1d42134b1d7dd5ae119c78cd0eac2c5869",
     "/polyfills.js": "66fe36492863602535d7a5ef1dd5285df97c173c",
     "/runtime.js": "a734380db821562d3bda7de784f4490ec3fd69b1",
+    "/scripts.js": "79c10dceb55ecb21261e51cfc9166fc9f60caed5",
     "/styles.css": "d7ae6c08f29f5828d13d71f02fd9640144145da0",
-    "/vendor.js": "9e48a4df692282e19345ccd5ae6806284cf3b3b7"
+    "/vendor.js": "5daf84302351bfff200087257ba5edf63d2c9a4b"
   },
   "navigationUrls": [
     {

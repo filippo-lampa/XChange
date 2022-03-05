@@ -3,6 +3,7 @@ const express = require('express');
 
 var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 var {Notification,Notification} = require('../Models/notification');
+const { isValidObjectId } = require('mongoose');
 
 var router = express.Router();
 
@@ -27,7 +28,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
             const notificationPayload = {
                 "notification": {
                     "title": "Exchange offer",
-                    "body": "New exchange offer received!",
+                    "body": "New exchange offer received ",
                     "icon": "assets/main-page-logo-small-hat.png",
                     "vibrate": [100, 50, 100],
                     "data": {
@@ -77,5 +78,26 @@ router.get('/notificationcenter/:userId',(req,res)=>{
     })
 })
     
+
+router.put('/notificationcenter', (req,res)=>{ 
+    if(!isValidObjectId(req.body._id))
+        console.log('No record with given id');
+    else{
+        var notification = {
+            id: req.body._id,
+            sender: req.body.sender,
+            receiver: req.body.receiver,
+            body: req.body.body,
+            read: req.body.read,
+            date: req.body.date
+        };
+        Notification.findByIdAndUpdate(req.body._id, {$set: notification}, {new: true}, (err,docs)=>{
+            if(!err)
+                res.send(docs);
+            else
+                console.log('Error in updating notification with id: ' + req.params._id);
+        });
+    }
+})
 
 module.exports = router;

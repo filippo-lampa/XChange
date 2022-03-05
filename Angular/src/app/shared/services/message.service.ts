@@ -26,12 +26,10 @@ export class MessageService {
   send(message: Message) {
     this.pusherService.messagesChannel.trigger('client-new-message', message);
     this.emitNewMessage(message);
-    console.log("message sent");
   }
 
   emitNewMessage(message: Message) {
     this.messagesStream.next(message);
-    console.log("message emitted");
   }
 
 }

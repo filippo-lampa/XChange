@@ -30,7 +30,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["../node_modules/pusher-js/dist/web/pusher.min.js"],
+            "scripts": ["./node_modules/pusher-js/dist/web/pusher.min.js"],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
@@ -39,7 +39,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "4mb",
                   "maximumError": "1mb"
                 },
                 {

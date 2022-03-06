@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   unreadNotifications: Notification[] = [];
   userNotificationList: Notification[] = [];
   isLoggedIn = false;
+  userInfoLoaded = false;
 
   constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) { }
 
@@ -31,7 +32,6 @@ export class NavbarComponent implements OnInit {
   ngAfterViewInit(){
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
-
   }
 
   getToMessagePage(){
@@ -42,11 +42,10 @@ export class NavbarComponent implements OnInit {
     if(this.isLoggedIn){
       this.notificationService.getUserNotifications(this.tokenStorageService.getUserId()!).subscribe(data => {
           this.userNotificationList = data as Notification[];
-          this.userNotificationList.forEach(notification => {console.log(notification.sender + "nav")
-              this.userService.getUser(notification.sender).subscribe(data =>notification.senderDetails = data as User);   //non trova senderDetails dato che non la formatta come notification dal file json ma come object
-              if(!notification.read)
+          this.userNotificationList.forEach(notification => {
+            if(!notification.read)
                 this.unreadNotifications.push(notification);
-            });
+          });
       });
     }
   }

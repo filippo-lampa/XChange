@@ -11,7 +11,9 @@ const Notification = mongoose.model('Notification', {
     read: {
         type: Boolean,
         default: 0
-    }
+    },
+    senderUsername: {type: String},
+    receiverUsername: {type: String}
 }); 
 
 module.exports = {Notification};

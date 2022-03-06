@@ -1,9 +1,13 @@
 const webpush = require('web-push');
 const express = require('express');
+const fs = require('fs');
 
 var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 var {Notification,Notification} = require('../Models/notification');
+var {User,User} = require('../Models/user');
+
 const { isValidObjectId } = require('mongoose');
+const { resolve } = require('path');
 
 var router = express.Router();
 
@@ -21,7 +25,7 @@ webpush.setVapidDetails(
 var app = express();
 
 router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
-
+                
     NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{
         if(!err){
 
@@ -41,19 +45,21 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                     }]
                 }
             };
-        
+
             var notification = new Notification({
                 sender: req.params.senderId,
                 receiver: req.params.receiverId,  
                 body: notificationPayload.notification.body,
             });
-            
-            
-            notification.save((err,doc)=>{
-                if(err)
-                console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
-            });
-            
+
+            getSenderUsernameAsync(req.params.senderId, notification).then(getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
+                    notification.save((err,doc)=>{ 
+                        if(err)
+                        console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
+                    });
+                }
+            ));
+
             Promise.all(docs.map(subDevice => webpush.sendNotification(
                 subDevice, JSON.stringify(notificationPayload))))
                 .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
@@ -69,10 +75,41 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
     
 });
 
+function getSenderUsernameAsync(senderId, notification){
+    return new Promise(function(resolve,reject){
+        User.findById(senderId,(err,docs)=>{       
+            if(!err){
+                notification.senderUsername = docs.username; 
+                resolve("resolved");
+            }
+            else{
+                console.log("Error retrieving user from db: " + JSON.stringify(err))
+                reject("rejected");
+            }
+        })
+    });
+};
+
+function getReceiverUsernameAsync(receiverId, notification){
+    return new Promise(function(resolve,reject){
+        User.findById(receiverId,(err,docs)=>{
+            if(!err){
+                notification.receiverUsername = docs.username; 
+                resolve("resolved");
+            }
+            else{
+                console.log("Error retrieving user from db: " + JSON.stringify(err));
+                reject("rejected");
+            }
+        })
+    });
+};
+
 router.get('/notificationcenter/:userId',(req,res)=>{
     Notification.find(({receiver: req.params.userId}), (err,docs)=>{
-        if(!err)
-           res.send(docs);
+        if(!err){
+            res.send(docs);
+        }
         else
             console.log('Error in retrieving notification for user with the given id: ' + req.params.userId);
     })

@@ -4,7 +4,7 @@
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><i class="material-icons text-decoration-none">cloud</i>XChange</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class='dropdown-trigger' href='#'  data-target='dropdown1' (onclick)="getUserNotifications()"><i class="material-icons" id="notificationButton">notifications</i></a><span *ngIf="unreadNotifications.length > 0"  class="new badge" >{{unreadNotifications.length}}</span></li>
+          <li><a class='dropdown-trigger' href='#'  data-target='dropdown1'><i class="material-icons" id="notificationButton">notifications</i></a><span *ngIf="unreadNotifications.length > 0"  class="new badge" >{{unreadNotifications.length}}</span></li>
 
           <li><a routerLink="/search"><i class="material-icons text-decoration-none">search</i></a></li>
           <li><a routerLink="/"><i class="material-icons">home</i></a></li>
@@ -17,10 +17,8 @@
       </div>
     </nav>
 
-
   <ul id='dropdown1' class='dropdown-content'>
-    <li id = "custom_li" *ngFor="let notification of userNotificationList"><a href="#!" (click)="setNotificationRead(notification)">{{notification.body}} from {{notification.senderDetails.username}} {{notification.date}}</a></li>
+    <li id = "custom_li" *ngFor="let notification of userNotificationList"><a href="#!" (click)="setNotificationRead(notification)">{{notification.body}} from {{notification.senderUsername}} {{notification.date}}</a></li>
     <li class="divider" tabindex="-1"></li>
   </ul>
   </div>
-

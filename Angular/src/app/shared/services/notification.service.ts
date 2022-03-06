@@ -2,6 +2,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import { Notification } from "../models/notification.model";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class NotificationService {

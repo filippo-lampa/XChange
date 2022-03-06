@@ -7,6 +7,6 @@ export class Notification {
   read!: boolean;
   receiver!: string;
   sender!: string;
-  senderDetails: User = new User();
-  receiverDetails: User = new User();
+  senderUsername!: string;
+  receiverUsername!: string;
 }

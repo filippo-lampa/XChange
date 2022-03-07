@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
@@ -7,6 +7,7 @@ import { NotificationService } from '../shared/services/notification.service';
 import { User } from '../shared/models/user.model';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -20,13 +21,22 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
   userInfoLoaded = false;
 
-  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) {  }
 
   ngOnInit(): void {
+    this.resetVariables();
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.getUserNotifications();
     }
+    setTimeout(() => {this.ngOnInit() }, 5000)
+  }
+
+  resetVariables(){
+    this.unreadNotifications = [];
+    this.userNotificationList = [];
+    this.isLoggedIn = false;
+    this.userInfoLoaded = false;
   }
 
   ngAfterViewInit(){

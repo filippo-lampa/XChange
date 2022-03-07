@@ -46,7 +46,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'messages/:userId',
+    path: 'messages/:senderId/:receiverId',
     component: MessagesComponent
   }
 ];

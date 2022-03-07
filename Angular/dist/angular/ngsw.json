@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1646579775523,
+  "timestamp": 1646601915257,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -59,7 +59,7 @@
     "/assets/wallpapersden.com_a-simple-gradient_1920x1080.jpg": "4c60a9f4192902ffbde2ac788270ca250380c387",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/index.html": "55f833edd5c46ced55bf5049722f0682ed833519",
-    "/main.js": "fbe8e48c5c0deaddddebfac46d436233ee1c3d0f",
+    "/main.js": "f1aeda07f5bdd20e6e6322732ed826b2346080a3",
     "/manifest.webmanifest": "e4658a1d42134b1d7dd5ae119c78cd0eac2c5869",
     "/polyfills.js": "66fe36492863602535d7a5ef1dd5285df97c173c",
     "/runtime.js": "a734380db821562d3bda7de784f4490ec3fd69b1",

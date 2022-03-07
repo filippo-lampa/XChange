@@ -12,9 +12,8 @@ export class MessageService {
   messagesStream = new ReplaySubject<Message>(1);
 
   constructor(
-    private pusherService: PusherService
+    private pusherService: PusherService,
   ) {
-    this.initialize();
   }
 
   initialize() {

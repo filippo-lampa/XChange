@@ -12,11 +12,7 @@ const pusher = new Pusher({
   secret: "678d4c3cbd40f2538a9e"
 });
 
-var messages = [];
-router.get('/',(req,res)=>{
-  res.send('all good');
-})
-router.post('/pusher/auth', (req, res) => {
+router.post('/pusher/auth/', (req, res) => {
   const socketId = req.body.socket_id;
   const channel = req.body.channel_name;
   const auth = pusher.authenticate(socketId, channel);

@@ -17,8 +17,12 @@ export class ExchangeService {
 
   constructor(private productService: ProductService, private http: HttpClient) { }
 
-  saveExchange(result: boolean, exchangePayload: any){
+  saveExchange(exchangePayload: any){
     return this.http.post(this.baseURL + '/results/', exchangePayload);
+  }
+
+  getProducts(){
+    return this.offeredProducts;
   }
 
   getUserProducts(userId: string){

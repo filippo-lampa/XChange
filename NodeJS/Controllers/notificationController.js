@@ -28,29 +28,37 @@ webpush.setVapidDetails(
 var app = express();
 
 router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
-                
     NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{
         if(!err){
-
-            const notificationPayload = {
-                "notification": {
-                    "title": "Exchange offer",
-                    "body": "New exchange offer received ",
-                    "icon": "assets/main-page-logo-small-hat.png",
-                    "vibrate": [100, 50, 100],
-                    "data": {
-                        "dateOfArrival": Date.now(),
-                        "primaryKey": 1
-                    },
-                    "actions": [{
-                        "action": "explore",
-                        "title": "Go to the site"
-                    }]
-                }
-            };
-
+            const notificationPayload = req.body;
             var offeredProducts;
             var notification;
+
+            if(req.body.notification.exchangeResult == 'true'){ console.log(req.body.notification.acceptedProducts);
+                if(!isValidObjectId(req.body.notification.givenProductId))
+                    console.log('No record with given id');
+                else{
+                    Product.findByIdAndRemove(req.body.notification.givenProductId, (err,docs)=>{
+                    if(!err)
+                      console.log("exchanged product removed");
+                    else
+                      console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
+                    });
+                }
+
+                req.body.notification.acceptedProducts.forEach(product => {
+                    if(!isValidObjectId(product._id))
+                        console.log('No record with given id');
+                    else{  console.log(product._id) 
+                        Product.findByIdAndRemove(product._id, (err,docs)=>{
+                        if(!err)
+                            console.log("exchanged product removed");
+                        else
+                            console.log('Error in deleting product with given id: ' + product._id);
+                        });
+                    }
+                });
+            }
 
             if(req.body.requested_product_id && req.body.offered_products){
                 getProductAsync(req.body.requested_product_id).then((data)=>{
@@ -95,8 +103,6 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
 
         else console.log('Error in finding user with the given id: ' + req.params.receiverId);
     });
-
-    
 });
 
 function getSenderUsernameAsync(senderId){

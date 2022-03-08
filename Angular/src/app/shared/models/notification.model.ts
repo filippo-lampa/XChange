@@ -1,4 +1,4 @@
-import { User } from "./user.model";
+import { Product } from "./product.model";
 
 export class Notification {
   _id!: string;
@@ -9,4 +9,6 @@ export class Notification {
   sender!: string;
   senderUsername!: string;
   receiverUsername!: string;
+  offeredProducts!: Product[];
+  requestedProduct!: Product;
 }

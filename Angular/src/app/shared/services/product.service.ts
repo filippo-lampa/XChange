@@ -24,6 +24,10 @@ export class ProductService {
     return this.http.get(this.baseURL);
   }
 
+  getUserProducts(userId: string){
+    return this.http.get(this.baseURL + `/${userId}` + '/alluserproducts');
+  }
+
   getProduct(productId: string){
     return this.http.get(this.baseURL + `/${productId}`);
   }

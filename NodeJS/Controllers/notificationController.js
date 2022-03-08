@@ -2,10 +2,12 @@ const webpush = require('web-push');
 const express = require('express');
 const fs = require('fs');
 require('dotenv').config()
+const bodyParser = require('body-parser');
 
 var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 var {Notification,Notification} = require('../Models/notification');
 var {User,User} = require('../Models/user');
+var {Product,Product} = require('../Models/product');
 
 const { isValidObjectId } = require('mongoose');
 const { resolve } = require('path');
@@ -47,19 +49,40 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                 }
             };
 
-            var notification = new Notification({
-                sender: req.params.senderId,
-                receiver: req.params.receiverId,  
-                body: notificationPayload.notification.body,
-            });
+            var offeredProducts;
+            var notification;
 
-            getSenderUsernameAsync(req.params.senderId, notification).then(getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
+            if(req.body.requested_product_id && req.body.offered_products){
+                getProductAsync(req.body.requested_product_id).then((data)=>{
+                    notification = new Notification({
+                        sender: req.params.senderId,
+                        receiver: req.params.receiverId,  
+                        body: notificationPayload.notification.body,
+                        offeredProducts: req.body.offered_products, 
+                        requestedProduct: data
+                    })
+                    getSenderUsernameAsync(req.params.senderId).then((data)=>{notification.senderUsername = data; getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
+                        notification.save((err,doc)=>{ 
+                            if(err)
+                            console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
+                        });
+                    }   
+                    )});
+                }); 
+            } else {     
+                    notification = new Notification({
+                    sender: req.params.senderId,
+                    receiver: req.params.receiverId,  
+                    body: notificationPayload.notification.body,
+                });
+                getSenderUsernameAsync(req.params.senderId).then(getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
                     notification.save((err,doc)=>{ 
                         if(err)
                         console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
                     });
                 }
             ));
+            }
 
             Promise.all(docs.map(subDevice => webpush.sendNotification(
                 subDevice, JSON.stringify(notificationPayload))))
@@ -76,15 +99,28 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
     
 });
 
-function getSenderUsernameAsync(senderId, notification){
+function getSenderUsernameAsync(senderId){
     return new Promise(function(resolve,reject){
         User.findById(senderId,(err,docs)=>{       
             if(!err){
-                notification.senderUsername = docs.username; 
-                resolve("resolved");
+                resolve(docs.username);
             }
             else{
                 console.log("Error retrieving user from db: " + JSON.stringify(err))
+                reject("rejected");
+            }
+        })
+    });
+};
+
+function getProductAsync(productId){
+    return new Promise(function(resolve,reject){
+        Product.findById((productId),(err,docs)=>{
+            if(!err){
+                resolve(docs); 
+            }
+            else{
+                console.log("Error retrieving product from db: " + JSON.stringify(err))
                 reject("rejected");
             }
         })

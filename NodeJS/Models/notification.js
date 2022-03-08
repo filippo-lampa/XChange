@@ -13,7 +13,9 @@ const Notification = mongoose.model('Notification', {
         default: 0
     },
     senderUsername: {type: String},
-    receiverUsername: {type: String}
+    receiverUsername: {type: String},
+    offeredProducts: {type: [mongoose.Schema.Types.Mixed]},
+    requestedProduct: {type: mongoose.Schema.Types.Mixed}
 }); 
 
 module.exports = {Notification};

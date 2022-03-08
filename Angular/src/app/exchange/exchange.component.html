@@ -18,24 +18,10 @@
 
       <form action="#">
 
-        <p>
+        <p *ngFor="let product of userProducts">
           <label>
-            <input type="checkbox" />
-            <span class = "white-text">Product name</span>
-          </label>
-        </p>
-
-        <p>
-          <label>
-            <input type="checkbox" />
-            <span class = "white-text">Product name</span>
-          </label>
-        </p>
-
-        <p>
-          <label>
-            <input type="checkbox" />
-            <span class = "white-text">Product name</span>
+            <input type="checkbox" (click)="checkOfferedProducts(product)"/>
+            <span class = "white-text">{{product.name}}</span>
           </label>
         </p>
 

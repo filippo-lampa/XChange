@@ -7,6 +7,7 @@ import { NotificationService } from '../shared/services/notification.service';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
+import { ExchangeService } from '../shared/services/exchange.service';
 
 @Component({
   selector: 'app-product-list',
@@ -22,8 +23,10 @@ export class ProductListComponent implements OnInit {
   category: string = "";
   productList: Product[] = [];
   selectedProduct: Product = new Product;
+  offeredProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush, private notificationService: NotificationService, private tokenStorageService: TokenStorageService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush,
+    private notificationService: NotificationService, private tokenStorageService: TokenStorageService, private exchangeService: ExchangeService) {
     if(this.route.params){
       this.route.params.subscribe(params=> this.category = params['name']);
     }
@@ -45,6 +48,12 @@ export class ProductListComponent implements OnInit {
   }
 
   sendExchangeNotification(receiverUserId: string){
-    this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId);
+    if(this.exchangeService.offeredProducts.length > 0){
+      var productsPayload = {
+        "requested_product_id": this.selectedProduct._id,
+        "offered_products": this.exchangeService.offeredProducts
+      };
+      this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId, productsPayload);
+    } else console.log("No item to exchange selected");
   }
 }

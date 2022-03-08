@@ -5,6 +5,7 @@ const { isValidObjectId } = require('mongoose');
 
 var router = express.Router();
 var {Product,Product} = require('../Models/product');
+const verifyToken = require('../Middleware/verifyToken');
 
 router.get('/', (req,res) =>{
     Product.find((err,docs)=>{
@@ -28,7 +29,7 @@ router.get('/:productId', (req,res)=>{
         })
 });
 
-router.post('/:userId', (req,res)=>{
+router.post('/:userId', verifyToken, (req,res)=>{
     var product = new Product({
         name: req.body.name,
         category: req.body.category,
@@ -47,7 +48,7 @@ router.post('/:userId', (req,res)=>{
     });
 });
 
-router.put('/:userId/:productId', (req,res)=>{
+router.put('/:userId/:productId', verifyToken ,(req,res)=>{
     if(!isValidObjectId(req.params.productId))
         console.log('No record with given id');
     else{
@@ -68,7 +69,7 @@ router.put('/:userId/:productId', (req,res)=>{
 }
 });
 
-router.delete('/:userId/:productId', (req,res)=>{
+router.delete('/:userId/:productId', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.productId))
         console.log('No record with given id');
     else{

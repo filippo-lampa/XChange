@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const res = require('express/lib/response');
-
 var router = express.Router();
 var {Category,Category} = require('../Models/category');
 const { isValidObjectId } = require('mongoose');
+const verifyToken = require('../Middleware/verifyToken');
+const verifyAdmin = require('../Middleware/verifyAdmin');
 
 router.get('/', (req,res) =>{
     Category.find((err,docs)=>{
@@ -27,7 +28,7 @@ router.get('/:id', (req,res)=>{
         })
 });
 
-router.post('/', (req,res)=>{
+router.post('/', verifyToken, verifyAdmin, (req,res)=>{
     var category = new Category({
         name: req.body.name,
         imageUrl: req.body.imageUrl
@@ -40,7 +41,7 @@ router.post('/', (req,res)=>{
     });
 });
 
-router.put('/:id', (req,res)=>{
+router.put('/:id', verifyToken, verifyAdmin, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{
@@ -57,7 +58,7 @@ router.put('/:id', (req,res)=>{
 }
 });
 
-router.delete('/:id', (req,res)=>{
+router.delete('/:id', verifyToken, verifyAdmin, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{

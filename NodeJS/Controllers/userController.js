@@ -5,13 +5,13 @@ const { route } = require('express/lib/application');
 const res = require('express/lib/response');
 const { isValidObjectId } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const verifyToken = require('../Middleware/verifyToken');
+const verifyAdmin = require('../Middleware/verifyAdmin');
 var router = express.Router();
 
 var {User,User} = require('../Models/user');
 
-//think it needs a token
-router.get('/', (req,res) =>{
+router.get('/', verifyToken, verifyAdmin ,(req,res) =>{
     User.find((err,docs)=>{
         if(!err)
             res.send(docs);
@@ -43,7 +43,8 @@ router.post('/', (req,res)=>{
             address : req.body.address,
             phone : req.body.phone,
             email : req.body.email,
-            password : hash
+            password : hash,
+            role : 'USER'
         });
         user.save((err,doc)=>{
             if(!err)
@@ -55,8 +56,7 @@ router.post('/', (req,res)=>{
 });
 
 
-// Think it needs a token
-router.put('/:id', (req,res)=>{
+router.put('/:id', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{
@@ -78,8 +78,7 @@ router.put('/:id', (req,res)=>{
     }
 });
 
-// Think it needs a token
-router.delete('/:id', (req,res)=>{
+router.delete('/:id', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{

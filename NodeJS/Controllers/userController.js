@@ -12,7 +12,6 @@ var router = express.Router();
 var {User,User} = require('../Models/user');
 
 router.get('/', (req,res) =>{
-    console.log("test");
     User.find((err,docs)=>{
         if(!err)
             res.send(docs);

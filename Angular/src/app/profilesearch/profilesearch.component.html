@@ -1,9 +1,10 @@
-  <div >
+<div>
   <nav>
     <div class="nav-wrapper">
       <form>
         <div class="input-field">
-          <input id="search" type="search" [(ngModel)]="searchedString" name="searchedString" (input)="search()" required>
+          <input id="search" type="search" [(ngModel)]="searchedString" name="searchedString" (input)="search()"
+            required>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons" (click)="clearSearchLists()">close</i>
         </div>
@@ -13,19 +14,22 @@
   <div class="button-container">
     <div class="row">
       <div class="col s4">
-        <a class="waves-effect waves-light btn-large" (click)= "selectOperation(1)"><i class="material-icons left">person</i>search profile</a>
+        <a class="waves-effect waves-light btn-large" (click)="selectOperation(1)"><i
+            class="material-icons left">person</i>search profile</a>
       </div>
       <div class="col s4">
-        <a class="waves-effect waves-light btn-large productsearch" (click)="selectOperation(2)"><i class="material-icons left">shopping_basket</i>search product</a>
+        <a class="waves-effect waves-light btn-large productsearch" (click)="selectOperation(2)"><i
+            class="material-icons left">shopping_basket</i>search product</a>
       </div>
       <div class="col s4">
-        <a class="waves-effect waves-light btn-large categories" (click)="selectOperation(0)"><i class="material-icons left">apps</i>categories</a>
+        <a class="waves-effect waves-light btn-large categories" (click)="selectOperation(0)"><i
+            class="material-icons left">apps</i>categories</a>
       </div>
     </div>
   </div>
   <div *ngIf="operationSelector == 1">
     <div class="collection" *ngFor="let user of searchedUserList">
-        <a routerLink="/user/{{user._id}}" class="collection-item">{{user.username}}</a>
+      <a routerLink="/user/{{user._id}}" class="collection-item">{{user.username}}</a>
     </div>
   </div>
   <div *ngIf="operationSelector == 2">

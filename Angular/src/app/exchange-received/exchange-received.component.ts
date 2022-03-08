@@ -26,11 +26,50 @@ export class ExchangeReceivedComponent implements OnInit {
   }
 
   acceptExchange(){
- //   this.notificationService.sendExchangeResultNotification()
-  //  this.exchangeService.sendExchangeResultNotification(true).subscribe(data=>console.log("exchange accepted"));
+    var notificationPayload = {
+      "notification": {
+          "title": "Exchange offer accepted",
+          "body": "Exchange offer for product " + this.notification.requestedProduct.name + " accepted by " + this.notification.receiverUsername,
+          "icon": "assets/main-page-logo-small-hat.png",
+          "vibrate": [100, 50, 100],
+          "data": {
+              "dateOfArrival": Date.now(),
+              "primaryKey": 1
+          },
+          "actions": [{
+              "action": "explore",
+              "title": "Go to the site"
+          }],
+          "exchangeResult": "true",
+          "givenProductId": this.notification.requestedProduct._id,
+          "acceptedProducts": this.exchangeService.offeredProducts
+      }
+    };
+ //   this.exchangeService.saveExchange(notificationPayload);
+    this.notificationService.send(this.notification.receiver,this.notification.sender,notificationPayload);
   }
 
-  declineExchange(){
- //   this.exchangeService.sendExchangeResultNotification(false).subscribe(data=>console.log("exchange declined"));
+  refuseExchange(){
+    var notificationPayload = {
+      "notification": {
+          "title": "Exchange offer refused",
+          "body": "Exchange offer for product " + this.notification.requestedProduct.name + " refused by " + this.notification.receiverUsername,
+          "icon": "assets/main-page-logo-small-hat.png",
+          "vibrate": [100, 50, 100],
+          "data": {
+              "dateOfArrival": Date.now(),
+              "primaryKey": 1
+          },
+          "actions": [{
+              "action": "explore",
+              "title": "Go to the site"
+          }],
+          "exchangeResult": "false"
+      }
+    };
+ //   this.exchangeService.saveExchange(notificationPayload);
+    this.notificationService.send(this.notification.receiver,this.notification.sender,notificationPayload);
   }
+
+
 }

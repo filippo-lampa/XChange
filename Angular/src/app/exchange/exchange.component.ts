@@ -24,11 +24,12 @@ export class ExchangeComponent implements OnInit {
   checkOfferedProducts(productToCheck: Product){
     var offeredProducts = this.exchangeService.offeredProducts;
     if(offeredProducts.includes(productToCheck)){
-      delete this.exchangeService.offeredProducts[offeredProducts.indexOf(productToCheck)];
+      this.exchangeService.offeredProducts.splice(offeredProducts.indexOf(productToCheck),1);
     }
     else{
       this.exchangeService.offeredProducts.push(productToCheck);
     }
+    console.log(this.exchangeService.offeredProducts)
   }
 
 }

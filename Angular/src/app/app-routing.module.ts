@@ -7,6 +7,7 @@ import { ProductComponent } from './product/product.component';
 import { ProfilesearchComponent } from './profilesearch/profilesearch.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
+import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'messages/:senderId/:receiverId',
     component: MessagesComponent
+  },
+  {
+    path: 'receivedxchangeoffer/:notificationId',
+    component: ExchangeReceivedComponent
   }
 ];
 

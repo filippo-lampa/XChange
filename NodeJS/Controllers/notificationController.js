@@ -1,6 +1,7 @@
 const webpush = require('web-push');
 const express = require('express');
 const fs = require('fs');
+require('dotenv').config()
 
 var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 var {Notification,Notification} = require('../Models/notification');
@@ -12,8 +13,8 @@ const { resolve } = require('path');
 var router = express.Router();
 
 const vapidKeys = {
-    "publicKey":"BOzdHgXy8Zfg_aMFp-HMpEKMPzd_uPYmcYBq9Y30itAIsyP6WVF3IQXAeK7GYrE4BhMtfUrWoMNqiLCgUyRj90c",
-    "privateKey":"AgYsDEDNIhJ8eIPNt-OgcxIhr-3ckeSg_iPQ__1fnbk"
+    "publicKey": process.env.VAPID_PUBLIC_KEY,
+    "privateKey": process.env.VAPID_PRIVATE_KEY
 };
 
 webpush.setVapidDetails(
@@ -115,6 +116,15 @@ router.get('/notificationcenter/:userId',(req,res)=>{
     })
 })
     
+router.get('/notificationcenter/notification/:notificationId',(req,res)=>{
+    Notification.findOne(({_id: req.params.notificationId}), (err,docs)=>{
+        if(!err){
+            res.send(docs);
+        }
+        else
+            console.log('Error in retrieving notification with the given id: ' + req.params.notificationId);
+    })
+})
 
 router.put('/notificationcenter', (req,res)=>{ 
     if(!isValidObjectId(req.body._id))

@@ -21,6 +21,7 @@ import { NewMessageComponent } from './chat/new-message/new-message.component';
 import { MessagesComponent } from './chat/messages/messages.component';
 import { MessageService } from '../app/shared/services/message.service';
 import { PusherService } from '../app/shared/services/pusher.service';
+import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PusherService } from '../app/shared/services/pusher.service';
     LoginComponent,
     RegisterComponent,
     NewMessageComponent,
-    MessagesComponent
+    MessagesComponent,
+    ExchangeReceivedComponent
   ],
   imports: [
     BrowserModule,

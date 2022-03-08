@@ -2,7 +2,7 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"><i class="material-icons text-decoration-none">cloud</i>XChange</a>
+        <a href="#!" class="brand-logo"><i class="material-icons text-decoration-none" id="brandIcon">cloud</i>XChange</a>
         <ul class="right hide-on-med-and-down">
           <li><a class='dropdown-trigger' href='#'  data-target='dropdown1'><i class="material-icons" id="notificationButton" >notifications</i></a><span class="new badge" >{{unreadNotifications.length}}</span></li>
 
@@ -18,7 +18,8 @@
     </nav>
 
   <ul id='dropdown1' class='dropdown-content'>
-    <li id = "custom_li" *ngFor="let notification of userNotificationList"><a href="#!" (click)="setNotificationRead(notification)">{{notification.body}} from {{notification.senderUsername}} {{notification.date}}</a></li>
+    <li id = "custom_li" *ngFor="let notification of userNotificationList"><a routerLink="/receivedxchangeoffer/{{notification._id}}" (click)="setNotificationRead(notification)">{{notification.body}} from {{notification.senderUsername}} {{notification.date}}</a></li>
     <li class="divider" tabindex="-1"></li>
   </ul>
-  </div>
+</div>
+

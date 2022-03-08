@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = true;
       this.getUserNotifications();
     }
-    setTimeout(() => {this.ngOnInit() }, 5000)
+    setTimeout(() => {this.ngOnInit() }, 60000)
   }
 
   resetVariables(){
@@ -40,8 +40,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngAfterViewInit(){
+    var dropdownOptions = {
+      'coverTrigger':false
+    }
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems);
+    var instances = M.Dropdown.init(elems,dropdownOptions);
   }
 
   getToMessagePage(){

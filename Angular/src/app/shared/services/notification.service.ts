@@ -25,6 +25,10 @@ export class NotificationService {
       return this.http.get(this.baseURL + '/notificationcenter/' + `${userId}`);
     }
 
+    getNotification(notificationId: string){
+      return this.http.get(this.baseURL + '/notificationcenter/notification/' + `${notificationId}`);
+    }
+
     setNotificationRead(notification: Notification){
       return this.http.put(this.baseURL + '/notificationcenter/', notification);
     }

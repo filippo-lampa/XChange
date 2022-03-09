@@ -36,6 +36,7 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
+    var cleanCredentials = sanitize(req.body);
     bcrypt.genSalt(10).then( salt => {
         bcrypt.hash(req.body.password, salt).then(hash => {
             var user = new User({

@@ -23,6 +23,7 @@ import { MessageService } from '../app/shared/services/message.service';
 import { PusherService } from '../app/shared/services/pusher.service';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ExchangeReceivedComponent } from './exchange-received/exchange-received
     RegisterComponent,
     NewMessageComponent,
     MessagesComponent,
-    ExchangeReceivedComponent
+    ExchangeReceivedComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><i class="material-icons text-decoration-none" id="brandIcon">cloud</i>XChange</a>
       <ul class="right hide-on-med-and-down">
+        <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">add</i></a></li>
         <li><a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons"
               id="notificationButton">notifications</i></a><span class="new badge">{{unreadNotifications.length}}</span>
         </li>

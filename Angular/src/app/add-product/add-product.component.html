@@ -2,6 +2,17 @@
     <form name="form" (ngSubmit)="onAddProduct()" #f="ngForm" novalidate>
         <label>Name</label>
         <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" />
+          <label>Category</label>
+          <div *ngFor="let category of categoriesList">
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox" (click)="selectCategory(category.name)"/>
+                  <span>{{category.name}}</span>
+                </label>
+              </p>
+            </form>
+          </div>
 
         <label>Description</label>
         <input type="text" class="form-control" name="description" [(ngModel)]="form.description"

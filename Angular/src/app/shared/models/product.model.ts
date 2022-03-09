@@ -1,3 +1,5 @@
+import { Category } from "./category.model";
+
 export class Product {
   name!: string;
   _id?: string;

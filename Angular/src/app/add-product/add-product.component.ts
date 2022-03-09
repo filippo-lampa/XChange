@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Category } from '../shared/models/category.model';
 import { Product } from '../shared/models/product.model';
 import { CategoryService } from '../shared/services/category.service';
 import { ProductService } from '../shared/services/product.service';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
-import * as M from "../../../node_modules/materialize-css/dist/js/materialize.js";
+import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 
 @Component({
   selector: 'app-add-product',
@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
 
   categoriesList!: Category[];
   isLoaded = false;
+  selectedCategory!: string;
 
   constructor(private tokenStorageService: TokenStorageService, private productService: ProductService, private categoryService: CategoryService) { }
 
@@ -36,14 +37,12 @@ export class AddProductComponent implements OnInit {
         console.log(err.error.message);
       }
     )
-    var elems = document.querySelectorAll('select');
-    var instances = M.formSelect.init(elems);
   }
 
   onAddProduct() {
     const product: Product = {
       name: this.form.name,
-      category: this.form.category,
+      category: this.selectedCategory,
       description: this.form.description,
       views: 0,
       uploadDate: new Date(),
@@ -60,6 +59,10 @@ export class AddProductComponent implements OnInit {
       }
     )
 
+  }
+
+  selectCategory(category: string){
+    this.selectedCategory = category;
   }
 
 }

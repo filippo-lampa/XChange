@@ -1,5 +1,4 @@
 // @ts-ignore
-import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../shared/services/notification.service';

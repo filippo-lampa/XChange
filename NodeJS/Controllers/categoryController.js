@@ -29,7 +29,6 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', verifyToken, verifyAdmin, (req,res)=>{
-    console.log("asd");
     var category = new Category({
         name: req.body.name,
         imageUrl: req.body.imageUrl

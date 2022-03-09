@@ -1,13 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { MessageService } from './message.service';
 declare const Pusher: any;
 
 @Injectable()
 export class PusherService {
   pusher: any;
   messagesChannel: any;
+  readonly baseURL = 'http://localhost:3000/api/messages';
+  subscriptionSucceeded: boolean = false;
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   generateChannelName(senderId: string, receiverId: string){
@@ -27,4 +31,9 @@ export class PusherService {
     this.pusher = new Pusher(environment.pusher.key, {cluster: 'eu', authEndpoint: 'http://localhost:3000/api/pusher/auth'});
     this.messagesChannel = this.pusher.subscribe('private-' + this.generateChannelName(senderId, receiverId));
   }
+
+  retrieveHistory(senderId: string, receiverId: string) {
+    return this.http.get(this.baseURL + `/${senderId}` + `/${receiverId}`);
+  }
+
 }

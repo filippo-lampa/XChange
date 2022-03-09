@@ -4,17 +4,17 @@
 		<div class="col s12 m9 l9">
       <div class="container" *ngFor="let message of messages">
 
-			<div class="row left-align" *ngIf="message.user != senderUsername"  id="receiverMessage">
+			<div class="row left-align" *ngIf="message.senderId!= senderUser._id"  id="receiverMessage">
 
         <div class="col s12 m8 l6 left">
 						<div class="row valign-wrapper">
 							<div class="col s2" style="margin-top:30; margin-right:-10px;">
-                <p id="receiverUsername">{{message.user}}</p>
+                <p id="receiverUsername">{{receiverUsername}}</p>
 								<img src="https://lh5.googleusercontent.com/-d6V2Y2HV0FU/AAAAAAAAAAI/AAAAAAAAACA/iuRJhY_1XPs/s96-c/photo.jpg" height="100" width="" alt="100" class="circle responsive-img"> <!-- notice the "circle" class -->
 							</div>
 							<div class="chat-field teal lighten-2">
 								<span class="chat-message white-text">
-									{{message.text}}
+									{{message.body}}
 								</span>
 								<div class="example"></div>
 							</div>
@@ -23,17 +23,17 @@
 
 			</div>
 
-			<div class="row right-align" *ngIf="message.user == senderUsername" id="senderMessage">
+			<div class="row right-align" *ngIf="message.senderId == senderUser._id" id="senderMessage">
 				<div class="col s12 m8 l6 right">
 						<div class="row valign-wrapper">
 							<div class="chat-field2 red lighten-2">
 								<span class="chat-message white-text">
-									{{message.text}}
+									{{message.body}}
 								</span>
 								<div class="example2"></div>
 							</div>
 							<div class="col s2" style="margin-top:15px; margin-right: 500px;">
-                <p id="senderUsername">{{message.user}}</p>
+                <p id="senderUsername">{{senderUsername}}</p>
 								<img src="https://lh5.googleusercontent.com/-d6V2Y2HV0FU/AAAAAAAAAAI/AAAAAAAAACA/iuRJhY_1XPs/s96-c/photo.jpg" height="100" width="" alt="100" class="circle responsive-img"> <!-- notice the "circle" class -->
 							</div>
 						</div>

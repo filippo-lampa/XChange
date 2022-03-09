@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db.js'); 
+const mongoSanitize = require('express-mongo-sanitize');
 
 var userController = require('./Controllers/userController');
 var productController = require('./Controllers/productController');
@@ -13,6 +14,7 @@ var chatController = require('./Controllers/chatController');
 
 var app = express();
 
+//app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

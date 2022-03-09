@@ -4,9 +4,10 @@
 }
 
 body {
+  transform: translateY(10%);
   text-align: center;
   padding: 40px 0;
-  background: #EBF0F5;
+  background: #f5f5f5;
 }
   h1 {
     color: #e57373;

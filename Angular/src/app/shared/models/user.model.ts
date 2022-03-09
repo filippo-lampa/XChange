@@ -7,4 +7,6 @@ export class User {
   phone!: Number;
   email: string = '';
   password: string = '';
+  birthday: Date = new Date();
+  xChangedItems: number = 0;
 }

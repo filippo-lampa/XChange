@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     phone: null,
     email: null,
     password: null,
+    birthday: null,
   }
 
   constructor(private userService: UserService, private router: Router) { }
@@ -26,7 +27,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(): void {
-    console.log("ao");
     const user: User = {
       username: this.form.username,
       name: this.form.name,
@@ -34,12 +34,13 @@ export class RegisterComponent implements OnInit {
       address: this.form.address,
       phone: this.form.phone,
       email: this.form.email,
-      password: this.form.password
+      password: this.form.password,
+      birthday: this.form.birthday,
+      xChangedItems: this.form.xChangedItems
     }
 
     this.userService.postUser(user).subscribe(
       data => {
-        console.log("ok");
         this.router.navigate(['/login']);
       },
       err => {

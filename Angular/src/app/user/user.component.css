@@ -49,10 +49,13 @@ color: #20247b;
 
 .about-list {
 padding-top: 10px;
+display: flex;
 }
+
 .about-list .media {
 padding: 5px 0;
 }
+
 .about-list label {
 color: #20247b;
 font-weight: 600;

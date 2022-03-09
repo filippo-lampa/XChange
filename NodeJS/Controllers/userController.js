@@ -13,8 +13,9 @@ var {User,User} = require('../Models/user');
 
 router.get('/', (req,res) =>{
     User.find((err,docs)=>{
-        if(!err)
+        if(!err){
             res.send(docs);
+        }
         else
             console.log('Error in retrieving users: ' + JSON.stringify(err, undefined, 2));
     })
@@ -45,7 +46,9 @@ router.post('/', (req,res)=>{
                 phone : req.body.phone,
                 email : req.body.email,
                 password : hash,
-                role : 'USER'
+                role : 'USER',
+                birthday: new Date(req.body.birthday),
+                xChangedItems: 0
             });
             user.save((err,doc)=>{
                 if(!err)

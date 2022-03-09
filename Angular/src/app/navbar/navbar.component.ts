@@ -20,53 +20,61 @@ export class NavbarComponent implements OnInit {
   userNotificationList: Notification[] = [];
   isLoggedIn = false;
   userInfoLoaded = false;
+  userId!: string;
 
-  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) {  }
+  name!: string;
+  surname!: string;
+  username!: string;
+
+
+
+  constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.resetVariables();
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
+      this.userId = this.tokenStorageService.getUserId();
       this.getUserNotifications();
     }
-    setTimeout(() => {this.ngOnInit() }, 60000)
+    setTimeout(() => { this.ngOnInit() }, 60000)
   }
 
-  resetVariables(){
+  resetVariables() {
     this.unreadNotifications = [];
     this.userNotificationList = [];
     this.isLoggedIn = false;
     this.userInfoLoaded = false;
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     var dropdownOptions = {
-      'coverTrigger':false
+      'coverTrigger': false
     }
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems,dropdownOptions);
+    var instances = M.Dropdown.init(elems, dropdownOptions);
   }
 
-  getToMessagePage(){
+  getToMessagePage() {
     this.router.navigate(['/messages/' + this.tokenStorageService.getUserId()]);
   }
 
-  getUserNotifications(){
-    if(this.isLoggedIn){
+  getUserNotifications() {
+    if (this.isLoggedIn) {
       this.notificationService.getUserNotifications(this.tokenStorageService.getUserId()!).subscribe(data => {
-          this.userNotificationList = data as Notification[];
-          this.userNotificationList.forEach(notification => {
-            if(!notification.read)
-                this.unreadNotifications.push(notification);
-          });
+        this.userNotificationList = data as Notification[];
+        this.userNotificationList.forEach(notification => {
+          if (!notification.read)
+            this.unreadNotifications.push(notification);
+        });
       });
     }
   }
 
-  setNotificationRead(notification: Notification){
-    if(this.isLoggedIn){
+  setNotificationRead(notification: Notification) {
+    if (this.isLoggedIn) {
       notification.read = true;
-      this.notificationService.setNotificationRead(notification).subscribe(data=>console.log("notification read"));
+      this.notificationService.setNotificationRead(notification).subscribe(data => console.log("notification read"));
     }
   }
 }

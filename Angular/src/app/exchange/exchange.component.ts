@@ -29,7 +29,6 @@ export class ExchangeComponent implements OnInit {
     else{
       this.exchangeService.offeredProducts.push(productToCheck);
     }
-    console.log(this.exchangeService.offeredProducts)
   }
 
 }

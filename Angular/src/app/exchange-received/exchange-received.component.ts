@@ -15,6 +15,7 @@ export class ExchangeReceivedComponent implements OnInit {
 
   notification!: Notification;
   isDataLoaded: boolean = false;
+  exchangeCompleted: boolean = false;
 
   constructor(private router: ActivatedRoute, private notificationService: NotificationService, private exchangeService: ExchangeService) {
     if(this.router.params)
@@ -42,11 +43,12 @@ export class ExchangeReceivedComponent implements OnInit {
           }],
           "exchangeResult": "true",
           "givenProductId": this.notification.requestedProduct._id,
-          "acceptedProducts": this.exchangeService.offeredProducts
+          "acceptedProducts": this.notification.offeredProducts
       }
     };
  //   this.exchangeService.saveExchange(notificationPayload);
     this.notificationService.send(this.notification.receiver,this.notification.sender,notificationPayload);
+    this.exchangeCompleted = true;
   }
 
   refuseExchange(){
@@ -69,6 +71,7 @@ export class ExchangeReceivedComponent implements OnInit {
     };
  //   this.exchangeService.saveExchange(notificationPayload);
     this.notificationService.send(this.notification.receiver,this.notification.sender,notificationPayload);
+    this.exchangeCompleted = true;
   }
 
 

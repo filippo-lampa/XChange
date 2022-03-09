@@ -18,7 +18,8 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
-                token: `${this.tokenStorageService.getToken()}`
+                token: `${this.tokenStorageService.getToken()}`,
+                userId: `${this.tokenStorageService.getUserId()}`
             }
         });
         return next.handle(request);

@@ -35,24 +35,26 @@ router.get('/:id', (req,res)=>{
 });
 
 router.post('/', (req,res)=>{
-    bcrypt.hash(req.body.password, 10).then(hash => {
-        var user = new User({
-            username: req.body.username,
-            name : req.body.name,
-            surname : req.body.surname,
-            address : req.body.address,
-            phone : req.body.phone,
-            email : req.body.email,
-            password : hash,
-            role : 'USER'
+    bcrypt.genSalt(10).then( salt => {
+        bcrypt.hash(req.body.password, salt).then(hash => {
+            var user = new User({
+                username: req.body.username,
+                name : req.body.name,
+                surname : req.body.surname,
+                address : req.body.address,
+                phone : req.body.phone,
+                email : req.body.email,
+                password : hash,
+                role : 'USER'
+            });
+            user.save((err,doc)=>{
+                if(!err)
+                    res.send(doc);
+                else
+                    console.log('Error in user save: ' + JSON.stringify(err, undefined, 2));
+            });
         });
-        user.save((err,doc)=>{
-            if(!err)
-                res.send(doc);
-            else
-                console.log('Error in user save: ' + JSON.stringify(err, undefined, 2));
-        });
-    })
+    });
 });
 
 

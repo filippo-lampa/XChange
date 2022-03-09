@@ -1,0 +1,15 @@
+<div *ngIf="isLoaded">
+    <form name="form" (ngSubmit)="onAddProduct()" #f="ngForm" novalidate>
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" />
+
+        <label>Description</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="form.description"
+            #description="ngModel" />
+        <label>Image</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="form.imageurl" #image="ngModel" />
+        <button class="btn">
+            Add Product
+        </button>
+    </form>
+</div>

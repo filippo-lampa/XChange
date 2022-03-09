@@ -7,6 +7,7 @@ import { NotificationService } from '../shared/services/notification.service';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 // @ts-ignore
 import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
+import { ExchangeService } from '../shared/services/exchange.service';
 
 @Component({
   selector: 'app-product-list',
@@ -22,8 +23,10 @@ export class ProductListComponent implements OnInit {
   category: string = "";
   productList: Product[] = [];
   selectedProduct: Product = new Product;
+  offeredProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush, private notificationService: NotificationService, private tokenStorageService: TokenStorageService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush,
+    private notificationService: NotificationService, private tokenStorageService: TokenStorageService, private exchangeService: ExchangeService) {
     if(this.route.params){
       this.route.params.subscribe(params=> this.category = params['name']);
     }
@@ -45,6 +48,33 @@ export class ProductListComponent implements OnInit {
   }
 
   sendExchangeNotification(receiverUserId: string){
-    this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId);
+
+    var notificationPayload = {
+      "notification": {
+          "title": "Exchange offer",
+          "body": "New exchange offer received by",
+          "icon": "assets/main-page-logo-small-hat.png",
+          "vibrate": [100, 50, 100],
+          "data": {
+              "dateOfArrival": Date.now(),
+              "primaryKey": 1
+          },
+          "actions": [{
+              "action": "explore",
+              "title": "Go to the site"
+          }]
+      }
+    };
+
+    if(this.exchangeService.offeredProducts.length > 0){
+      var productsPayload = {
+        "requested_product_id": this.selectedProduct._id,
+        "offered_products": this.offeredProducts
+      }
+
+      this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId, Object.assign(notificationPayload,productsPayload));
+
+    } else console.log("No item to exchange selected");
   }
+
 }

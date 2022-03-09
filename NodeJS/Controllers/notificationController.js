@@ -27,20 +27,20 @@ webpush.setVapidDetails(
 
 var app = express();
 
-router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
+router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{ 
     NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{
         if(!err){
             const notificationPayload = req.body;
             var offeredProducts;
             var notification;
 
-            if(req.body.notification.exchangeResult == 'true'){ console.log(req.body.notification.acceptedProducts);
+            if(req.body.notification.exchangeResult == 'true'){ 
                 if(!isValidObjectId(req.body.notification.givenProductId))
                     console.log('No record with given id');
                 else{
-                    Product.findByIdAndRemove(req.body.notification.givenProductId, (err,docs)=>{
+                    Product.findByIdAndUpdate(req.body.notification.givenProductId, { $set: { sellerId: req.params.receiverId }}, (err,docs)=>{
                     if(!err)
-                      console.log("exchanged product removed");
+                      console.log("product owner changed");
                     else
                       console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
                     });
@@ -50,12 +50,12 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                     if(!isValidObjectId(product._id))
                         console.log('No record with given id');
                     else{  console.log(product._id) 
-                        Product.findByIdAndRemove(product._id, (err,docs)=>{
-                        if(!err)
-                            console.log("exchanged product removed");
-                        else
-                            console.log('Error in deleting product with given id: ' + product._id);
-                        });
+                        Product.findByIdAndUpdate(product._id, { $set: { sellerId: req.params.senderId }}, (err,docs)=>{
+                            if(!err)
+                              console.log("product owner changed");
+                            else
+                              console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
+                            });
                     }
                 });
             }

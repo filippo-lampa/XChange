@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
     if(this.exchangeService.offeredProducts.length > 0){
       var productsPayload = {
         "requested_product_id": this.selectedProduct._id,
-        "offered_products": this.offeredProducts
+        "offered_products": this.exchangeService.offeredProducts
       }
 
       this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId, Object.assign(notificationPayload,productsPayload));

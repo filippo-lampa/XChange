@@ -21,10 +21,6 @@ export class ExchangeService {
     return this.http.post(this.baseURL + '/results/', exchangePayload);
   }
 
-  getProducts(){
-    return this.offeredProducts;
-  }
-
   getUserProducts(userId: string){
     return this.productService.getUserProducts(userId);
   }

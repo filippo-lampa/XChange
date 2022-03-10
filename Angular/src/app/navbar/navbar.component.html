@@ -1,30 +1,60 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><i class="material-icons text-decoration-none" id="brandIcon">cloud</i>XChange</a>
-      <ul class="right hide-on-med-and-down">
-        <li *ngIf="isAdmin"><a routerLink="/adminboard"><i class="material-icons">apps</i></a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">add</i></a></li>
-        <li><a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons"
-              id="notificationButton">notifications</i></a><span class="new badge">{{unreadNotifications.length}}</span>
-        </li>
+      <nav>
+            <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo left"><i class="material-icons text-decoration-none"
+                              id="brandIcon">cloud</i>XChange</a>
+                  <ul>
+                        <li class="right hide-on-med-and-down" *ngIf="isAdmin"><a routerLink="/adminboard"><i
+                                          class="material-icons">apps</i></a></li>
+                        <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/addproduct"><i
+                                          class="material-icons">add</i></a></li>
 
-        <li><a routerLink="/search"><i class="material-icons text-decoration-none">search</i></a></li>
-        <li><a routerLink="/"><i class="material-icons">home</i></a></li>
-        <li *ngIf="!isLoggedIn"><a routerLink="/register"><i class="material-icons">person</i></a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i class="material-icons">person</i></a></li>
-        <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="material-icons">login</i></a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="/login"><i class="material-icons">logout</i></a></li>
-        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                        <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a class='dropdown-trigger' href='#'
+                                    data-target='dropdown1'><i class="material-icons"
+                                          id="notificationButton">notifications</i></a><span
+                                    class="new badge">{{unreadNotifications.length}}</span>
+                        </li>
+
+                        <li class="right hide-on-med-and-down"><a routerLink="/search"><i
+                                          class="material-icons text-decoration-none">search</i></a></li>
+                        <li class="right hide-on-med-and-down"><a routerLink="/"><i class="material-icons">home</i></a>
+                        </li>
+                        <li class="right hide-on-med-and-down" *ngIf="!isLoggedIn"><a routerLink="/register"><i
+                                          class="material-icons">person</i></a></li>
+                        <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i
+                                          class="material-icons">person</i></a></li>
+                        <li class="right hide-on-med-and-down" *ngIf="!isLoggedIn"><a routerLink="/login"><i
+                                          class="material-icons">login</i></a></li>
+                        <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/login"><i
+                                          class="material-icons">logout</i></a></li>
+                        <li class="hide-on-large-only show-on-medium-and-down right"><a id='dropdowner'
+                                    class='dropdown-trigger' href='#' data-target='dropdown2'><i class="material-icons"
+                                          id="notificationButton">more_vert</i></a>
+                        </li>
+
+                  </ul>
+            </div>
+      </nav>
+
+      <ul id='dropdown1' class='dropdown-content'>
+            <li id="custom_li" *ngFor="let notification of userNotificationList"><a
+                        routerLink="/receivedxchangeoffer/{{notification._id}}"
+                        (click)="setNotificationRead(notification)">{{notification.body}}
+                        {{notification.senderUsername}}
+                        {{notification.date}}</a></li>
+            <li class="divider" tabindex="-1"></li>
       </ul>
-    </div>
-  </nav>
 
-  <ul id='dropdown1' class='dropdown-content'>
-    <li id="custom_li" *ngFor="let notification of userNotificationList"><a
-        routerLink="/receivedxchangeoffer/{{notification._id}}"
-        (click)="setNotificationRead(notification)">{{notification.body}} {{notification.senderUsername}}
-        {{notification.date}}</a></li>
-    <li class="divider" tabindex="-1"></li>
-  </ul>
+      <ul id='dropdown2' class='dropdown-content'>
+            <li *ngIf="isAdmin"><a routerLink="/adminboard"><i class="material-icons">apps</i></a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">add</i></a></li>
+            <li *ngIf="isLoggedIn"><a class='dropdown-trigger' href='#' data-target='dropdown1'><i
+                              class="material-icons" id="notificationButton">notifications</i></a><span
+                        class="new badge">{{unreadNotifications.length}}</span>
+            </li>
+            <li><a routerLink="/search"><i class="material-icons text-decoration-none">search</i></a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i class="material-icons">person</i></a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="material-icons">login</i></a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/login"><i class="material-icons">logout</i></a></li>
+      </ul>
 </div>

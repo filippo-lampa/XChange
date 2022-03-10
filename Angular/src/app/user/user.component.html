@@ -1,93 +1,88 @@
 <section *ngIf="isLoaded" class="section about-section gray-bg" id="about">
     <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col s6">
-                <div class="about-avatar">
-                    <img src="https://i.pinimg.com/originals/49/3f/a0/493fa0f13970ab3ef29375669f670451.jpg" title=""
-                        alt="" class="circle responsive-img">
-                </div>
-            </div>
-
-            <div class="col s6">
-                <div class="about-text go-to">
-                    <h3 class="dark-color">{{selectedUser.name}} {{selectedUser.surname}}</h3>
-
-                    <h6 class="theme-color lead">Profile</h6>
-                    <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating
-                        stylish, modern websites, web services and online stores. My passion is to design digital user
-                        experiences through the bold interface and meaningful interactions.</p>
-
-                    <div class="row about-list">
-                        <div class="col s6">
-                            <div class="media">
-                                <label>Birthday</label>
-                                <p>{{userBirthday}}</p>
-                            </div>
-                            <div class="media">
-                                <label>Age</label>
-                                <p>22 Yr</p>
-                            </div>
-
-                            <div class="media">
-                                <label>Residence</label>
-                                <p>Canada</p>
-                            </div>
+        <div class="row profile align-items-center">
+            <div class="col s7 push-s5 about-text">
+                <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}}</h3>
+                <p>I services for customers of all sizes, specializing in creating
+                    stylish, modern websites, web services and online stores. My passion is to design digital user
+                    experiences through the bold interface and meaningful interactions.</p>
+                <div class="row about-list">
+                    <div class="col s6">
+                        <div class="media">
+                            <label>Birthday</label>
+                            <p>{{userBirthday}}</p>
                         </div>
-                        <div class="col s6">
-                            <div class="media">
-                                <label>Address</label>
-                                <p>{{selectedUser.address}}</p>
-                            </div>
+                        <div class="media">
+                            <label>Age</label>
+                            <p>22 Yr</p>
+                        </div>
 
-                            <div class="media">
-                                <label>E-mail</label>
-                                <p>{{selectedUser.email}}</p>
-                            </div>
+                        <div class="media">
+                            <label>Residence</label>
+                            <p>Canada</p>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="media">
+                            <label>Address</label>
+                            <p>{{selectedUser.address}}</p>
+                        </div>
 
-                            <div class="media">
-                                <label>Phone</label>
-                                <p>{{selectedUser.phone}}</p>
-                            </div>
+                        <div class="media">
+                            <label>E-mail</label>
+                            <p>{{selectedUser.email}}</p>
+                        </div>
+
+                        <div class="media">
+                            <label>Phone</label>
+                            <p>{{selectedUser.phone}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="counter">
-            <div class="row">
-                <div class="col offset-s2">
-                    <div class="count-data center">
-                        <h6 class="count h2" data-to="500" data-speed="500">{{selectedUser.xChangedItems}}</h6>
-                        <p class="m-0px font-w-600">XChanged items</p>
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="count-data center">
-                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                        <p class="m-0px font-w-600">Items in showcase</p>
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="count-data center">
-                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                        <p class="m-0px font-w-600">Positive reviews</p>
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="count-data center">
-                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                        <p class="m-0px font-w-600">Negative reviews</p>
-                    </div>
-                </div>
+            <div class="col s5 pull-s7">
+                <img src="https://cdn.pixabay.com/photo/2020/10/26/10/45/man-5686975_1280.png" title="" alt=""
+                    class="avatar-image responsive-img">
             </div>
-            <div class="row" id="messageButton">
-                <div class="col offset-s4"><a routerLink="/messages/{{loggedUserId}}/{{userId}}"
-                        class="waves-effect waves-light btn"><i class="material-icons right">message</i>Send Message</a>
-                </div>
-            </div>
-
         </div>
 
+        <div class="row number-counter">
+            <div class="counter">
+                <div class="row">
+                    <div class="flexbox">
+                        <div class="col col-first">
+                            <div class="count-data center">
+                                <h6 class="count h2" data-to="500" data-speed="500">{{selectedUser.xChangedItems}}</h6>
+                                <p class="m-0px font-w-600">XChanged items</p>
+                            </div>
+                        </div>
+                        <div class="col ">
+                            <div class="count-data center">
+                                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                                <p class="m-0px font-w-600">Items in showcase</p>
+                            </div>
+                        </div>
+                        <div class="col ">
+                            <div class="count-data center">
+                                <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                                <p class="m-0px font-w-600">Positive reviews</p>
+                            </div>
+                        </div>
+                        <div class="col col-last">
+                            <div class="count-data center">
+                                <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                                <p class="m-0px font-w-600">Negative reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row center" id="messageButton">
+                    <a routerLink="/messages/{{loggedUserId}}/{{userId}}" class="waves-effect waves-light btn"><i
+                            class="material-icons right">message</i>Send
+                        Message</a>
+                </div>
+            </div>
+        </div>
 
         <div class="section-divisor">
             <p></p>
@@ -96,9 +91,6 @@
         <div class="section-divisor">
             <p></p>
         </div>
-
-
-
     </div>
     <app-product-list [sellerId]="userId" class="productList"></app-product-list>
 

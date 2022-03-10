@@ -14,7 +14,7 @@ var chatController = require('./Controllers/chatController');
 
 var app = express();
 
-//app.use(mongoSanitize());
+app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

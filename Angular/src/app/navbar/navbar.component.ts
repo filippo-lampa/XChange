@@ -21,12 +21,11 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
   userInfoLoaded = false;
   userId!: string;
+  isAdmin = false;
 
   name!: string;
   surname!: string;
   username!: string;
-
-
 
   constructor(private tokenStorageService: TokenStorageService, private elementRef: ElementRef, private notificationService: NotificationService, private userService: UserService, private router: Router) { }
 
@@ -36,6 +35,12 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = true;
       this.userId = this.tokenStorageService.getUserId();
       this.getUserNotifications();
+      this.userService.getUser(this.userId).subscribe((data) => {
+        var user = data as User;
+        if (user.role == "ADMIN") {
+          this.isAdmin = true;
+        }
+      });
     }
     setTimeout(() => { this.ngOnInit() }, 60000)
   }

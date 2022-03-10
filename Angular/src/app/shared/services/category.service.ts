@@ -14,23 +14,23 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  postCategory(cat: Category){
+  postCategory(cat: Category) {
     return this.http.post(this.baseURL, cat);
   }
 
-  getCategoriesList(){
+  getCategoriesList() {
     return this.http.get(this.baseURL);
   }
 
-  getCategory(categoryName: string){
+  getCategory(categoryName: string) {
     return this.http.get(this.baseURL + `/${categoryName}`);
   }
 
-  putCategory(cat: Category){
-    return this.http.put(this.baseURL + `/${cat.name}`, cat);
+  putCategory(cat: Category) {
+    return this.http.put(this.baseURL, cat);
   }
 
-  deleteCategory(categoryName: string){
-    return this.http.delete(this.baseURL + `/${categoryName}`);
+  deleteCategory(cat: Category) {
+    return this.http.delete(this.baseURL + `/${cat._id}`);
   }
 }

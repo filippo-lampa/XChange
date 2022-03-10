@@ -5,6 +5,7 @@ const { isValidObjectId } = require('mongoose');
 
 var router = express.Router();
 var {Product,Product} = require('../Models/product');
+var {User,User} = require('../Models/user');
 const verifyToken = require('../Middleware/verifyToken');
 
 router.get('/', (req,res) =>{
@@ -90,6 +91,7 @@ router.delete('/:userId/:productId', verifyToken, (req,res)=>{
               console.log('Error in deleting product with given id: ' + req.params.productId);
         });
     }
+
 });
 
 module.exports = router;

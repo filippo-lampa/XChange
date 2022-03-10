@@ -41,19 +41,19 @@ router.post('/', verifyToken, verifyAdmin, (req,res)=>{
     });
 });
 
-router.put('/:id', verifyToken, verifyAdmin, (req,res)=>{
-    if(!isValidObjectId(req.params.id))
+router.put('/', verifyToken, verifyAdmin, (req,res)=>{
+    if(!isValidObjectId(req.body._id))
         console.log('No record with given id');
     else{
     var category = {
         name: req.body.name,
         imageUrl: req.body.imageUrl
     };
-    Category.findByIdAndUpdate(req.params.id, {$set: category}, {new: true}, (err,docs)=>{
+    Category.findByIdAndUpdate(req.body._id, {$set: category}, {new: true}, (err,docs)=>{
         if(!err)
             res.send(docs);
         else
-            console.log('Error in updating record with id: ' + req.params.id);
+            console.log('Error in updating record with id: ' + req.params._id);
     });
 }
 });

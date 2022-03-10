@@ -1,0 +1,90 @@
+<div>
+    <div>
+        <h2>Create Cateogry</h2>
+        <form name="form" (ngSubmit)="onAddCategory()" #f="ngForm" novalidate>
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="formCategory.name" #name="ngModel" />
+            <label>Image</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="formCategory.imageUrl"
+                #image="ngModel" />
+            <button class="btn">
+                Create Category
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Modify Category</h2>
+        <form name="form" (ngSubmit)="onPutCategory()" #f="ngForm" novalidate>
+            <div *ngFor="let category of categoriesList">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" (click)="selectCategory(category!)" />
+                        <span>{{category.name}}</span>
+                    </label>
+                </p>
+            </div>
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="formPutCategory.name" #name="ngModel" />
+            <label>Image</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="formPutCategory.imageUrl"
+                #image="ngModel" />
+            <button class="btn">
+                Modify Category
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Delete Category</h2>
+        <form name="form" (ngSubmit)="onDeleteCategory()" #f="ngForm" novalidate>
+            <div *ngFor="let category of categoriesList">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" (click)="selectCategory(category!)" />
+                        <span>{{category.name}}</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn">
+                DeleteCategory
+            </button>
+        </form>
+    </div>
+
+
+    <div>
+        <h2>Delete users</h2>
+        <form name="form" (ngSubmit)="onDeleteUser()" #f="ngForm" novalidate>
+            <div *ngFor="let user of userList">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" (click)="selectUser(user)" />
+                        <span>{{user.username}}</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn">
+                Delete User
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Delete Products</h2>
+        <form name="form" (ngSubmit)="onDeleteProduct()" #f="ngForm" novalidate>
+            <div *ngFor="let product of productList">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" (click)="selectProduct(product)" />
+                        <span>{{product.name}}</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn">
+                Delete Product
+            </button>
+        </form>
+    </div>
+
+</div>

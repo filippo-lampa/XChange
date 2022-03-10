@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AdminBoardComponent } from './admin-board/admin-board.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'addproduct',
     component: AddProductComponent
+  },
+  {
+    path: 'adminboard',
+    component: AdminBoardComponent
   }
 ];
 

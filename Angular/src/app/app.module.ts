@@ -24,6 +24,7 @@ import { PusherService } from '../app/shared/services/pusher.service';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AdminBoardComponent } from './admin-board/admin-board.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     NewMessageComponent,
     MessagesComponent,
     ExchangeReceivedComponent,
-    AddProductComponent
+    AddProductComponent,
+    AdminBoardComponent
   ],
   imports: [
     BrowserModule,

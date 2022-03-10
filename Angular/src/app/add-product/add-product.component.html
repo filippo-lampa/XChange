@@ -1,26 +1,22 @@
 <div *ngIf="isLoaded">
-    <form name="form" (ngSubmit)="onAddProduct()" #f="ngForm" novalidate>
-        <label>Name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" />
-          <label>Category</label>
-          <div *ngFor="let category of categoriesList">
-            <form action="#">
-              <p>
-                <label>
-                  <input type="checkbox" (click)="selectCategory(category.name)"/>
-                  <span>{{category.name}}</span>
-                </label>
-              </p>
-            </form>
-          </div>
-
-        <label>Description</label>
-        <input type="text" class="form-control" name="description" [(ngModel)]="form.description"
-            #description="ngModel" />
-        <label>Image</label>
-        <input type="text" class="form-control" name="description" [(ngModel)]="form.imageurl" #image="ngModel" />
-        <button class="btn">
-            Add Product
-        </button>
-    </form>
+  <form name="form" (ngSubmit)="onAddProduct()" #f="ngForm" novalidate>
+    <label>Name</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" />
+    <label>Category</label>
+    <div *ngFor="let category of categoriesList">
+      <p>
+        <label>
+          <input name="group1" type="radio" (click)="selectCategory(category.name)" />
+          <span>{{category.name}}</span>
+        </label>
+      </p>
+    </div>
+    <label>Description</label>
+    <input type="text" class="form-control" name="description" [(ngModel)]="form.description" #description="ngModel" />
+    <label>Image</label>
+    <input type="text" class="form-control" name="description" [(ngModel)]="form.imageurl" #image="ngModel" />
+    <button class="btn">
+      Add Product
+    </button>
+  </form>
 </div>

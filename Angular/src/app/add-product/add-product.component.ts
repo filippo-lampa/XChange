@@ -61,7 +61,7 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  selectCategory(category: string){
+  selectCategory(category: string) {
     this.selectedCategory = category;
   }
 

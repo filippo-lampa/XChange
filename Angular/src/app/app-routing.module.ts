@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
+import { ProfileditComponent } from './profiledit/profiledit.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,12 @@ const routes: Routes = [
   {
     path: 'adminboard',
     component: AdminBoardComponent
+  },
+  {
+    path: 'user/:userId/editprofile',
+    component: ProfileditComponent
   }
+
 ];
 
 @NgModule({

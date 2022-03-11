@@ -51,7 +51,8 @@ router.post('/', (req,res)=>{
                 role : 'USER',
                 birthday: new Date(req.body.birthday),
                 xChangedItems: 0,
-                state: req.body.state
+                state: req.body.state,
+                bio: req.body.bio
             });
             user.save((err,doc)=>{
                 if(!err)
@@ -75,7 +76,8 @@ router.put('/:id', verifyToken, (req,res)=>{
             address: req.body.address,
             phone: req.body.phone,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            bio: req.body.bio
         };
         User.findByIdAndUpdate(req.params.id, {$set: user}, {new: true}, (err,docs)=>{
             if(!err)

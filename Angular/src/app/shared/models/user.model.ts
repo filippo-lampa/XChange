@@ -11,4 +11,5 @@ export class User {
   birthday: Date = new Date();
   xChangedItems: number = 0;
   state: string = '';
+  bio: string = '';
 }

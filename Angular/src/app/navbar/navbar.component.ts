@@ -56,8 +56,10 @@ export class NavbarComponent implements OnInit {
     var dropdownOptions = {
       'coverTrigger': false
     }
-    var elems = document.querySelectorAll('.dropdown-trigger');
+    var elems = document.querySelector('.dropdown-trigger-1');
     var instances = M.Dropdown.init(elems, dropdownOptions);
+    var elems2 = document.querySelector('.dropdown-trigger-2');
+    var instances2 = M.Dropdown.init(elems2, dropdownOptions);
   }
 
   getToMessagePage() {

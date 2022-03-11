@@ -1,0 +1,75 @@
+<ng-container *ngIf="dataLoaded">
+  <div class="row valign-wrapper">
+    <div class="col s4">
+
+      <div class="card-panel teal">
+        <div class="row center-align">
+
+        <img src="https://i.pinimg.com/236x/8c/5d/eb/8c5deb1518933fa6de476c08b46517e8.jpg" alt="" class="circle responsive-img">
+        </div>
+        <div class="row">
+         <span class="white-text">
+           {{selectedUser.bio}}
+         </span>
+      </div>
+      </div>
+
+    </div>
+    <div class="col s7 offset-s1">
+
+      <div class="card-panel teal">
+
+        <div class="row">
+          <form class = "col s12" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <input type = "hidden" name = "_id" #_id="ngModel" [(ngModel)]="selectedUser._id">
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="name" name="name" type="text" class="validate" [(ngModel)]="selectedUser.name"  #name="ngModel">
+                <label class ="active white-text">Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="surname" name="surname" type="text" class="validate" [(ngModel)]="selectedUser.surname"  #name="ngModel" >
+                <label class="active white-text">Surname</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="username" name="username" type="text" class="validate" [(ngModel)]="selectedUser.username" #name="ngModel" >
+                <label class="active white-text">Username</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="address" name="address" type="text" class="validate" [(ngModel)]="selectedUser.address"  #name="ngModel" >
+                <label class="active white-text">Address</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="phone" name="phone" type="text" class="validate" [(ngModel)]="selectedUser.phone"  #name="ngModel">
+                <label class="active white-text">Phone</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="password" name="password" type="password" class="validate" [(ngModel)]="selectedUser.password" #name="ngModel">
+                <label class="active white-text">Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="email" name="email" type="text" class="validate" [(ngModel)]="selectedUser.email"  #name="ngModel">
+                <label class="active white-text">Email</label>
+              </div>
+            </div>
+            <button class="btn btn-custom right" type="submit" [disabled]="!userForm.valid">Submit</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</ng-container>

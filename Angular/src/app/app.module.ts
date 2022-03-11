@@ -25,6 +25,7 @@ import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { ExchangeReceivedComponent } from './exchange-received/exchange-received.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
+import { ProfileditComponent } from './profiledit/profiledit.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminBoardComponent } from './admin-board/admin-board.component';
     MessagesComponent,
     ExchangeReceivedComponent,
     AddProductComponent,
-    AdminBoardComponent
+    AdminBoardComponent,
+    ProfileditComponent
   ],
   imports: [
     BrowserModule,

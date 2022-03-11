@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     password: null,
     birthday: null,
     state: null,
+    bio: null
   }
 
   constructor(private userService: UserService, private router: Router) { }
@@ -38,7 +39,8 @@ export class RegisterComponent implements OnInit {
       password: this.form.password,
       birthday: this.form.birthday,
       xChangedItems: this.form.xChangedItems,
-      state: this.form.state
+      state: this.form.state,
+      bio: this.form.bio
     }
 
     this.userService.postUser(user).subscribe(

@@ -11,6 +11,7 @@ var User = mongoose.model('User', {
     role : { type: String },
     birthday: { type: Date , require: true},
     xChangedItems: { type: Number },
+    state: { type: String }
 });
 
 module.exports = {User};

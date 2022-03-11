@@ -69,7 +69,7 @@ export class AdminBoardComponent implements OnInit {
     }
 
     this.categoryService.postCategory(category).subscribe((data) => {
-      console.log("Insert");
+      this.ngOnInit();
     })
   }
 
@@ -78,7 +78,6 @@ export class AdminBoardComponent implements OnInit {
   }
 
   onPutCategory() {
-    console.log("a")
     if (this.formPutCategory.name != undefined) {
       this.selectedCategory.name = this.formPutCategory.name;
     }
@@ -89,7 +88,7 @@ export class AdminBoardComponent implements OnInit {
     console.log(this.selectedCategory)
     this.categoryService.putCategory(this.selectedCategory).subscribe(
       (data) => {
-        console.log("modified");
+        this.ngOnInit();
       }
     )
   }
@@ -98,7 +97,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedCategory != undefined || this.selectedCategory != null) {
       this.categoryService.deleteCategory(this.selectedCategory).subscribe(
         (data) => {
-          console.log("ok");
+          this.ngOnInit();
         }
       )
     }
@@ -120,7 +119,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedUser != undefined || this.selectedUser != null) {
       this.userService.deleteUser(this.selectedUser._id!).subscribe(
         (data) => {
-          console.log("ok")
+          this.ngOnInit();
         }
       )
     }
@@ -142,7 +141,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedProduct != undefined || this.selectedProduct != null) {
       this.productService.deleteProduct(this.selectedProduct._id!, this.tokenStorageService.getUserId()).subscribe(
         (data) => {
-          console.log("ok");
+          this.ngOnInit();
         }
       )
     }

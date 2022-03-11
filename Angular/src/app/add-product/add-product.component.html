@@ -20,4 +20,58 @@
       Add Product
     </button>
   </form>
+
+  <div *ngIf="showDeleteProduct">
+    <h1 class="center-align">Delete a product</h1>
+    <form name="form" (ngSubmit)="onDeleteProduct()" #f="ngForm" novalidate>
+      <div *ngFor="let product of productList">
+        <p>
+          <label>
+            <input name="group1" type="radio" (click)="selectProduct(product._id!)" />
+            <span>{{product.name}}</span>
+          </label>
+        </p>
+      </div>
+      <button class="btn">
+        Delete Product
+      </button>
+    </form>
+  </div>
+
+  <div *ngIf="showDeleteProduct">
+    <h1 class="center-align">Modify a product</h1>
+    <form name="form" (ngSubmit)="onModifyProduct()" #f="ngForm" novalidate>
+      <div *ngFor="let product of productList">
+        <p>
+          <label>
+            <input name="group1" type="radio" (click)="selectProductToModify(product)" />
+            <span>{{product.name}}</span>
+
+            <br />
+          </label>
+        </p>
+      </div>
+      <div class="product-info">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="formToModify.name" #name="ngModel" />
+        <label>Description</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="formToModify.description"
+          #description="ngModel" />
+        <label>Image</label>
+        <input type="text" class="form-control" name="imageUrl" [(ngModel)]="formToModify.imageUrl" #image="ngModel" />
+        <label>Category</label>
+        <div *ngFor="let category of categoriesList">
+          <p>
+            <label>
+              <input name="group2" type="radio" (click)="selectCategory(category.name)" />
+              <span>{{category.name}}</span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <button class="btn">
+        Modify Product
+      </button>
+    </form>
+  </div>
 </div>

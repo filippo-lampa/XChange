@@ -25,15 +25,15 @@ export class ProductListComponent implements OnInit {
   selectedProduct: Product = new Product;
   offeredProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef:ElementRef,  private swPush: SwPush,
+  constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef: ElementRef, private swPush: SwPush,
     private notificationService: NotificationService, private tokenStorageService: TokenStorageService, private exchangeService: ExchangeService) {
-    if(this.route.params){
-      this.route.params.subscribe(params=> this.category = params['name']);
+    if (this.route.params) {
+      this.route.params.subscribe(params => this.category = params['name']);
     }
   }
 
   ngOnInit(): void {
-    this.productService.getProductList().subscribe((res)=>{
+    this.productService.getProductList().subscribe((res) => {
       this.productList = res as Product[];
     });
   }
@@ -43,36 +43,36 @@ export class ProductListComponent implements OnInit {
     var instances = M.Modal.init(elems);
   }
 
-  setSelectedProduct(selectedProduct: Product){
+  setSelectedProduct(selectedProduct: Product) {
     this.selectedProduct = selectedProduct;
   }
 
-  sendExchangeNotification(receiverUserId: string){
+  sendExchangeNotification(receiverUserId: string) {
 
     var notificationPayload = {
       "notification": {
-          "title": "Exchange offer",
-          "body": "New exchange offer received by",
-          "icon": "assets/main-page-logo-small-hat.png",
-          "vibrate": [100, 50, 100],
-          "data": {
-              "dateOfArrival": Date.now(),
-              "primaryKey": 1
-          },
-          "actions": [{
-              "action": "explore",
-              "title": "Go to the site"
-          }]
+        "title": "Exchange offer",
+        "body": "New exchange offer received by",
+        "icon": "assets/main-page-logo-small-hat.png",
+        "vibrate": [100, 50, 100],
+        "data": {
+          "dateOfArrival": Date.now(),
+          "primaryKey": 1
+        },
+        "actions": [{
+          "action": "explore",
+          "title": "Go to the site"
+        }]
       }
     };
 
-    if(this.exchangeService.offeredProducts.length > 0){
+    if (this.exchangeService.offeredProducts.length > 0) {
       var productsPayload = {
         "requested_product_id": this.selectedProduct._id,
         "offered_products": this.exchangeService.offeredProducts
       }
 
-      this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId, Object.assign(notificationPayload,productsPayload));
+      this.notificationService.send(this.tokenStorageService.getUserId()!, receiverUserId, Object.assign(notificationPayload, productsPayload));
 
     } else console.log("No item to exchange selected");
   }

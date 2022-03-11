@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { Product } from '../shared/models/product.model';
 import { ProductService } from '../shared/services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { SwPush } from '@angular/service-worker';
 import { NotificationService } from '../shared/services/notification.service';
 import { TokenStorageService } from '../shared/services/token-storage.service';

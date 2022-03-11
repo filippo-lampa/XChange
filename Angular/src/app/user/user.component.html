@@ -9,32 +9,32 @@
                 <div class="row about-list">
                     <div class="col s6">
                         <div class="media">
-                            <label>Birthday</label>
+                            <label class="dark-color">Birthday</label>
                             <p>{{userBirthday}}</p>
                         </div>
                         <div class="media">
-                            <label>Age</label>
+                            <label class="dark-color">Age</label>
                             <p>22 Yr</p>
                         </div>
 
                         <div class="media">
-                            <label>Residence</label>
+                            <label class="dark-color">Residence</label>
                             <p>Canada</p>
                         </div>
                     </div>
                     <div class="col s6">
                         <div class="media">
-                            <label>Address</label>
+                            <label class="dark-color">Address</label>
                             <p>{{selectedUser.address}}</p>
                         </div>
 
                         <div class="media">
-                            <label>E-mail</label>
+                            <label class="dark-color">E-mail</label>
                             <p>{{selectedUser.email}}</p>
                         </div>
 
                         <div class="media">
-                            <label>Phone</label>
+                            <label class="dark-color">Phone</label>
                             <p>{{selectedUser.phone}}</p>
                         </div>
                     </div>
@@ -88,9 +88,11 @@
             <p></p>
         </div>
         <div class="divider"></div>
+        <div class="divider"></div>
         <div class="section-divisor">
             <p></p>
         </div>
+
     </div>
     <app-product-list [sellerId]="userId" class="productList"></app-product-list>
 

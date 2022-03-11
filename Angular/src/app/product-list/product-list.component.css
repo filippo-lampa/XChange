@@ -1,53 +1,60 @@
 
 
-.horizontal {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-    display: inline-block;
-    padding-left: 10px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    flex-grow: 1;
- }
+/*.horizontal {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  display: inline-block;
+  padding-left: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  flex-grow: 1;
+}
+*/
 
- .modal{
-  overflow-y: hidden;
- }
+.card-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
- #closeButton{
-  margin-top: -10px;
- }
+.modal{
+overflow-y: hidden;
+}
 
- .modal-content, .modal-footer{
-  width: 100%;
-  background: linear-gradient(to right, #00bfa5  0%, #00bfa5  33%, white 30%, white 100%);
+#closeButton{
+margin-top: -10px;
+}
+
+.modal-content, .modal-footer{
+width: 100%;
+background: linear-gradient(to right, #00bfa5  0%, #00bfa5  33%, white 30%, white 100%);
 }
 
 .card {
-  width: 40vw;
+width: 40vw;
 }
 
 .card, .card-reveal{
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
 }
 
 .card-image img {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
 }
 
 @media screen and (max-width: 992px) {
-  .card{
-    width: 60vw;
-  }
+.card{
+  width: 60vw;
+}
 }
 
 @media screen and (max-width: 600px) {
-  .card{
-    width: 70vw;
-  }
+.card{
+  width: 70vw;
+}
 }

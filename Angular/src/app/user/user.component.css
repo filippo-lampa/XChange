@@ -17,6 +17,15 @@ body{
   padding-bottom: 5%;
 }
 
+.profile, .number-counter{
+  border-radius: 20px;
+  box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+}
+
+.divider{
+  background-color: #bdbdbd ;
+}
+
 .avatar-image {
   max-width: 100%;
   vertical-align: middle;

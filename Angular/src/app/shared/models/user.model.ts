@@ -10,4 +10,5 @@ export class User {
   role?: string;
   birthday: Date = new Date();
   xChangedItems: number = 0;
+  state: string = '';
 }

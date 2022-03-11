@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   selectedUser!: User;
   loggedUserId: string = "";
   userBirthday!: string;
+  userAge!: number;
   isLoaded = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private tokenStorageService: TokenStorageService) {
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
       this.userService.getUser(this.userId).subscribe((data) => {
         this.selectedUser = data as User;
         this.userBirthday = this.selectedUser.birthday.toLocaleString().substring(0, this.selectedUser.birthday.toLocaleString().indexOf('T'));
+        this.userAge = new Date().getFullYear() - Number(this.userBirthday.substring(0, this.userBirthday.indexOf('-')));
         this.isLoaded = true;
       });
     }

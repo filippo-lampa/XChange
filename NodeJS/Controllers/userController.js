@@ -10,6 +10,8 @@ const verifyAdmin = require('../Middleware/verifyAdmin');
 var router = express.Router();
 
 var {User,User} = require('../Models/user');
+var {Product,Product} = require('../Models/product');
+
 
 router.get('/', (req,res) =>{
     User.find((err,docs)=>{
@@ -48,7 +50,8 @@ router.post('/', (req,res)=>{
                 password : hash,
                 role : 'USER',
                 birthday: new Date(req.body.birthday),
-                xChangedItems: 0
+                xChangedItems: 0,
+                state: req.body.state
             });
             user.save((err,doc)=>{
                 if(!err)
@@ -87,11 +90,27 @@ router.delete('/:id', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{
-        User.findByIdAndRemove(req.params.id, (err,docs)=>{
-            if(!err)
-                res.send(docs);
+        Product.find((err,docs)=>{
+            if(!err){
+                for(const product of docs){
+                    if(product.sellerId == req.params.id){
+                        Product.findByIdAndRemove(product.id, (err,docs)=>{
+                            if(!err){
+                                User.findByIdAndRemove(req.params.id, (err,docs)=>{
+                                    if(!err)
+                                        res.send(docs);
+                                    else
+                                        console.log('Error in deleting user with given id: ' + req.params.id);
+                                }); 
+                            }
+                            else
+                              console.log('Error in deleting product with given id: ' + product.id);
+                        });
+                    }
+                }
+            }
             else
-                console.log('Error in deleting user with given id: ' + req.params.id);
+                console.log('Error in retrieving products: ' + JSON.stringify(err, undefined, 2));
         });
     }
 });

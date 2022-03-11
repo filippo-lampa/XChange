@@ -84,14 +84,38 @@ router.delete('/:userId/:productId', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.productId))
         console.log('No record with given id');
     else{
-        Product.findByIdAndRemove(req.params.productId, (err,docs)=>{
-            if(!err)
-              res.send(docs);
+        Product.findById(req.params.productId, (err,docs)=>{
+            if(!err){
+                if(docs.sellerId == req.params.userId){
+                    Product.findByIdAndRemove(req.params.productId, (err,docs)=>{
+                        if(!err)
+                          res.send(docs);
+                        else
+                          console.log('Error in deleting product with given id: ' + req.params.productId);
+                    }); 
+                }
+                else{
+                    User.findById(req.params.userId, (err,userResponse)=>{
+                        if(!err){
+                            if(userResponse.role == "ADMIN"){
+                                Product.findByIdAndRemove(req.params.productId, (err,docs)=>{
+                                    if(!err)
+                                      res.send(docs);
+                                    else
+                                      console.log('Error in deleting product with given id: ' + req.params.productId);
+                                }); 
+                            }
+                        }
+                        else{
+                            console.log("Error use is not admin or seller");
+                        }
+                    })
+                }
+            }
             else
-              console.log('Error in deleting product with given id: ' + req.params.productId);
-        });
+                console.log('Error in retrieving product with the given id: ' + req.params.id);
+        })
     }
-
 });
 
 module.exports = router;

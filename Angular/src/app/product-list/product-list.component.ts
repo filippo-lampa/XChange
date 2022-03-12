@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
   sellerId: string = "";
   @Input()
   category: string = "";
+  @Input()
   productList: Product[] = [];
   selectedProduct: Product = new Product;
   offeredProducts: Product[] = [];
@@ -33,14 +34,20 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProductList().subscribe((res) => {
-      this.productList = res as Product[];
-    });
+    if(this.productList.length == 0)
+      this.productService.getProductList().subscribe((res) => {
+        this.productList = res as Product[];
+      });
   }
 
   ngAfterViewInit() {
     var elems = this.elementRef.nativeElement.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
+    var carouselOptions = {
+      fullWidth: true
+    }
+    var elems2 = document.querySelector('.carousel');
+    var instances = M.Carousel.init(elems2, carouselOptions);
   }
 
   setSelectedProduct(selectedProduct: Product) {

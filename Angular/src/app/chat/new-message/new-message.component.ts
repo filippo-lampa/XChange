@@ -28,7 +28,7 @@ export class NewMessageComponent {
   }
 
   newMessage(text: string): void {
-    this.messageService.send({body: text, senderId: this.user},this.senderId, this.receiverId);
+    this.messageService.send({body: text, senderId: this.senderId},this.senderId, this.receiverId);
     this.message = '';
   }
 

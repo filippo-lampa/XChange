@@ -7,7 +7,7 @@
                         <li class="right hide-on-med-and-down" *ngIf="isAdmin"><a routerLink="/adminboard"><i
                                           class="material-icons">apps</i></a></li>
                         <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/addproduct"><i
-                                          class="material-icons">add</i></a></li>
+                                          class="material-icons">work</i></a></li>
 
                         <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a class='dropdown-trigger-1' href='#'
                                     data-target='dropdown1'><i class="material-icons"
@@ -60,7 +60,7 @@
               <i class="material-icons" id="notificationButton">notifications</i></a>
             </li>
             <li *ngIf="isAdmin"><a routerLink="/adminboard"><i class="material-icons">apps</i></a></li>
-            <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">add</i></a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">work</i></a></li>
             <li><a routerLink="/search"><i class="material-icons text-decoration-none">search</i></a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i class="material-icons">person</i></a></li>
             <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="material-icons">login</i></a></li>

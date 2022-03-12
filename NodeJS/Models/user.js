@@ -12,7 +12,8 @@ var User = mongoose.model('User', {
     birthday: { type: Date , require: true},
     xChangedItems: { type: Number },
     state: { type: String },
-    bio: {type: String}
+    bio: {type: String},
+    profilePicUrl: {type: String}
 });
 
 module.exports = {User};

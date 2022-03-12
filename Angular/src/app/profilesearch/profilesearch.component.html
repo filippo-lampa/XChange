@@ -27,6 +27,7 @@
       </div>
     </div>
   </div>
+    <div class="center-align teal-text " *ngIf="!operationSelector"><span>Select your operation and start xchanging!</span><br><span>Your results will be shown right here</span></div>
   <div *ngIf="operationSelector == 1">
     <div class="collection" *ngFor="let user of searchedUserList">
       <a routerLink="/user/{{user._id}}" class="collection-item">{{user.username}}</a>

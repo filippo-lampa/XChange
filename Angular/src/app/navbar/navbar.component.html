@@ -20,7 +20,7 @@
                         <li class="right hide-on-med-and-down"><a routerLink="/"><i class="material-icons">home</i></a>
                         </li>
                         <li class="right hide-on-med-and-down" *ngIf="!isLoggedIn"><a routerLink="/register"><i
-                                          class="material-icons">person</i></a></li>
+                                          class="material-icons">control_point</i></a></li>
                         <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i
                                           class="material-icons">person</i></a></li>
                         <li class="right hide-on-med-and-down" *ngIf="!isLoggedIn"><a routerLink="/login"><i
@@ -37,12 +37,21 @@
       </nav>
 
       <ul id='dropdown1' class='dropdown-content'>
-            <li id="custom_li" *ngFor="let notification of userNotificationList"><a
+        <div *ngFor="let notification of userNotificationList">
+            <li id="custom_li" *ngIf="!notification.read"><a
+                        routerLink="/receivedxchangeoffer/{{notification._id}}"
+                        (click)="setNotificationRead(notification)">{{notification.body}}
+                        {{notification.senderUsername}}
+                        {{notification.date}}</a></li>
+
+
+            <li id="custom_li" style="background-color: #eeeeee " *ngIf="notification.read"><a
                         routerLink="/receivedxchangeoffer/{{notification._id}}"
                         (click)="setNotificationRead(notification)">{{notification.body}}
                         {{notification.senderUsername}}
                         {{notification.date}}</a></li>
             <li class="divider" tabindex="-1"></li>
+          </div>
       </ul>
 
       <ul id='dropdown2' class='dropdown-content'>

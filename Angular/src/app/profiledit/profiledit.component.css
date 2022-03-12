@@ -1,7 +1,12 @@
-.valign-wrapper{
+#outer{
   margin-top: 5%;
+  margin-left:10%;
 }
 
 .card-panel{
   border-radius: 15px;
+}
+
+#picPanel{
+  margin-top:5%;
 }

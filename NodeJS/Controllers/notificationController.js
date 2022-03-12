@@ -33,11 +33,22 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
             const notificationPayload = req.body;
             var offeredProducts;
             var notification;
-
-            if(req.body.notification.exchangeResult == 'true'){ 
+            if(req.body.notification.exchangeResult == 'true'){ console.log()
                 if(!isValidObjectId(req.body.notification.givenProductId))
                     console.log('No record with given id');
                 else{
+                    User.findByIdAndUpdate(req.params.senderId, { $inc: { xChangedItems: 1 }}, (err,docs)=>{
+                        if(!err)
+                        console.log("Incremented xchange counter");
+                      else
+                        console.log('Error in incrementing xchange counter for user with id: ' + req.params.senderId);
+                    });
+                    User.findByIdAndUpdate(req.params.receiverId, { $inc: { xChangedItems: req.body.notification.acceptedProducts.length }}, (err,docs)=>{
+                        if(!err)
+                        console.log("Incremented xchange counter");
+                      else
+                        console.log('Error in incrementing xchange counter for user with id: ' + req.params.receiverId);
+                    });
                     Product.findByIdAndUpdate(req.body.notification.givenProductId, { $set: { sellerId: req.params.receiverId }}, (err,docs)=>{
                     if(!err)
                       console.log("product owner changed");

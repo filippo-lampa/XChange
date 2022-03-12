@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col s5 pull-s7">
-                <img src="https://cdn.pixabay.com/photo/2020/10/26/10/45/man-5686975_1280.png" title="" alt=""
+                <img src="{{selectedUser.profilePicUrl}}" title="" alt=""
                     class="avatar-image responsive-img">
             </div>
         </div>
@@ -59,19 +59,19 @@
                         </div>
                         <div class="col ">
                             <div class="count-data center">
-                                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                                <h6 class="count h2" data-to="150" data-speed="150">{{userProducts.length}}</h6>
                                 <p class="m-0px font-w-600">Items in showcase</p>
                             </div>
                         </div>
                         <div class="col ">
                             <div class="count-data center">
-                                <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                                <h6 class="count h2" data-to="850" data-speed="850">0</h6>
                                 <p class="m-0px font-w-600">Positive reviews</p>
                             </div>
                         </div>
                         <div class="col col-last">
                             <div class="count-data center">
-                                <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                                <h6 class="count h2" data-to="190" data-speed="190">0</h6>
                                 <p class="m-0px font-w-600">Negative reviews</p>
                             </div>
                         </div>
@@ -95,6 +95,6 @@
         </div>
 
     </div>
-    <app-product-list [sellerId]="userId" class="productList"></app-product-list>
+    <app-product-list [productList]="userProducts" [sellerId]="userId" class="productList"></app-product-list>
 
 </section>

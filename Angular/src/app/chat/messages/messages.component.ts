@@ -60,7 +60,7 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  private newMessageEventHandler(event: Message): void {
+  private newMessageEventHandler(event: Message): void { console.log(this.messages)
     this.messages.push(event);
   }
 }

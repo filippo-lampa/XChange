@@ -52,7 +52,8 @@ router.post('/', (req,res)=>{
                 birthday: new Date(req.body.birthday),
                 xChangedItems: 0,
                 state: req.body.state,
-                bio: req.body.bio
+                bio: req.body.bio,
+                profilePicUrl: req.body.profilePicUrl
             });
             user.save((err,doc)=>{
                 if(!err)
@@ -77,7 +78,8 @@ router.put('/:id', verifyToken, (req,res)=>{
             phone: req.body.phone,
             email: req.body.email,
             password: req.body.password,
-            bio: req.body.bio
+            bio: req.body.bio,
+            profilePicUrl: req.body.profilePicUrl
         };
         User.findByIdAndUpdate(req.params.id, {$set: user}, {new: true}, (err,docs)=>{
             if(!err)

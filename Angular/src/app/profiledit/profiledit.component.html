@@ -61,6 +61,10 @@
                 <input placeholder="email" name="email" type="text" class="validate" [(ngModel)]="selectedUser.email"  #name="ngModel">
                 <label class="active white-text">Email</label>
               </div>
+              <div class="input-field col s6">
+                <input placeholder="Profile image url" name="profilePicUrl" type="text" class="validate" [(ngModel)]="selectedUser.profilePicUrl"  #name="ngModel">
+                <label class="active white-text">Profile image</label>
+              </div>
             </div>
             <button class="btn btn-custom right" type="submit" [disabled]="!userForm.valid">Submit</button>
           </form>

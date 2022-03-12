@@ -12,4 +12,5 @@ export class User {
   xChangedItems: number = 0;
   state: string = '';
   bio: string = '';
+  profilePicUrl = '';
 }

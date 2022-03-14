@@ -1,17 +1,33 @@
-.s4{
-  overflow-y: auto;
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }
 
-[type="checkbox"]:checked+span:not(.lever):before {
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
+.vert-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: #00bfa5;
+  padding: 10px;
 }
 
-#recapBox{
-  color: grey;
-  font-family: 'Roboto', sans-serif;}
+@media screen and (max-width: 1200px) {
+  .recap-text{
+    font-size: 30px;
+  }
+}
 
-#productFieldRecap{
-  position: relative;
-  margin-left: -80px;
+@media screen and (max-width: 992px) {
+  .recap-text{
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .recap-text{
+    font-size: 15px;
+    white-space: nowrap;
+  }
 }

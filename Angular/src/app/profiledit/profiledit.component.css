@@ -1,12 +1,33 @@
-#outer{
-  margin-top: 5%;
-  margin-left:10%;
-}
-
 .card-panel{
   border-radius: 15px;
 }
 
-#picPanel{
-  margin-top:5%;
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.modify-form{
+  flex: 1;
+}
+
+.image-bio{
+  flex: 1;
+}
+
+.divider{
+  padding:2%;
+  background-color: #f5f5f5;
+  opacity: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
 }

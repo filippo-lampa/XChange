@@ -82,6 +82,10 @@ overflow-wrap: break-word;
   align-items: center;
 }
 
+.media{
+  word-wrap: break-word;
+}
+
 #messageButton{
   margin-top: 3%;
 }

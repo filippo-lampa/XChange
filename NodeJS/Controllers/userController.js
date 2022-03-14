@@ -70,6 +70,8 @@ router.put('/:id', verifyToken, (req,res)=>{
     if(!isValidObjectId(req.params.id))
         console.log('No record with given id');
     else{
+        bcrypt.genSalt(10).then( salt => {
+            bcrypt.hash(req.body.password, salt).then(hash => {
         var user = {
             username: req.body.username,
             name: req.body.name,
@@ -77,8 +79,9 @@ router.put('/:id', verifyToken, (req,res)=>{
             address: req.body.address,
             phone: req.body.phone,
             email: req.body.email,
-            password: req.body.password,
+            password: hash,
             bio: req.body.bio,
+            state: req.body.state,
             profilePicUrl: req.body.profilePicUrl
         };
         User.findByIdAndUpdate(req.params.id, {$set: user}, {new: true}, (err,docs)=>{
@@ -87,6 +90,8 @@ router.put('/:id', verifyToken, (req,res)=>{
             else
                 console.log('Error in updating record with id: ' + req.params.id);
         });
+        });
+    });
     }
 });
 

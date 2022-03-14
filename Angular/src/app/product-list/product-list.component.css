@@ -14,17 +14,13 @@ overflow-y: hidden;
   overflow: hidden;
 }
 
-#closeButton{
-margin-top: -10px;
+.modal-content, .modal-footer{
+background: linear-gradient(to right, #00bfa5  0%, #00bfa5  55%, white 55%, white 100%);
 }
 
-/*
-.modal-content, .modal-footer{
-width: 100%;
-background: linear-gradient(to right, #00bfa5  0%, #00bfa5  33%, white 30%, white 100%);
-}*/
-
-
+.modal-footer{
+  width: 100.3%;
+}
 
 .card {
 width: 40vw;
@@ -50,6 +46,12 @@ border-top-right-radius: 15px;
 .card{
   width: 60vw;
 }
+.modal-content, .modal-footer{
+  background: linear-gradient(to right, #00bfa5  0%, #00bfa5  61%, white 61%, white 100%);
+  }
+  .modal-footer{
+    width: 101%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -59,5 +61,14 @@ border-top-right-radius: 15px;
 }
 .card{
   width: 70vw;
+}
+.modal-content, .modal-footer{
+  background: linear-gradient(to right, #00bfa5  0%, #00bfa5  40%, white 40%, white 100%);
+  }
+.modal-footer{
+  width: 97%;
+}
+#closeButton{
+  align-items: flex-end;
 }
 }

@@ -186,7 +186,7 @@
     </div>
       </div>
     </div>
-  </div>
+
 
   <div *ngIf="sellerId">
     <div class="card-div" *ngFor="let product of productList">
@@ -279,11 +279,10 @@
       </div>
     </div>
   </div>
-</div>
 
 <div id="modal1" class="modal bottom-sheet">
   <div class="modal-content">
-    <app-exchange [selectedProductName]="selectedProduct.name"></app-exchange>
+    <app-exchange [selectedProductName]="selectedProduct.name" ></app-exchange>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-green btn" id="closeButton"
         (click)="sendExchangeNotification(sellerId)">Let's exchange!</a>

@@ -10,7 +10,6 @@
   flex-direction: column;
   flex-wrap: nowrap;
   background-color: #00bfa5;
-  padding: 10px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -29,5 +28,8 @@
   .recap-text{
     font-size: 15px;
     white-space: nowrap;
+  }
+  .vert-container{
+    width: 30%;
   }
 }

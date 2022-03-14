@@ -33,7 +33,9 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
             const notificationPayload = req.body;
             var offeredProducts;
             var notification;
-            if(req.body.notification.exchangeResult == 'true'){ console.log()
+
+            //We get into this if only if we are dealing with an exchange offer response
+            if(req.body.notification.exchangeResult == 'true'){ 
                 if(!isValidObjectId(req.body.notification.givenProductId))
                     console.log('No record with given id');
                 else{
@@ -71,6 +73,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                 });
             }
 
+            //We get into this if only if we are dealing with a new exchange offer
             if(req.body.requested_product_id && req.body.offered_products){
                 getProductAsync(req.body.requested_product_id).then((data)=>{
                     notification = new Notification({
@@ -78,7 +81,8 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                         receiver: req.params.receiverId,  
                         body: notificationPayload.notification.body,
                         offeredProducts: req.body.offered_products, 
-                        requestedProduct: data
+                        requestedProduct: data,
+                        notificationType: notificationPayload.notification.notificationType
                     })
                     getSenderUsernameAsync(req.params.senderId).then((data)=>{notification.senderUsername = data; getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
                         notification.save((err,doc)=>{ 
@@ -93,6 +97,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                     sender: req.params.senderId,
                     receiver: req.params.receiverId,  
                     body: notificationPayload.notification.body,
+                    notificationType: notificationPayload.notification.notificationType
                 });
                 getSenderUsernameAsync(req.params.senderId).then(getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
                     notification.save((err,doc)=>{ 

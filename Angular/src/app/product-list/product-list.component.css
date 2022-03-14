@@ -40,12 +40,20 @@ border-top-right-radius: 15px;
 }
 
 @media screen and (max-width: 992px) {
+#homePageProductImage{
+  height: 100px;
+  overflow: hidden;
+}
 .card{
   width: 60vw;
 }
 }
 
 @media screen and (max-width: 600px) {
+#homePageProductImage{
+  height: 50px;
+  overflow: hidden;
+}
 .card{
   width: 70vw;
 }

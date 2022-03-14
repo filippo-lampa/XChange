@@ -1,7 +1,47 @@
 <div class="container center-align">
   <div *ngIf="!sellerId && !category">
 
-    <div *ngFor="let product of productList; let i= index">
+    <div class="card-div hide-on-large-only" *ngFor="let product of productList">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img class="activator responsive-img" src="{{product.imageUrl}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title left-align activator grey-text text-darken-4">{{product.name}}<i
+              class="material-icons right">more_vert</i></span>
+          <p class="left-align"><a class="waves-effect waves-light btn " routerLink="user/{{product.sellerId}}">Profile
+              link</a></p>
+        </div>
+        <div class="card-reveal">
+          <div class="row card-title grey-text text-darken-4"><h5>{{product.name}}</h5><i class="material-icons right">close</i>
+          </div>
+          <div class="section-divisor">
+            <p></p>
+          </div>
+          <div class="divider"></div>
+          <div class="section-divisor">
+            <p></p>
+          </div>
+          <div class="row">
+            <p class="grey-text text-darken-4">Category: <br> {{product.category}}</p>
+          </div>
+          <div class="row">
+            <p class="grey-text text-darken-4">Views: <br> {{product.views}}</p>
+          </div>
+          <div class="row">
+            <p class="grey-text text-darken-4">Upload date: <br> {{product.uploadDate}}</p>
+          </div>
+          <div class="row">
+            <p class="grey-text text-darken-4">Interested users: <br> {{product.interestedUsers}}</p>
+          </div>
+          <div class="row">
+            <p class="grey-text text-darken-4">Description: <br> {{product.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div >
+
+    <div *ngFor="let product of productList; let i= index" class="hide-on-med-and-down">
 
       <div *ngIf="i % 3 == 0" class="row">
 
@@ -136,11 +176,8 @@
         </div>
       </div>
     </div>
-
-
       </div>
     </div>
-
   </div>
 
   <div *ngIf="sellerId">

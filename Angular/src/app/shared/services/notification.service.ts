@@ -18,7 +18,7 @@ export class NotificationService {
         return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 
-    send(senderUserId: string, receiverUserId: string, notificationPayload?: any) { if(notificationPayload.notification.acceptedProducts)console.log(notificationPayload.notification.acceptedProducts.length + "ns");
+    send(senderUserId: string, receiverUserId: string, notificationPayload?: any) { console.log(notificationPayload)
         return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, notificationPayload).subscribe(val =>console.log("notification sent"));
     }
 

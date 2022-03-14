@@ -27,8 +27,8 @@ body{
 }
 
 .avatar-image {
-  max-width: 100%;
-  vertical-align: middle;
+  width: 250px;
+  height: 250px;
   border-style: none;
 }
 
@@ -36,6 +36,10 @@ body{
   font-size: 45px;
   font-weight: 700;
   margin: 0 0 6px;
+}
+
+#aboutCol{
+overflow-wrap: break-word;
 }
 
 .about-text p {
@@ -105,6 +109,10 @@ body{
   .about-text p {
     font-size: 15px;
   }
+  .avatar-image{
+    width: 150px;
+    height: 150px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -116,5 +124,9 @@ body{
   }
   .about-text p {
     font-size: 12px;
+  }
+  .avatar-image{
+    width: 100px;
+    height: 100px;
   }
 }

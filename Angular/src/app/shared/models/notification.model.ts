@@ -11,4 +11,5 @@ export class Notification {
   receiverUsername!: string;
   offeredProducts!: Product[];
   requestedProduct!: Product;
+  notificationType!: string;
 }

@@ -4,9 +4,7 @@
             <div class="col s7 push-s5 about-text">
                 <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}} <a routerLink="/user/{{selectedUser._id}}/editprofile"><i class="material-icons dark-color" >edit</i></a></h3>
 
-                <p>I services for customers of all sizes, specializing in creating
-                    stylish, modern websites, web services and online stores. My passion is to design digital user
-                    experiences through the bold interface and meaningful interactions.</p>
+                <p>{{selectedUser.bio}}</p>
                 <div class="row about-list">
                     <div class="col s6">
                         <div class="media">
@@ -23,7 +21,7 @@
                             <p>{{selectedUser.state}}</p>
                         </div>
                     </div>
-                    <div class="col s6">
+                    <div class="col s6" id="aboutCol">
                         <div class="media">
                             <label class="dark-color">Address</label>
                             <p>{{selectedUser.address}}</p>
@@ -43,7 +41,7 @@
             </div>
             <div class="col s5 pull-s7">
                 <img src="{{selectedUser.profilePicUrl}}" title="" alt=""
-                    class="avatar-image responsive-img">
+                    class="avatar-image  circle responsive-img">
             </div>
         </div>
 

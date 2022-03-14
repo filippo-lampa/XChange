@@ -30,12 +30,12 @@ export class UserComponent implements OnInit {
     if (this.tokenStorageService.getToken()) {
       this.loggedUserId = this.tokenStorageService.getUserId();
       this.productService.getUserProducts(this.userId).subscribe(data=>{this.userProducts = data as Product[]; this.userItemsCounter = this.userProducts.length; });
-      this.userService.getUser(this.userId).subscribe((data) => {
-        this.selectedUser = data as User;
-        this.userBirthday = this.selectedUser.birthday.toLocaleString().substring(0, this.selectedUser.birthday.toLocaleString().indexOf('T'));
-        this.userAge = new Date().getFullYear() - Number(this.userBirthday.substring(0, this.userBirthday.indexOf('-')));
-        this.isLoaded = true;
-      });
     }
+    this.userService.getUser(this.userId).subscribe((data) => {
+      this.selectedUser = data as User;
+      this.userBirthday = this.selectedUser.birthday.toLocaleString().substring(0, this.selectedUser.birthday.toLocaleString().indexOf('T'));
+      this.userAge = new Date().getFullYear() - Number(this.userBirthday.substring(0, this.userBirthday.indexOf('-')));
+      this.isLoaded = true;
+    });
   }
 }

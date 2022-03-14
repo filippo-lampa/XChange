@@ -42,7 +42,8 @@ export class ExchangeReceivedComponent implements OnInit {
           }],
           "exchangeResult": "true",
           "givenProductId": this.notification.requestedProduct._id,
-          "acceptedProducts": this.notification.offeredProducts
+          "acceptedProducts": this.notification.offeredProducts,
+          "notificationType": "exchangeResult"
       }
     };
  //   this.exchangeService.saveExchange(notificationPayload);

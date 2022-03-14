@@ -69,7 +69,8 @@ export class ProductListComponent implements OnInit {
         "actions": [{
           "action": "explore",
           "title": "Go to the site"
-        }]
+        }],
+        "notificationType": "exchangeRequest"
       }
     };
 

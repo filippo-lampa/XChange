@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node ./NodeJS/index.js"
+    "start": "node server.js"
   },
   "author": "Filippo Lampa",
   "license": "ISC",
@@ -19,8 +19,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
     "nodemon": "^2.0.15",
+    "path": "^0.12.7",
     "pusher": "^5.0.1",
     "web-push": "^3.4.5"
   },
-  "engines": { "node": "16.13.0", "npm": "8.1.0" }
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
+  }
 }

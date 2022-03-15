@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -12,6 +13,7 @@ var notificationController = require('./Controllers/notificationController');
 var loginController = require('./Controllers/loginController');
 var chatController = require('./Controllers/chatController');
 
+app.use(express.static(path.join(__dirname, '../Angular/dist/angular')))
 var app = express();
 
 app.use(mongoSanitize());
@@ -29,5 +31,7 @@ app.use('/api',notificationController);
 app.use('/login',loginController);
 app.use('/api',chatController);
 
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../Angular/dist/angular/index.html'))
+  })
 

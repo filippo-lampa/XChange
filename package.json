@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "heroku-postbuild": "cd Angular && npm install && npm run build"
+    "start": "node ./NodeJS/index.js"
   },
   "author": "Filippo Lampa",
   "license": "ISC",

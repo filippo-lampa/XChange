@@ -13,8 +13,9 @@ var notificationController = require('./Controllers/notificationController');
 var loginController = require('./Controllers/loginController');
 var chatController = require('./Controllers/chatController');
 
-app.use(express.static(path.join(__dirname, '../Angular/dist/angular')))
 var app = express();
+
+app.use(express.static(path.join(__dirname, '../Angular/dist/angular')))
 
 app.use(mongoSanitize());
 app.use(bodyParser.json());

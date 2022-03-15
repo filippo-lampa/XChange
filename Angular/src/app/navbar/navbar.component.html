@@ -28,8 +28,8 @@
                         <li class="right hide-on-med-and-down" *ngIf="isLoggedIn"><a routerLink="/login"><i
                                           class="material-icons">logout</i></a></li>
                         <li class="hide-on-large-only show-on-medium-and-down right"><a id='dropdowner'
-                                    class='dropdown-trigger-2' href='#' data-target='dropdown2'><i class="material-icons"
-                                          id="notificationButton">more_vert</i></a>
+                                    class='dropdown-trigger-2' href='#' data-target='dropdown2'><i
+                                          class="material-icons" id="notificationButton">more_vert</i></a>
                         </li>
 
                   </ul>
@@ -37,32 +37,37 @@
       </nav>
 
       <ul id='dropdown1' class='dropdown-content'>
-        <div *ngFor="let notification of userNotificationList">
-            <li id="custom_li" *ngIf="!notification.read"><a
-                        routerLink="/receivedxchangeoffer/{{notification._id}}"
-                        (click)="setNotificationRead(notification)">{{notification.body}}
-                        {{notification.senderUsername}}
-                        {{notification.date}}</a></li>
+            <div *ngFor="let notification of userNotificationList">
+                  <li id="custom_li" *ngIf="!notification.read"><a
+                              routerLink="/receivedxchangeoffer/{{notification._id}}"
+                              (click)="setNotificationRead(notification)">{{notification.body}}
+                              {{notification.senderUsername}}
+                              {{notification.date}}</a></li>
 
 
-            <li id="custom_li" style="background-color: #eeeeee " *ngIf="notification.read"><a
-                        routerLink="/receivedxchangeoffer/{{notification._id}}"
-                        (click)="setNotificationRead(notification)">{{notification.body}}
-                        {{notification.senderUsername}}
-                        {{notification.date}}</a></li>
-            <li class="divider" tabindex="-1"></li>
-          </div>
+                  <li id="custom_li" style="background-color: #eeeeee " *ngIf="notification.read"><a
+                              routerLink="/receivedxchangeoffer/{{notification._id}}"
+                              (click)="setNotificationRead(notification)">{{notification.body}}
+                              {{notification.senderUsername}}
+                              {{notification.date}}</a></li>
+                  <li class="divider" tabindex="-1"></li>
+            </div>
       </ul>
 
       <ul id='dropdown2' class='dropdown-content'>
-            <li *ngIf="isLoggedIn"><a class='dropdown-trigger' href='#' data-target='dropdown1'><span
+            <!--             <li *ngIf="isLoggedIn"><a class='dropdown-trigger' href='#' data-target='dropdown1'><span
               class="new badge" id="mediumDownBadge">{{unreadNotifications.length}}</span>
               <i class="material-icons" id="notificationButton">notifications</i></a>
+            </li>-->
+            <li *ngIf="isLoggedIn"><a routerLink="/notification-page"><span class="new badge"
+                              id="mediumDownBadge">{{unreadNotifications.length}}</span>
+                        <i class="material-icons">notifications</i></a>
             </li>
             <li *ngIf="isAdmin"><a routerLink="/adminboard"><i class="material-icons">apps</i></a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/addproduct"><i class="material-icons">work</i></a></li>
             <li><a routerLink="/search"><i class="material-icons text-decoration-none">search</i></a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/user/{{userId}}"><i class="material-icons">person</i></a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/register"><i class="material-icons">control_point</i></a></li>
             <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="material-icons">login</i></a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/login"><i class="material-icons">logout</i></a></li>
       </ul>

@@ -26,6 +26,7 @@ import { ExchangeReceivedComponent } from './exchange-received/exchange-received
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
 import { ProfileditComponent } from './profiledit/profiledit.component';
+import { NotificationPageComponent } from './notification-page/notification-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ProfileditComponent } from './profiledit/profiledit.component';
     ExchangeReceivedComponent,
     AddProductComponent,
     AdminBoardComponent,
-    ProfileditComponent
+    ProfileditComponent,
+    NotificationPageComponent
   ],
   imports: [
     BrowserModule,

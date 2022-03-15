@@ -4,7 +4,8 @@
   "description": "progetto progettazione applicazioni web e mobile",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
   },
   "author": "Filippo Lampa",
   "license": "ISC",
@@ -20,5 +21,6 @@
     "nodemon": "^2.0.15",
     "pusher": "^5.0.1",
     "web-push": "^3.4.5"
-  }
+  },
+  "engines": { "node": "16.13.0", "npm": "8.1.0" }
 }

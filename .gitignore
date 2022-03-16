@@ -5,6 +5,9 @@
 ### Angular ###
 ## Angular ##
 # compiled output
+tmp/
+app/**/*.js
+app/**/*.js.map
 
 # dependencies
 node_modules/
@@ -123,7 +126,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/

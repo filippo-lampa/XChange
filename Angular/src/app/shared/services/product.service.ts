@@ -12,7 +12,7 @@ export class ProductService {
   selectedProduct!: Product;
   products!: Product[];
 
-  readonly baseURL = 'http://localhost:3000/products';
+  readonly baseURL = 'http://localhost:8080/api/products';
 
   constructor(private http: HttpClient) { }
 

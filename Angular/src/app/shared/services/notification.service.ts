@@ -8,7 +8,7 @@ import { Product } from "../models/product.model";
 @Injectable()
 export class NotificationService {
 
-    readonly baseURL = 'http://localhost:3000/api';
+    readonly baseURL = 'http://localhost:8080/api';
 
     constructor(private http: HttpClient) {
 

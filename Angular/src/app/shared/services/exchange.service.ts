@@ -13,7 +13,7 @@ export class ExchangeService {
   offeredProducts: Product[] = [];
   userProducts: Product[] = [];
 
-  readonly baseURL = 'http://localhost:3000/exchangecenter';
+  readonly baseURL = 'http://localhost:8080/exchangecenter';
 
   constructor(private productService: ProductService, private http: HttpClient) { }
 

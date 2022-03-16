@@ -9,7 +9,7 @@ export class UserService {
 
   selectedUser!: User;
 
-  readonly baseURL = 'http://localhost:3000/user';
+  readonly baseURL = 'http://localhost:8080/api/user';
 
   constructor(private http: HttpClient) { }
 

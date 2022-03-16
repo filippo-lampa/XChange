@@ -14,22 +14,22 @@ var loginController = require('./Controllers/loginController');
 var chatController = require('./Controllers/chatController');
 
 var app = express();
+app.use(cors());
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../Angular/dist/angular')))
 
 app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors({origin: ['http://localhost:4200', 'http://localhost:3000']}));
-app.listen(3000, ()=>console.log("Server started on port 3000"));
-
-app.use('/user',userController);
-app.use('/products',productController);
-app.use('/categories',categoryController);
+app.listen(process.env.PORT || 8080);
+app.use('/api/user',userController);
+app.use('/api/products',productController);
+app.use('/api/categories',categoryController);
 app.use('/api',pushNotificationsController);
 app.use('/api',notificationController);
-app.use('/login',loginController);
+app.use('/api/login',loginController);
 app.use('/api',chatController);
 
 app.get('*', (req, res) => {

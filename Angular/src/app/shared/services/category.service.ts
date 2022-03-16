@@ -10,7 +10,7 @@ export class CategoryService {
   selectedCategory!: Category;
   categories!: Category[];
 
-  readonly baseURL = 'http://localhost:3000/categories';
+  readonly baseURL = 'http://localhost:3000/api/categories';
 
   constructor(private http: HttpClient) { }
 

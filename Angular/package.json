@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "server": "http-server -p 4200",
-    "heroku-postbuild": "ng build — prod"
+    "heroku-postbuild": "ng build --configuration=production --base-href ."
   },
   "private": true,
   "dependencies": {
@@ -40,6 +40,5 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
-  },
-  "proxy": "http://localhost:3000"
+  }
 }

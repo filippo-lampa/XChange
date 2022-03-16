@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
-      .then(sub => { console.log(sub); this.notificationService.addPushSubscriber(sub, this.userId).subscribe(data => console.log("ok")) })
+      .then(sub => { console.log(sub); this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe(data => console.log("ok")) })
       .catch(err => console.error("Could not subscribe to notifications", err));
       this.isLoggedIn = true;
     }

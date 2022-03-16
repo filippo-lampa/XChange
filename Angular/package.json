@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "server": "http-server -p 4200",
-    "heroku-postbuild": "ng build --configuration=production --base-href ."
+    "heroku-postbuild": "ng build --prod"
 
   },
   "private": true,

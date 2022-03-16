@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  readonly baseURL = 'http://localhost:8080/api/login';
+  readonly baseURL = 'http://xchangenet.herokuapp.com/api/login';
 
   constructor(private http: HttpClient) { }
 

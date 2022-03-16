@@ -11,7 +11,7 @@ export interface Message {
 @Injectable()
 export class MessageService {
   messagesStream = new ReplaySubject<Message>(1);
-  readonly baseURL = 'http://localhost:8080/api/messages';
+  readonly baseURL = 'http://xchangenet.herokuapp.com/api/messages';
 
   constructor(
     private pusherService: PusherService,

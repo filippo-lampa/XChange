@@ -12,7 +12,7 @@ export class ProductService {
   selectedProduct!: Product;
   products!: Product[];
 
-  readonly baseURL = 'http://localhost:8080/api/products';
+  readonly baseURL = 'http://xchangenet.herokuapp.com/api/products';
 
   constructor(private http: HttpClient) { }
 

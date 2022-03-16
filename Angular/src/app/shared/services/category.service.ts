@@ -10,7 +10,7 @@ export class CategoryService {
   selectedCategory!: Category;
   categories!: Category[];
 
-  readonly baseURL = 'http://xchangenet.herokuapp.com/api/categories';
+  readonly baseURL = 'https://xchangenet.herokuapp.com/api/categories';
 
   constructor(private http: HttpClient) { }
 

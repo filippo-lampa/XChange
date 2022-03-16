@@ -8,7 +8,7 @@ import { Product } from "../models/product.model";
 @Injectable()
 export class NotificationService {
 
-    readonly baseURL = 'http://xchangenet.herokuapp.com/api';
+    readonly baseURL = 'https://xchangenet.herokuapp.com/api';
 
     constructor(private http: HttpClient) {
 

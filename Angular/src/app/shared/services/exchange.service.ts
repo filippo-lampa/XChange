@@ -13,7 +13,7 @@ export class ExchangeService {
   offeredProducts: Product[] = [];
   userProducts: Product[] = [];
 
-  readonly baseURL = 'http://xchangenet.herokuapp.com/exchangecenter';
+  readonly baseURL = 'https://xchangenet.herokuapp.com/exchangecenter';
 
   constructor(private productService: ProductService, private http: HttpClient) { }
 

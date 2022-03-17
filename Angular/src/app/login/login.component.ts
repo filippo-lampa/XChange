@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
       data => {
         this.userId = data.userId;
         this.isLoggedIn = true;
-        this.tokenStorageService.saveToken(data.token, data.expiresIn);
-        this.tokenStorageService.saveUser(data.userId);
-        this.reloadPage();
+        this.saveTokenAndUser(data)
+          .then(() => this.router.navigate(['']))
+          .then(() => this.reloadPage())
       },
       err => {
         M.toast({ html: 'Invalid email or password', classes: 'rounded red toast-container' });
@@ -57,6 +57,15 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  saveTokenAndUser(data: any) {
+    var promise = new Promise<void>((resolve, reject) => {
+      console.log("PRIMA");
+      this.tokenStorageService.saveToken(data.token, data.expiresIn);
+      this.tokenStorageService.saveUser(data.userId);
+      resolve();
+    });
+    return promise;
+  }
 
   onLogout(): void {
     this.tokenStorageService.logout();

@@ -70,7 +70,6 @@ router.put('/:id', verifyToken, (req,res)=>{
         console.log('No record with given id');
     else{
         isUserOrAdmin(req.headers.userid, req.params.id).then( (value, err) => {
-            console.log(value);
             if(!err){
                 bcrypt.genSalt(10).then( salt => {
                     bcrypt.hash(req.body.password, salt).then(hash => {
@@ -104,27 +103,21 @@ router.delete('/:id', verifyToken, (req,res)=>{
         console.log('No record with given id');
     else{        
         isUserOrAdmin(req.headers.userid, req.params.id).then( (value, err) => {
-            console.log(value);
             if(!err){
                 Product.find((err,docs)=>{
                     if(!err){
-                        console.log(docs);
                         if(docs.length != 0){
                             for(const product of docs){
                                 if(product.sellerId == req.params.id){
                                     Product.findByIdAndRemove(product.id, (err,productToRemove)=>{
-                                        if(!err){
-                                            console.log("removed item");
-                                        }
-                                        else
-                                          console.log('Error in deleting product with given id: ' + product.id);
+                                        if(err)
+                                            console.log('Error in deleting product with given id: ' + product.id);
                                     });
                                 }
                             }
 
                             User.findByIdAndRemove(req.params.id, (err,userToRemove)=>{
                                 if(!err){
-                                    console.log("dropped");
                                     res.send(userToRemove);
                                 }
                                 else

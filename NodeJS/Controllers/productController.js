@@ -64,7 +64,6 @@ router.put('/:userId/:productId', verifyToken ,(req,res)=>{
         console.log('No record with given id');
     else{
         isUserOrAdmin(req.params.productId, req.params.userId).then( (value, err) => {
-            console.log(value);
             if(!err){
                 var product = {
                     name: req.body.name,
@@ -93,7 +92,6 @@ router.delete('/:userId/:productId', verifyToken, (req,res)=>{
         console.log('No record with given id');
     else{
         isUserOrAdmin(req.params.productId, req.params.userId).then( (value, err) => {
-            console.log(value);
             if(!err){
                 Product.findByIdAndRemove(req.params.productId, (err,docs)=>{
                     if(!err)

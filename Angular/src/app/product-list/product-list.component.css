@@ -63,12 +63,13 @@ border-top-right-radius: 15px;
   width: 70vw;
 }
 .modal-content, .modal-footer{
-  background: linear-gradient(to right, #00bfa5  0%, #00bfa5  40%, white 40%, white 100%);
+  background: #00bfa5
   }
 .modal-footer{
   width: 97%;
 }
 #closeButton{
   align-items: flex-end;
+  background-color: #ee6e73;
 }
 }

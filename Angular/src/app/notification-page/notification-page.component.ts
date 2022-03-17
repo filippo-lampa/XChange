@@ -39,7 +39,7 @@ export class NotificationPageComponent implements OnInit {
   setNotificationRead(notification: Notification) {
     if (this.isLoggedIn) {
       notification.read = true;
-      this.notificationService.setNotificationRead(notification).subscribe(data => console.log("notification read"));
+      this.notificationService.setNotificationRead(notification).subscribe();
     }
   }
 

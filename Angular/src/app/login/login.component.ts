@@ -17,9 +17,7 @@ import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
   styleUrls: ['./login.component.css'],
   providers: [UserService, NotificationService]
 })
-export class LoginComponent implements OnInit, AfterViewInit {
-
-  readonly VAPID_PUBLIC_KEY = "BOzdHgXy8Zfg_aMFp-HMpEKMPzd_uPYmcYBq9Y30itAIsyP6WVF3IQXAeK7GYrE4BhMtfUrWoMNqiLCgUyRj90c";
+export class LoginComponent implements OnInit {
 
   form: any = {
     email: null,
@@ -38,20 +36,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
-    if (this.tokenStorageService.getToken()) {
-      this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
-      .then(sub => { console.log(sub); this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe(data => console.log("ok")) })
-      .catch(err => console.error("Could not subscribe to notifications", err));
-    }
-  }
-
   onLogin(): void {
     const authData: AuthData = {
       email: this.form.email,
       password: this.form.password
     };
-    console.log(authData);
     this.authService.postAuth(authData).subscribe(
       data => {
         this.userId = data.userId;

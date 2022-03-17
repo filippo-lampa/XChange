@@ -59,7 +59,7 @@ export class ProductListComponent implements OnInit {
     var notificationPayload = {
       "notification": {
         "title": "Exchange offer",
-        "body": "New exchange offer received by",
+        "body": "New exchange offer received",
         "icon": "assets/main-page-logo-small-hat.png",
         "vibrate": [100, 50, 100],
         "data": {

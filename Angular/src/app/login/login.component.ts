@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const authData: AuthData = {
       email: this.form.email,
       password: this.form.password
-    }
+    };
+    console.log(authData);
     this.authService.postAuth(authData).subscribe(
       data => {
 

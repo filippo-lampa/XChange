@@ -14,7 +14,7 @@ export class NotificationService {
 
     }
 
-    addPushSubscriber(sub: PushSubscription, userId: string) {
+    addPushSubscriber(sub: PushSubscription, userId: string) { console.log(sub)
         return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 

@@ -117,13 +117,16 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                 }
             };
 
-            Promise.resolve(webpush.sendNotification(
-                docs, JSON.stringify(pushNotificationPayload)))
-                .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
-                .catch(err => {
-                    console.error("Error sending notification, reason: ", err);
-                    res.sendStatus(500);
-                });
+            if(docs){
+                Promise.resolve(webpush.sendNotification(
+                    docs, JSON.stringify(pushNotificationPayload)))
+                    .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
+                    .catch(err => {
+                        console.error("Error sending notification, reason: ", err);
+                        res.sendStatus(500);
+                    });
+            }
+            
         }
 
         else console.log('Error in finding user with the given id: ' + req.params.receiverId);

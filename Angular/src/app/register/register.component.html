@@ -1,29 +1,100 @@
-<div>
-    <form name="form" (ngSubmit)="onRegister()" #f="ngForm" novalidate>
-        <label>Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" />
-        <label>Name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #username="ngModel" />
-        <label>Surname</label>
-        <input type="text" class="form-control" name="surname" [(ngModel)]="form.surname" #username="ngModel" />
-        <label>State</label>
-        <input type="text" class="form-control" name="address" [(ngModel)]="form.state" #username="ngModel" />
-        <label>Address</label>
-        <input type="text" class="form-control" name="address" [(ngModel)]="form.address" #username="ngModel" />
-        <label>Phone</label>
-        <input type="number" class="form-control" name="phone" [(ngModel)]="form.phone" #username="ngModel" />
-        <label>Birthday Date</label>
-        <input type="Date" class="form-control" name="birthday" [(ngModel)]="form.birthday" #username="ngModel" />
-        <label>Email</label>
-        <input type="email" class="form-control" name="email" [(ngModel)]="form.email" #username="ngModel" />
-        <label>Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #username="ngModel" />
-        <label>Bio</label>
-        <input type="text" class="form-control" name="bio" [(ngModel)]="form.bio" #username="ngModel" />
-        <label>Profile image URL</label>
-        <input type="text" class="form-control" name="bio" [(ngModel)]="form.profilePicUrl" #username="ngModel" />
-        <button class="btn">
-            Register
-        </button>
-    </form>
-</div>
+<div id="register-form">
+    <div class="row">
+        <div class=" col s12 m10 l8 offset-m1 offset-l2">
+            <div class="card-action materialize-red lighten-2 white-text">
+                <h3 class="center">Register Form</h3>
+            </div>
+            <div class="card">
+                <form name="form" (ngSubmit)="onRegister()" #f="ngForm" novalidate>
+
+                    <div class="card-content">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="form.username"
+                            #username="ngModel" />
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="form.name"
+                            #username="ngModel" />
+                        <label>Surname</label>
+                        <input type="text" class="form-control" name="surname" [(ngModel)]="form.surname"
+                            #username="ngModel" />
+                        <label>State</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="form.state"
+                            #username="ngModel" />
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="form.address"
+                            #username="ngModel" />
+                        <label>Phone</label>
+                        <input type="number" class="form-control" name="phone" [(ngModel)]="form.phone"
+                            #username="ngModel" />
+                        <label>Birthday Date</label>
+                        <input type="Date" class="form-control" name="birthday" [(ngModel)]="form.birthday"
+                            #username="ngModel" />
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="form.email"
+                            #username="ngModel" />
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
+                            #username="ngModel" />
+                        <label>Bio</label>
+                        <input type="text" class="form-control" name="bio" [(ngModel)]="form.bio" #username="ngModel" />
+                        <label>Profile image URL</label>
+                        <input type="text" class="form-control" name="bio" [(ngModel)]="form.profilePicUrl"
+                            #username="ngModel" />
+                        <button class="btn">
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--
+        <div class="show-on-large col s12 l7 ">
+            <div class="card-action materialize-red lighten-2 white-text">
+                <h3 class="center">Register Form</h3>
+            </div>
+            <div class="card">
+                <form name="form" (ngSubmit)="onRegister()" #f="ngForm" novalidate>
+
+                    <div class="card-content">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="form.username"
+                            #username="ngModel" />
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="form.name"
+                            #username="ngModel" />
+                        <label>Surname</label>
+                        <input type="text" class="form-control" name="surname" [(ngModel)]="form.surname"
+                            #username="ngModel" />
+                        <label>State</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="form.state"
+                            #username="ngModel" />
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="form.address"
+                            #username="ngModel" />
+                        <label>Phone</label>
+                        <input type="number" class="form-control" name="phone" [(ngModel)]="form.phone"
+                            #username="ngModel" />
+                        <label>Birthday Date</label>
+                        <input type="Date" class="form-control" name="birthday" [(ngModel)]="form.birthday"
+                            #username="ngModel" />
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="form.email"
+                            #username="ngModel" />
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="form.password"
+                            #username="ngModel" />
+                        <label>Bio</label>
+                        <input type="text" class="form-control" name="bio" [(ngModel)]="form.bio" #username="ngModel" />
+                        <label>Profile image URL</label>
+                        <input type="text" class="form-control" name="bio" [(ngModel)]="form.profilePicUrl"
+                            #username="ngModel" />
+                        <button class="btn">
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        -->
+
+    </div>

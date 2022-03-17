@@ -16,12 +16,12 @@ router.post('/', (req, res) => {
         }
         else{
             console.log('Invalid email or password');
-            return res.status(401);
+            return res.sendStatus(404);
         }
     }).then(result => {
         if(!result){
             console.log('Invalid email or password');
-            return res.status(401)
+            return res.sendStatus(404);
         }         
 
         const token = jwt.sign(

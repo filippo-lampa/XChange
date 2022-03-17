@@ -8,6 +8,9 @@ import { UserService } from '../shared/services/user.service';
 import { NotificationService } from '../shared/services/notification.service';
 import { SwPush } from '@angular/service-worker';
 
+// @ts-ignore
+import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,7 +45,6 @@ export class LoginComponent implements OnInit {
     }
     this.authService.postAuth(authData).subscribe(
       data => {
-
         this.userId = data.userId;
         this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
           .then(sub => { console.log(sub); this.notificationService.addPushSubscriber(sub, this.userId).subscribe(data => console.log("ok")) })
@@ -54,6 +56,7 @@ export class LoginComponent implements OnInit {
         this.reloadPage();
       },
       err => {
+        M.toast({ html: 'Invalid email or password', classes: 'rounded red toast-container' });
         console.log(err.error.message);
         this.isLoggedIn = false;
       }

@@ -108,8 +108,25 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
             ));
             }
             
+            var pushNotificationPayload = {
+                "notification": {
+                    "title": notificationPayload.notification.title,
+                    "body": notificationPayload.notification.body,
+                    "icon": notificationPayload.notification.icon,
+                    "vibrate": [100, 50, 100],
+                    "data": {
+                        "dateOfArrival": Date.now(),
+                        "primaryKey": 1
+                    },
+                    "actions": [{
+                        "action": "explore",
+                        "title": "Go to the site"
+                    }]
+                }
+            };
+
             Promise.resolve(webpush.sendNotification(
-                docs, JSON.stringify(notificationPayload)))
+                docs, JSON.stringify(pushNotificationPayload)))
                 .then(() => {console.log(notificationPayload); res.status(200).json({message: 'Notification sent successfully.'})})
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);

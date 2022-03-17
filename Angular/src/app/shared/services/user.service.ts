@@ -9,7 +9,7 @@ export class UserService {
 
   selectedUser!: User;
 
-  readonly baseURL = 'http://localhost:3000/user';
+  readonly baseURL = 'https://xchangenet.herokuapp.com/api/user';
 
   constructor(private http: HttpClient) { }
 

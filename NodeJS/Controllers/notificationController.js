@@ -27,8 +27,8 @@ webpush.setVapidDetails(
 
 var app = express();
 
-router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{ 
-    NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{
+router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
+    NotificationSub.findOne(({userId: req.params.receiverId}), (err,docs)=>{ 
         if(!err){
             const notificationPayload = req.body;
             var offeredProducts;
@@ -107,10 +107,27 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                 }
             ));
             }
+            
+            const pushNotificationPayload = {
+                "notification": {
+                    "title": notificationPayload.notification.title,
+                    "body": notificationPayload.notification.body,
+                    "icon": notificationPayload.notification.icon,
+                    "vibrate": [100, 50, 100],
+                    "data": {
+                        "dateOfArrival": Date.now(),
+                        "primaryKey": 1
+                    },
+                    "actions": [{
+                        "action": "explore",
+                        "title": "Go to the site"
+                    }]
+                }
+            };
 
-            Promise.all(docs.map(subDevice => webpush.sendNotification(
-                subDevice, JSON.stringify(notificationPayload))))
-                .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
+            Promise.resolve(webpush.sendNotification(
+                docs, JSON.stringify(pushNotificationPayload)))
+                .then(() => {console.log(pushNotificationPayload); res.status(200).json({message: 'Notification sent successfully.'})})
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);
                     res.sendStatus(500);

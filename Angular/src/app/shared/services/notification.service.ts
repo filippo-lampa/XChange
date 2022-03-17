@@ -8,13 +8,13 @@ import { Product } from "../models/product.model";
 @Injectable()
 export class NotificationService {
 
-    readonly baseURL = 'http://localhost:3000/api';
+    readonly baseURL = 'https://xchangenet.herokuapp.com/api';
 
     constructor(private http: HttpClient) {
 
     }
 
-    addPushSubscriber(sub: PushSubscription, userId: string) {
+    addPushSubscriber(sub: PushSubscription, userId: string) { console.log(sub)
         return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 

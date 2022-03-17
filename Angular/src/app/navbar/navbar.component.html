@@ -40,13 +40,14 @@
     <div *ngFor="let notification of userNotificationList">
         <li id="custom_li" *ngIf="!notification.read && notification.notificationType == 'exchangeRequest'"><a
                     routerLink="/receivedxchangeoffer/{{notification._id}}"
-                    (click)="setNotificationRead(notification)">{{notification.body}}
+                    (click)="setNotificationRead(notification)">
+                    {{notification.body}} by
                     {{notification.senderUsername}}
                     {{notification.date}}</a></li>
 
 
         <li id="custom_li" style="background-color: #eeeeee " *ngIf="notification.read && notification.notificationType == 'exchangeRequest'"><a>
-                    {{notification.body}}
+                    {{notification.body}} by
                     {{notification.senderUsername}}
                     {{notification.date}}</a></li>
 

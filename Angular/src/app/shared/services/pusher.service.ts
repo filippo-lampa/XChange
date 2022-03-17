@@ -8,7 +8,7 @@ declare const Pusher: any;
 export class PusherService {
   pusher: any;
   messagesChannel: any;
-  readonly baseURL = 'http://localhost:3000/api/messages';
+  readonly baseURL = 'https://xchangenet.herokuapp.com/api/messages';
   subscriptionSucceeded: boolean = false;
 
   constructor(private http: HttpClient) {
@@ -28,7 +28,7 @@ export class PusherService {
   }
 
   initializePusher(senderId: string, receiverId: string): void {
-    this.pusher = new Pusher(environment.pusher.key, {cluster: 'eu', authEndpoint: 'http://localhost:3000/api/pusher/auth'});
+    this.pusher = new Pusher(environment.pusher.key, {cluster: 'eu', authEndpoint: 'https://xchangenet.herokuapp.com/api/pusher/auth'});
     this.messagesChannel = this.pusher.subscribe('private-' + this.generateChannelName(senderId, receiverId));
   }
 

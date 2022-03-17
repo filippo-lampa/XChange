@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 import { AuthService } from '../shared/services/auth.service';
 import { AuthData } from '../shared/models/authData.model';
@@ -14,7 +14,7 @@ import { SwPush } from '@angular/service-worker';
   styleUrls: ['./login.component.css'],
   providers: [UserService, NotificationService]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   readonly VAPID_PUBLIC_KEY = "BOzdHgXy8Zfg_aMFp-HMpEKMPzd_uPYmcYBq9Y30itAIsyP6WVF3IQXAeK7GYrE4BhMtfUrWoMNqiLCgUyRj90c";
 
@@ -31,10 +31,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.tokenStorageService.getToken()) {
       this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
       .then(sub => { console.log(sub); this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe(data => console.log("ok")) })
       .catch(err => console.error("Could not subscribe to notifications", err));
-      this.isLoggedIn = true;
     }
   }
 

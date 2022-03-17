@@ -28,7 +28,7 @@ webpush.setVapidDetails(
 var app = express();
 
 router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
-    NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{ console.log(docs)
+    NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{ 
         if(!err){
             const notificationPayload = req.body;
             var offeredProducts;
@@ -110,7 +110,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
 
             Promise.all(docs.map(subDevice => webpush.sendNotification(
                 subDevice, JSON.stringify(notificationPayload))))
-                .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
+                .then(() =>{ console.log(subDevice + "and" + notificationPyload);res.status(200).json({message: 'Notification sent successfully.'})})
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);
                     res.sendStatus(500);

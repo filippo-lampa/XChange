@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row profile align-items-center">
             <div class="col s7 push-s5 about-text">
-                <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}} <a routerLink="/user/{{selectedUser._id}}/editprofile"><i class="material-icons dark-color" >edit</i></a></h3>
+                <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}} <a routerLink="/user/{{selectedUser._id}}/editprofile" *ngIf="selectedUser._id == loggedUserId"><i class="material-icons dark-color" >edit</i></a></h3>
 
                 <p>{{selectedUser.bio}}</p>
                 <div class="row about-list">

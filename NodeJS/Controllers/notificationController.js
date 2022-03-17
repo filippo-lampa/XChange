@@ -108,7 +108,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
             ));
             }
             
-            var pushNotificationPayload = {
+            const pushNotificationPayload = {
                 "notification": {
                     "title": notificationPayload.notification.title,
                     "body": notificationPayload.notification.body,

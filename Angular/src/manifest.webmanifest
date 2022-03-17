@@ -1,6 +1,6 @@
 {
-  "name": "Angular",
-  "short_name": "Angular",
+  "name": "XChange",
+  "short_name": "XChange",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
@@ -8,7 +8,7 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "assets/icons/icon-72x72.png",
+      "src": "assets/icons/",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable any"
@@ -40,12 +40,6 @@
     {
       "src": "assets/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "assets/icons/icon-384x384.png",
-      "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },

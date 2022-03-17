@@ -1,45 +1,55 @@
 <div class="container teal lighten-2" *ngIf="isDataLoaded && !exchangeCompleted">
   <div class="row">
-    <div class="col m5 left ">
+    <div class="col m5 s12 left ">
       <div class="card-panel m5 red lighten-2">
-        <h4 class="white-text">
+        <h4 class="white-text center">
           Xchange Offer
         </h4>
       </div>
     </div>
-      <div class="col m7">
-        <div class="card-panel m7 teal">
-          <span class="white-text">Requested product name: {{notification.requestedProduct.name}}</span><br>
-          <span class="white-text">Upload date: {{notification.requestedProduct.uploadDate}}</span><br>
-          <span class="white-text">Interested users: {{notification.requestedProduct.interestedUsers}}</span><br>
-        </div>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col m12"><h6 class="white-text">Offered from: {{notification.senderUsername}}</h6>
-      <div class="card-panel m7 teal" *ngFor="let product of notification.offeredProducts">
-        <span class="white-text">
-          Name: {{product.name}}, Description: {{product.description}}, Interested Users: {{product.interestedUsers}}
-        </span>
+    <div class="col m7 s12">
+      <div class="card-panel m7 teal">
+        <span class="white-text">Requested product name: {{notification.requestedProduct.name}}</span><br>
+        <span class="white-text">Upload date: {{notification.requestedProduct.uploadDate}}</span><br>
+        <span class="white-text">Interested users: {{notification.requestedProduct.interestedUsers}}</span><br>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col m6"><a class="waves-effect waves-light btn right red lighten-2"  (click)="acceptExchange()">ACCEPT</a></div>
-    <div class="col m6"><a class="waves-effect waves-light btn left red lighten-2" (click)="refuseExchange()">REFUSE</a></div>
+    <div class="col m12 s12">
+      <h6 class="white-text">Offered from: {{notification.senderUsername}}</h6>
+      <div class="card-panel m7 teal" *ngFor="let product of notification.offeredProducts">
+        <span class="white-text">
+          Name: {{product.name}}
+        </span><br>
+        <span class="white-text">
+          Description: {{product.description}}
+        </span><br>
+        <span class="white-text">
+          Interested Users: {{product.interestedUsers}}
+        </span><br>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m6 s6"><a class="waves-effect waves-light btn right red lighten-2"
+        (click)="acceptExchange()">ACCEPT</a></div>
+    <div class="col m6 s6"><a class="waves-effect waves-light btn left red lighten-2"
+        (click)="refuseExchange()">REFUSE</a>
+    </div>
   </div>
 </div>
 
 <div *ngIf="exchangeCompleted">
 
-    <body>
-      <div class="card">
+  <body>
+    <div class="card">
       <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
         <i class="checkmark">✓</i>
       </div>
-        <h1>Success</h1>
-        <p>Your Xchange has completed successfully<br/> we'll be in touch shortly!</p>
-      </div>
-    </body>
+      <h1>Success</h1>
+      <p>Your Xchange has completed successfully<br /> we'll be in touch shortly!</p>
+    </div>
+  </body>
 
 </div>

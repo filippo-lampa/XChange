@@ -23,13 +23,17 @@ export class UserComponent implements OnInit {
   userProducts: Product[] = [];
 
   constructor(private userService: UserService, private route: ActivatedRoute, private tokenStorageService: TokenStorageService, private productService: ProductService) {
-    this.route.params.subscribe(params => this.userId = params['id']);
+    this.route.params.subscribe(params => {
+      this.userId = params['id'];
+      this.ngOnInit();
+    }
+    );
   }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.loggedUserId = this.tokenStorageService.getUserId();
-      this.productService.getUserProducts(this.userId).subscribe(data=>{this.userProducts = data as Product[]; this.userItemsCounter = this.userProducts.length; });
+      this.productService.getUserProducts(this.userId).subscribe(data => { this.userProducts = data as Product[]; this.userItemsCounter = this.userProducts.length; });
     }
     this.userService.getUser(this.userId).subscribe((data) => {
       this.selectedUser = data as User;

@@ -1,6 +1,6 @@
 .container{
   padding: 3%;
-  transform: translateY(35%);
+  transform: translateY(35%); 
   height: 100%;
   border-radius: 15px;
 }
@@ -37,4 +37,16 @@ i {
   box-shadow: 0 2px 3px #C8D0D8;
   display: inline-block;
   margin: 0 auto;
+}
+
+
+@media screen and (max-width: 600px) {
+  .container{
+    transform: translateY(0); 
+    padding: 3%;
+    height: 100%;
+    border-radius: 15px;
+    margin-top: 10%;
+  }
+  
 }

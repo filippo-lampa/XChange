@@ -14,7 +14,6 @@ var loginController = require('./Controllers/loginController');
 var chatController = require('./Controllers/chatController');
 
 var app = express();
-app.use(cors());
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../Angular/dist/angular')))

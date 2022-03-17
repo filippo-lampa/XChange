@@ -42,6 +42,6 @@
   }
 
   .recapWhiteText{
-    color: white;
+    color: white !important;
   }
 }

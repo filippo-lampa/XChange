@@ -127,7 +127,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
 
             Promise.resolve(webpush.sendNotification(
                 docs, JSON.stringify(pushNotificationPayload)))
-                .then(() => {console.log(notificationPayload); res.status(200).json({message: 'Notification sent successfully.'})})
+                .then(() => {console.log(pushNotificationPayload); res.status(200).json({message: 'Notification sent successfully.'})})
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);
                     res.sendStatus(500);

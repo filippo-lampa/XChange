@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
       email: this.form.email,
       password: this.form.password
     };
-    console.log(authData);
     this.authService.postAuth(authData).subscribe(
       data => {
         this.userId = data.userId;

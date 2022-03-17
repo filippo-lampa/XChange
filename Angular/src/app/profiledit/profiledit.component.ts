@@ -28,7 +28,7 @@ export class ProfileditComponent implements OnInit {
     });
   }
 
-  onSubmit(userForm: NgForm){console.log(userForm.value)
+  onSubmit(userForm: NgForm){
       this.userService.putUser(userForm.value).subscribe((res)=>{
         M.toast({html: 'Updated successfully', classes: 'rounded'});
       })

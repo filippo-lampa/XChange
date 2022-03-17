@@ -14,12 +14,12 @@ export class NotificationService {
 
     }
 
-    addPushSubscriber(sub: PushSubscription, userId: string) { console.log(sub)
+    addPushSubscriber(sub: PushSubscription, userId: string) {
         return this.http.post(this.baseURL + '/notifications/' + `${userId}`, sub);
     }
 
-    send(senderUserId: string, receiverUserId: string, notificationPayload?: any) { console.log(notificationPayload)
-        return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, notificationPayload).subscribe(val =>console.log("notification sent"));
+    send(senderUserId: string, receiverUserId: string, notificationPayload?: any) {
+        return this.http.post(this.baseURL + '/notificationcenter/'+ `${senderUserId}` + "/" + `${receiverUserId}`, notificationPayload).subscribe();
     }
 
     getUserNotifications(userId: string){

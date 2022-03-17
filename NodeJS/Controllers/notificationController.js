@@ -40,34 +40,26 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                     console.log('No record with given id');
                 else{
                     User.findByIdAndUpdate(req.params.senderId, { $inc: { xChangedItems: 1 }}, (err,docs)=>{
-                        if(!err)
-                        console.log("Incremented xchange counter");
-                      else
-                        console.log('Error in incrementing xchange counter for user with id: ' + req.params.senderId);
+                        if(err)
+                            console.log('Error in incrementing xchange counter for user with id: ' + req.params.senderId);
                     });
                     User.findByIdAndUpdate(req.params.receiverId, { $inc: { xChangedItems: req.body.notification.acceptedProducts.length }}, (err,docs)=>{
-                        if(!err)
-                        console.log("Incremented xchange counter");
-                      else
-                        console.log('Error in incrementing xchange counter for user with id: ' + req.params.receiverId);
+                        if(err)
+                            console.log('Error in incrementing xchange counter for user with id: ' + req.params.receiverId);
                     });
                     Product.findByIdAndUpdate(req.body.notification.givenProductId, { $set: { sellerId: req.params.receiverId }}, (err,docs)=>{
-                    if(!err)
-                      console.log("product owner changed");
-                    else
-                      console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
+                    if(err)
+                        console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
                     });
                 }
 
                 req.body.notification.acceptedProducts.forEach(product => {
                     if(!isValidObjectId(product._id))
                         console.log('No record with given id');
-                    else{  console.log(product._id) 
+                    else{ 
                         Product.findByIdAndUpdate(product._id, { $set: { sellerId: req.params.senderId }}, (err,docs)=>{
-                            if(!err)
-                              console.log("product owner changed");
-                            else
-                              console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
+                            if(err)
+                                console.log('Error in deleting product with given id: ' + req.body.notification.givenProductId);
                             });
                     }
                 });
@@ -87,7 +79,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                     getSenderUsernameAsync(req.params.senderId).then((data)=>{notification.senderUsername = data; getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
                         notification.save((err,doc)=>{ 
                             if(err)
-                            console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
+                                console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
                         });
                     }   
                     )});
@@ -102,7 +94,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
                 getSenderUsernameAsync(req.params.senderId).then(getReceiverUsernameAsync(req.params.receiverId, notification).then(()=>{    
                     notification.save((err,doc)=>{ 
                         if(err)
-                        console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
+                            console.log('Error in notification save: ' + JSON.stringify(err, undefined, 2));
                     });
                 }
             ));
@@ -127,7 +119,7 @@ router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
 
             Promise.resolve(webpush.sendNotification(
                 docs, JSON.stringify(pushNotificationPayload)))
-                .then(() => {console.log(pushNotificationPayload); res.status(200).json({message: 'Notification sent successfully.'})})
+                .then(() => res.status(200).json({message: 'Notification sent successfully.'}))
                 .catch(err => {
                     console.error("Error sending notification, reason: ", err);
                     res.sendStatus(500);

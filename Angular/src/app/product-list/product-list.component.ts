@@ -51,9 +51,9 @@ export class ProductListComponent implements OnInit {
     }
     var elems2 = document.querySelector('.carousel');
     var instances = M.Carousel.init(elems2, carouselOptions);
-    if (this.tokenStorageService.getToken() && !this.sellerId && !this.category && !this.pushPermissionRequested) {      //ask for push notifications permission only if just logged in and inside homepage
+    if (this.tokenStorageService.getToken() && !this.sellerId && !this.category) {      //ask for push notifications permission only if just logged in and inside homepage
       this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
-      .then(sub => { this.pushPermissionRequested = true; this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe(data => console.log("ok")) })
+      .then(sub => {this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe()})
       .catch(err => console.error("Could not subscribe to notifications", err));
     }
   }

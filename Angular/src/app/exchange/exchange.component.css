@@ -32,4 +32,7 @@
   .vert-container{
     width: 30%;
   }
+  .recapWhiteText{
+    color: white;
+  }
 }

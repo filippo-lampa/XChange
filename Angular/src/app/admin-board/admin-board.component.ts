@@ -85,7 +85,6 @@ export class AdminBoardComponent implements OnInit {
     if (this.formPutCategory.imageUrl != undefined) {
       this.selectedCategory.imageUrl = this.formPutCategory.imageUrl;
     }
-    console.log(this.selectedCategory)
     this.categoryService.putCategory(this.selectedCategory).subscribe(
       (data) => {
         this.ngOnInit();

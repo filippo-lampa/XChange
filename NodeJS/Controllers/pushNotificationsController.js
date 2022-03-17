@@ -8,16 +8,8 @@ var {NotificationSub,NotificationSub} = require('../Models/notificationSub');
 
 
 router.post('/notifications/:userId', (req,res)=>{ 
-    var subsciptor = new NotificationSub({ 
-        userId: req.params.userId,
-        endpoint: req.body.endpoint,
-        expirationTime : req.body.expirationTime,
-        keys : {
-            p256dh : req.body.keys.p256dh,
-            auth : req.body.keys.auth
-        }
-    });
-    subsciptor.save((err,doc)=>{
+    NotificationSub.findOneAndUpdate({"userId":req.params.userId}, { "$set": { "userId": req.params.userId, "endpoint": req.params.endpoint, 
+    "expirationTime": req.body.expirationTime, "keys": {"p256dh": req.body.keys.p256dh,"auth": req.body.keys.auth}}}, {upsert: true, new: true}, (err,doc)=>{
         if(!err)
             res.send(doc);
         else

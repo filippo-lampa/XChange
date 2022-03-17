@@ -27,7 +27,7 @@ webpush.setVapidDetails(
 
 var app = express();
 
-router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{ 
+router.post('/notificationcenter/:senderId/:receiverId', (req,res)=>{
     NotificationSub.find(({userId: req.params.receiverId}), (err,docs)=>{ 
         if(!err){
             const notificationPayload = req.body;

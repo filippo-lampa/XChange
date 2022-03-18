@@ -11,7 +11,7 @@
       <div class="card">
 
         <div class="card-action materialize-red lighten-2 white-text">
-          <h3 class="center">Login Form</h3>
+          <h3 class="center">Welcome back</h3>
         </div>
 
         <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
@@ -19,7 +19,7 @@
           <div class="card-content">
 
             <div class="form-field">
-              <label for="username">Username</label>
+              <label for="Email">Email</label>
               <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required
                 #username="ngModel" />
             </div><br>

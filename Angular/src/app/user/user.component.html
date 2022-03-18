@@ -1,6 +1,7 @@
 <section *ngIf="isLoaded" class="section about-section gray-bg" id="about">
     <div class="container">
-        <div class="row profile align-items-center">
+
+        <div class="row profile align-items-center hide-on-small-only">
             <div class="col s7 push-s5 about-text">
                 <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}} <a routerLink="/user/{{selectedUser._id}}/editprofile" *ngIf="selectedUser._id == loggedUserId"><i class="material-icons dark-color" >edit</i></a></h3>
 
@@ -38,12 +39,76 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col s5 pull-s7">
                 <img src="{{selectedUser.profilePicUrl}}" title="" alt=""
                     class="avatar-image  circle responsive-img">
             </div>
         </div>
+
+
+        <div class="row profile align-items-center hide-on-med-and-up">
+          <div class="row">
+          <div class="col s7 push-s5 about-text">
+              <h3 class="title dark-color">{{selectedUser.name}} {{selectedUser.surname}} <a routerLink="/user/{{selectedUser._id}}/editprofile" *ngIf="selectedUser._id == loggedUserId"><i class="material-icons dark-color" >edit</i></a></h3>
+
+              <p>{{selectedUser.bio}}</p>
+
+            </div>
+            <div class="col s5 pull-s7">
+              <img src="{{selectedUser.profilePicUrl}}" title="" alt=""
+                  class="avatar-image  circle responsive-img">
+          </div>
+        </div>
+              <div class="row about-list ">
+                <div class="col s4">
+                    <div class="media">
+                        <label class="dark-color">Birthday</label>
+                        <p>{{userBirthday}}</p>
+                    </div>
+                  </div>
+                  <div class="col s4">
+
+                    <div class="media">
+                        <label class="dark-color">Age</label>
+                        <p>{{userAge}}</p>
+                    </div>
+                  </div>
+                  <div class="col s4">
+
+                    <div class="media">
+                        <label class="dark-color">State</label>
+                        <p>{{selectedUser.state}}</p>
+                    </div>
+                  </div>
+              </div>
+
+                <div class="row about-list">
+                  <div class="col s4">
+                    <div class="media">
+                        <label class="dark-color">Address</label>
+                        <p>{{selectedUser.address}}</p>
+                    </div>
+                  </div>
+                  <div class="col s4">
+
+                    <div class="media">
+                        <label class="dark-color">E-mail</label>
+                        <p>{{selectedUser.email}}</p>
+                    </div>
+                  </div>
+                  <div class="col s4">
+
+                    <div class="media">
+                        <label class="dark-color">Phone</label>
+                        <p>{{selectedUser.phone}}</p>
+                    </div>
+                  </div>
+                </div>
+      </div>
+
+
 
         <div class="row number-counter">
             <div class="counter">

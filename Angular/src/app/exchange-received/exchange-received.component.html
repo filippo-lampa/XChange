@@ -17,7 +17,7 @@
   </div>
   <div class="row">
     <div class="col m12 s12">
-      <h6 class="white-text">Offered from: {{notification.senderUsername}}</h6>
+      <a href="https://xchangenet.herokuapp.com/user/{{notification.sender}}"><h6 class="white-text">Offered from: {{notification.senderUsername}}</h6></a>
       <div class="card-panel m7 teal" *ngFor="let product of notification.offeredProducts">
         <span class="white-text">
           Name: {{product.name}}

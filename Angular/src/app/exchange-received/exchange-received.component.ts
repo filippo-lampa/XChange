@@ -66,7 +66,8 @@ export class ExchangeReceivedComponent implements OnInit {
               "action": "explore",
               "title": "Go to the site"
           }],
-          "exchangeResult": "false"
+          "exchangeResult": "false",
+          "notificationType": "exchangeResult"
       }
     };
  //   this.exchangeService.saveExchange(notificationPayload);

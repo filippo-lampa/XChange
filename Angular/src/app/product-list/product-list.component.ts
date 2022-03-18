@@ -17,8 +17,6 @@ import { ExchangeService } from '../shared/services/exchange.service';
 })
 export class ProductListComponent implements OnInit {
 
-  readonly VAPID_PUBLIC_KEY = "BOzdHgXy8Zfg_aMFp-HMpEKMPzd_uPYmcYBq9Y30itAIsyP6WVF3IQXAeK7GYrE4BhMtfUrWoMNqiLCgUyRj90c";
-
   @Input()
   sellerId: string = "";
   @Input()
@@ -27,7 +25,6 @@ export class ProductListComponent implements OnInit {
   productList: Product[] = [];
   selectedProduct: Product = new Product;
   offeredProducts: Product[] = [];
-  pushPermissionRequested: boolean = false;
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private elementRef: ElementRef, private swPush: SwPush,
     private notificationService: NotificationService, private tokenStorageService: TokenStorageService, private exchangeService: ExchangeService) {
@@ -51,11 +48,6 @@ export class ProductListComponent implements OnInit {
     }
     var elems2 = document.querySelector('.carousel');
     var instances = M.Carousel.init(elems2, carouselOptions);
-    if (this.tokenStorageService.getToken() && !this.sellerId && !this.category) {      //ask for push notifications permission only if just logged in and inside homepage
-      this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
-      .then(sub => {this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe()})
-      .catch(err => console.error("Could not subscribe to notifications", err));
-    }
   }
 
   setSelectedProduct(selectedProduct: Product) {

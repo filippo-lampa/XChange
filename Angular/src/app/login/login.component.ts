@@ -19,6 +19,8 @@ import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 })
 export class LoginComponent implements OnInit {
 
+  readonly VAPID_PUBLIC_KEY = "BOzdHgXy8Zfg_aMFp-HMpEKMPzd_uPYmcYBq9Y30itAIsyP6WVF3IQXAeK7GYrE4BhMtfUrWoMNqiLCgUyRj90c";
+
   form: any = {
     email: null,
     password: null
@@ -47,7 +49,10 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.saveTokenAndUser(data)
           .then(() => this.router.navigate(['']))
-          .then(() => this.reloadPage())
+          .then(() => this.reloadPage()).then(()=>          //reload page just after navigation throws http undefined error
+                this.swPush.requestSubscription({ serverPublicKey: this.VAPID_PUBLIC_KEY })
+                .then(sub => {this.notificationService.addPushSubscriber(sub, this.tokenStorageService.getUserId()).subscribe()})
+                .catch(err => console.error("Could not subscribe to notifications", err)))
       },
       err => {
         M.toast({ html: 'Invalid email or password', classes: 'rounded red toast-container' });

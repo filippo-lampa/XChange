@@ -192,7 +192,7 @@
 <div *ngIf="sellerId">
   <div class="card-div" *ngFor="let product of productList">
     <div *ngIf=" product.sellerId == sellerId">
-      <div class="card">
+      <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="{{product.imageUrl}}">
         </div>
@@ -240,7 +240,7 @@
 <div *ngIf="category">
   <div class="card-div" *ngFor="let product of productList">
     <div *ngIf="product.category == category">
-      <div class="card ">
+      <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="{{product.imageUrl}}">
         </div>

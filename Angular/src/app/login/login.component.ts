@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
 
   saveTokenAndUser(data: any) {
     var promise = new Promise<void>((resolve, reject) => {
-      console.log("PRIMA");
       this.tokenStorageService.saveToken(data.token, data.expiresIn);
       this.tokenStorageService.saveUser(data.userId);
       resolve();

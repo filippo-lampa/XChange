@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.saveTokenAndUser(data)
           .then(() => this.router.navigate(['']))
-          .then(() => this.reloadPage())    //TODO fix http undefined error thrown by reload page just after navigation
+          .then(() => this.reloadPage())
       },
       err => {
         M.toast({ html: 'Invalid email or password', classes: 'rounded red toast-container' });

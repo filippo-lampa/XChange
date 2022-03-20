@@ -75,6 +75,7 @@ export class AddProductComponent implements OnInit {
       this.productService.postProduct(product, this.tokenStorageService.getUserId()).subscribe(
         data => {
           this.selectedCategory = '';
+          M.toast({ html: 'Product added', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         },
         err => {
@@ -93,6 +94,7 @@ export class AddProductComponent implements OnInit {
       this.productService.deleteProduct(this.selectedProduct, this.tokenStorageService.getUserId()).subscribe(
         data => {
           this.selectedProduct = '';
+          M.toast({ html: 'Product deleted', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         },
         err => {
@@ -130,6 +132,7 @@ export class AddProductComponent implements OnInit {
       this.productService.putProduct(product, this.tokenStorageService.getUserId()).subscribe(
         data => {
           this.selectedCategory = '';
+          M.toast({ html: 'Product changed', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         },
         err => {

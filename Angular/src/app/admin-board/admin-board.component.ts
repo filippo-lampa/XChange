@@ -7,6 +7,8 @@ import { CategoryService } from '../shared/services/category.service';
 import { ProductService } from '../shared/services/product.service';
 import { TokenStorageService } from '../shared/services/token-storage.service';
 import { UserService } from '../shared/services/user.service';
+// @ts-ignore
+import * as M from "../../../node_modules/materialize-css/dist/js/materialize";
 
 @Component({
   selector: 'app-admin-board',
@@ -69,6 +71,7 @@ export class AdminBoardComponent implements OnInit {
     }
 
     this.categoryService.postCategory(category).subscribe((data) => {
+      M.toast({ html: 'Category added', classes: 'rounded green toast-container', displayLenght: 2000 });
       this.ngOnInit();
     })
   }
@@ -87,6 +90,7 @@ export class AdminBoardComponent implements OnInit {
     }
     this.categoryService.putCategory(this.selectedCategory).subscribe(
       (data) => {
+        M.toast({ html: 'Category changed', classes: 'rounded green toast-container', displayLenght: 2000 });
         this.ngOnInit();
       }
     )
@@ -96,6 +100,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedCategory != undefined || this.selectedCategory != null) {
       this.categoryService.deleteCategory(this.selectedCategory).subscribe(
         (data) => {
+          M.toast({ html: 'Category removed', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         }
       )
@@ -118,6 +123,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedUser != undefined || this.selectedUser != null) {
       this.userService.deleteUser(this.selectedUser._id!).subscribe(
         (data) => {
+          M.toast({ html: 'User deleted', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         }
       )
@@ -140,6 +146,7 @@ export class AdminBoardComponent implements OnInit {
     if (this.selectedProduct != undefined || this.selectedProduct != null) {
       this.productService.deleteProduct(this.selectedProduct._id!, this.tokenStorageService.getUserId()).subscribe(
         (data) => {
+          M.toast({ html: 'Product deleted', classes: 'rounded green toast-container', displayLenght: 2000 });
           this.ngOnInit();
         }
       )

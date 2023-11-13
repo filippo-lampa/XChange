@@ -1,2 +1,2 @@
 # XChange
-Thinked and created for PAWM project in Unicam
+Website thinked to simplify and promote the age-old practice of bartering 
